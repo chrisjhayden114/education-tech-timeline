@@ -1,0 +1,990 @@
+{
+  "technologies": [
+    {
+      "id": "writing",
+      "name": "Writing",
+      "era": "c. 4th century BCE",
+      "origin": "c. 3200 BCE",
+      "broadImpact": "c. 5th c. BCE (Greece)",
+      "originYear": -3200,
+      "impactYear": -500,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "The substrate of schooling itself: literacy restructures cognition, enabling analysis, abstraction and cumulative critique (Ong, 1982).",
+      "negative": "Offloads memory to external storage; people retain where to find information rather than the information itself (Sparrow et al., 2011).",
+      "dial": 2,
+      "notes": "Memory atrophy and hollow understanding; the fear is now fully inverted, since we panic when students cannot write.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Ong, 1982",
+          "id": "ref-29"
+        },
+        {
+          "short": "Sparrow et al., 2011",
+          "id": "ref-33"
+        }
+      ]
+    },
+    {
+      "id": "printing-press",
+      "name": "Printing press",
+      "era": "15th–16th c.",
+      "origin": "c. 1450",
+      "broadImpact": "c. 1500",
+      "originYear": 1450,
+      "impactYear": 1500,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Cheap identical texts made the textbook, the graded classroom, the standardized curriculum and mass literacy schooling possible (Eisenstein, 1979).",
+      "negative": "Entrenched textbook orthodoxy and the recitation culture that dominated classrooms for a century (Cuban, 1993).",
+      "dial": 2,
+      "notes": "Order fear realized (Reformation, religious wars); enabled the textbook, the graded classroom and mass literacy schooling.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Eisenstein, 1979",
+          "id": "ref-18"
+        },
+        {
+          "short": "Cuban, 1993",
+          "id": "ref-14"
+        }
+      ]
+    },
+    {
+      "id": "novels",
+      "name": "Novels",
+      "era": "18th c.",
+      "origin": "c. 1720",
+      "broadImpact": "c. 1740",
+      "originYear": 1720,
+      "impactYear": 1740,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Fiction became the core of literacy education; free voluntary reading is among the best-supported literacy practices (Krashen, 2004).",
+      "negative": "None substantiated; the feared idleness and displacement of serious reading were never validated (Vogrinčič, 2008).",
+      "dial": 3,
+      "notes": "Health framing was medical: nervous overexcitement and reading mania. The feared object became the English curriculum.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Krashen, 2004",
+          "id": "ref-24"
+        }
+      ]
+    },
+    {
+      "id": "railways",
+      "name": "Railways",
+      "era": "Early–mid 19th c.",
+      "origin": "1825",
+      "broadImpact": "c. 1840",
+      "originYear": 1825,
+      "impactYear": 1840,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Indirect: enabled school consolidation and excursions, and fed the standardized time discipline behind the bell schedule (Tyack, 1974).",
+      "negative": "None substantive for learning; the feared mental harms were largely press amplification (Milne-Smith, 2016).",
+      "dial": 0,
+      "notes": "Railway spine and railway madness; education effects indirect only (consolidation, excursions, bell-schedule time discipline).",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Tyack, 1974",
+          "id": "ref-36"
+        },
+        {
+          "short": "Milne-Smith, 2016",
+          "id": "ref-27"
+        }
+      ]
+    },
+    {
+      "id": "telegraph",
+      "name": "Telegraph",
+      "era": "Mid–late 19th c.",
+      "origin": "1844",
+      "broadImpact": "c. 1855",
+      "originYear": 1844,
+      "impactYear": 1855,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "Partial",
+        "Public order": "Partial"
+      },
+      "transformed": "No",
+      "positive": "Marginal: vocational telegraphy training and current-events pedagogy; mainly precursor infrastructure (Standage, 1998).",
+      "negative": "Genealogical rather than direct: originated context-free news, information detached from the capacity to act on it (Postman, 1985).",
+      "dial": 0,
+      "notes": "Nervous strain of accelerated life (neurasthenia) and wire fraud; education role was precursor infrastructure only.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Standage, 1998",
+          "id": "ref-34"
+        },
+        {
+          "short": "Postman, 1985",
+          "id": "ref-31"
+        }
+      ]
+    },
+    {
+      "id": "telephone",
+      "name": "Telephone",
+      "era": "Late 19th–early 20th c.",
+      "origin": "1876",
+      "broadImpact": "c. 1900",
+      "originYear": 1876,
+      "impactYear": 1900,
+      "fears": {
+        "Learning": "No",
+        "Morality": "Yes",
+        "Health": "Partial",
+        "Public order": "No"
+      },
+      "transformed": "No",
+      "positive": "Administrative infrastructure only: attendance, parent contact, later homework hotlines (Fischer, 1992).",
+      "negative": "None; the feared social harms were empirically refuted, and no learning claim existed (Fischer, 1992).",
+      "dial": 0,
+      "notes": "Improper intimacy and eroded visiting; minor germ and shock worries. Became school admin infrastructure, not a learning tool.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Fischer, 1992",
+          "id": "ref-19"
+        }
+      ]
+    },
+    {
+      "id": "movies",
+      "name": "Movies",
+      "era": "Early 20th c.",
+      "origin": "1895",
+      "broadImpact": "c. 1905",
+      "originYear": 1895,
+      "impactYear": 1905,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Launched instructional film, the visual instruction movement, and educational technology as a professional field (Saettler, 1990).",
+      "negative": "Modest measured harms: disturbed children's sleep and shifted attitudes (Payne Fund studies; Charters, 1933).",
+      "dial": 3,
+      "notes": "Payne Fund measured attitudes and sleep loss; crime imitation central. Founded instructional film and media literacy.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Saettler, 1990",
+          "id": "ref-32"
+        },
+        {
+          "short": "Charters, 1933",
+          "id": "ref-9"
+        }
+      ]
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "era": "1920s–30s",
+      "origin": "1920",
+      "broadImpact": "c. 1930",
+      "originYear": 1920,
+      "impactYear": 1930,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Established broadcast distance education; Schools of the Air made schooling possible for remote children (Cuban, 1986).",
+      "negative": "None substantiated; child radio-addiction claims were never validated (Orben, 2020).",
+      "dial": 2,
+      "notes": "Child addiction claims were medically framed; the propaganda fear was realized in adults. Schools of the Air faded; distance education endured.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Cuban, 1986",
+          "id": "ref-13"
+        },
+        {
+          "short": "Orben, 2020",
+          "id": "ref-30"
+        }
+      ]
+    },
+    {
+      "id": "comic-books",
+      "name": "Comic books",
+      "era": "1940s–50s",
+      "origin": "1938",
+      "broadImpact": "c. 1943",
+      "originYear": 1938,
+      "impactYear": 1943,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Rehabilitated as literacy scaffolds: graphic novels support reluctant, struggling and EAL readers (Krashen, 2004).",
+      "negative": "None substantiated; the literacy-harm case rested on fabricated clinical evidence (Tilley, 2012).",
+      "dial": 3,
+      "notes": "Literacy panic plus Wertham's psychiatric claims, later shown fabricated. Graphic novels are now classroom texts.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Krashen, 2004",
+          "id": "ref-24"
+        },
+        {
+          "short": "Tilley, 2012",
+          "id": "ref-35"
+        }
+      ]
+    },
+    {
+      "id": "television",
+      "name": "Television",
+      "era": "1950s–70s",
+      "origin": "c. 1936",
+      "broadImpact": "c. 1955",
+      "originYear": 1936,
+      "impactYear": 1955,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Designed educational TV produced large early-learning gains, greatest for disadvantaged children (Bogatz & Ball, 1971; Kearney & Levine, 2019).",
+      "negative": "Heavy leisure viewing associated with lower achievement beyond a modest threshold, partly via homework displacement (Williams et al., 1982).",
+      "dial": 4,
+      "notes": "The analog-era peak on every axis; the biggest measured education finding was positive (Sesame Street). Design, not the screen, drives learning.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Bogatz & Ball, 1971",
+          "id": "ref-5"
+        },
+        {
+          "short": "Kearney & Levine, 2019",
+          "id": "ref-22"
+        },
+        {
+          "short": "Williams et al., 1982",
+          "id": "ref-40"
+        }
+      ]
+    },
+    {
+      "id": "rock-and-roll",
+      "name": "Rock and roll",
+      "era": "1950s–60s",
+      "origin": "c. 1951",
+      "broadImpact": "c. 1956",
+      "originYear": 1951,
+      "impactYear": 1956,
+      "fears": {
+        "Learning": "No",
+        "Morality": "Yes",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Marginal: popular music eventually entered music curricula through informal-learning pedagogy (Green, 2008).",
+      "negative": "None; the panic was moral and behavioural, with no learning claim (Cohen, 1972).",
+      "dial": 0,
+      "notes": "Morals, manners and concert disorder, never marks; later absorbed into music curricula and taught as a moral-panic case study.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Green, 2008",
+          "id": "ref-20"
+        },
+        {
+          "short": "Cohen, 1972",
+          "id": "ref-11"
+        }
+      ]
+    },
+    {
+      "id": "pocket-calculator",
+      "name": "Pocket calculator",
+      "era": "1970s–80s",
+      "origin": "1971",
+      "broadImpact": "c. 1976",
+      "originYear": 1971,
+      "impactYear": 1976,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Freed mathematics teaching for concepts and problem solving; improved attitudes without harming overall skills when instruction adapted (Hembree & Dessart, 1986).",
+      "negative": "Real skill shift: sustained early-grade calculator use hindered basic computation development (Hembree & Dessart, 1986).",
+      "dial": 3,
+      "notes": "Marked * on this timeline. The purest learning fear here: arithmetic collapse. Settled by assessment redesign (calculator and non-calculator papers).",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Hembree & Dessart, 1986",
+          "id": "ref-21"
+        }
+      ]
+    },
+    {
+      "id": "home-video-vhs",
+      "name": "Home video (VHS)",
+      "era": "1970s–80s",
+      "origin": "1976",
+      "broadImpact": "c. 1982",
+      "originYear": 1976,
+      "impactYear": 1982,
+      "fears": {
+        "Learning": "No",
+        "Morality": "Yes",
+        "Health": "Partial",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Model classroom adoption: cheap, reliable and teacher-controlled; ancestor of on-demand instructional video (Cuban, 1986).",
+      "negative": "None substantiated; the content panic rested on weak and partly manufactured evidence (Barker, 1984).",
+      "dial": 0,
+      "notes": "Video nasties content panic with psychological-harm and copycat claims; the same device became a model classroom technology.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Cuban, 1986",
+          "id": "ref-13"
+        },
+        {
+          "short": "Barker, 1984",
+          "id": "ref-2"
+        }
+      ]
+    },
+    {
+      "id": "personal-computer",
+      "name": "Personal computer",
+      "era": "1977–mid-1990s",
+      "origin": "1977",
+      "broadImpact": "c. 1983",
+      "originYear": 1977,
+      "impactYear": 1983,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "Partial",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Word processing measurably improved student writing; computing became a school subject (Bangert-Drowns, 1993).",
+      "negative": "Oversold and underused: heavy investment produced limited classroom change and little measured learning gain (Cuban, 2001).",
+      "dial": 2,
+      "notes": "Marked * on this timeline. Dominant fear inverted: exclusion, not exposure. Hacker panic on the order side; oversold and underused for learning.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Bangert-Drowns, 1993",
+          "id": "ref-1"
+        },
+        {
+          "short": "Cuban, 2001",
+          "id": "ref-15"
+        }
+      ]
+    },
+    {
+      "id": "dungeons-and-dragons",
+      "name": "Dungeons and Dragons",
+      "era": "1980s–90s",
+      "origin": "1974",
+      "broadImpact": "c. 1980",
+      "originYear": 1974,
+      "impactYear": 1980,
+      "fears": {
+        "Learning": "No",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Partial"
+      },
+      "transformed": "Partial",
+      "positive": "Absorbed co-curricularly for narrative literacy, probability, collaboration and social-skill development (Bowman, 2010).",
+      "negative": "None; the suicide and dissociation claims collapsed under scrutiny (Laycock, 2015).",
+      "dial": 0,
+      "notes": "Occult and suicide claims collapsed under scrutiny; now used co-curricularly for literacy, probability and social skills.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Bowman, 2010",
+          "id": "ref-6"
+        },
+        {
+          "short": "Laycock, 2015",
+          "id": "ref-25"
+        }
+      ]
+    },
+    {
+      "id": "video-games",
+      "name": "Video games",
+      "era": "1990s–2010s",
+      "origin": "1972",
+      "broadImpact": "c. 1980",
+      "originYear": 1972,
+      "impactYear": 1980,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Well-designed digital games outperform non-game instruction on average; design features moderate everything (Clark et al., 2016).",
+      "negative": "Time displacement is real: heavier play associated with less homework and reading among adolescents (Cummings & Vandewater, 2007).",
+      "dial": 3,
+      "notes": "Homework displacement and addiction real for heavy users; the violence linkage was central but weakly supported. Well-designed games outperform non-game instruction.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Clark et al., 2016",
+          "id": "ref-10"
+        },
+        {
+          "short": "Cummings & Vandewater, 2007",
+          "id": "ref-16"
+        }
+      ]
+    },
+    {
+      "id": "internet",
+      "name": "Internet",
+      "era": "1990s–2000s",
+      "origin": "1969 (web 1991)",
+      "broadImpact": "c. 1996",
+      "originYear": 1969,
+      "impactYear": 1996,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Open resources and online/blended learning that modestly outperforms face-to-face alone; transformed access to information (Means et al., 2010).",
+      "negative": "Access alone produced no learning gains, and intensive classroom use predicted worse performance (Cristia et al., 2017; OECD, 2015).",
+      "dial": 3,
+      "notes": "Fears on every axis, several realized; contract cheating industrialized. Transformation huge, measured learning gains poor.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Means et al., 2010",
+          "id": "ref-26"
+        },
+        {
+          "short": "Cristia et al., 2017",
+          "id": "ref-12"
+        },
+        {
+          "short": "OECD, 2015",
+          "id": "ref-28"
+        }
+      ]
+    },
+    {
+      "id": "social-media",
+      "name": "Social media",
+      "era": "2000s–10s",
+      "origin": "2004",
+      "broadImpact": "c. 2010",
+      "originYear": 2004,
+      "impactYear": 2010,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Teacher professional learning networks and student voice; digital citizenship entered curricula (Carpenter & Krutka, 2014).",
+      "negative": "Quasi-experimental evidence of harm to student mental health, degrading readiness to learn (Braghieri et al., 2022).",
+      "dial": 3,
+      "notes": "Teen mental health is the core claim, with causal magnitude contested; schools became the front line regardless of where the science lands.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Carpenter & Krutka, 2014",
+          "id": "ref-8"
+        },
+        {
+          "short": "Braghieri et al., 2022",
+          "id": "ref-7"
+        }
+      ]
+    },
+    {
+      "id": "smartphones",
+      "name": "Smartphones",
+      "era": "2010s–20s",
+      "origin": "2007",
+      "broadImpact": "c. 2012",
+      "originYear": 2007,
+      "impactYear": 2012,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Yes",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Teacher-controlled uses: physics sensors and data loggers, instant translation for EAL students (Vogt & Kuhn, 2012).",
+      "negative": "Mere presence taxes cognitive capacity; restrictions raised exam results, most for low achievers (Ward et al., 2017; Beland & Murphy, 2016).",
+      "dial": 5,
+      "notes": "Best-evidenced learning fear on this timeline (in-class distraction); drove the global ban wave, the sharpest policy reversal in modern education.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "Vogt & Kuhn, 2012",
+          "id": "ref-38"
+        },
+        {
+          "short": "Ward et al., 2017",
+          "id": "ref-39"
+        },
+        {
+          "short": "Beland & Murphy, 2016",
+          "id": "ref-4"
+        }
+      ]
+    },
+    {
+      "id": "generative-ai",
+      "name": "Generative AI",
+      "era": "2020s",
+      "origin": "2022",
+      "broadImpact": "2023",
+      "originYear": 2022,
+      "impactYear": 2023,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Partial",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Guardrailed, teacher-mediated tutoring produced large gains in randomized trials (De Simone et al., 2025; Kestin et al., 2025).",
+      "negative": "Unguarded access reduced skill acquisition: practice gains but worse unassisted exam performance (Bastani et al., 2025).",
+      "dial": 5,
+      "notes": "Cheating overstated, offloading unresolved, deepfake abuse realized; assessment redesign already underway.",
+      "isAdded": false,
+      "references": [
+        {
+          "short": "De Simone et al., 2025",
+          "id": "ref-17"
+        },
+        {
+          "short": "Kestin et al., 2025",
+          "id": "ref-23"
+        },
+        {
+          "short": "Bastani et al., 2025",
+          "id": "ref-3"
+        }
+      ]
+    }
+  ],
+  "legend": {
+    "Dates on the timeline": [
+      {
+        "term": "Origin (approx.)",
+        "definition": "Approximate year the technology came into being, in the form relevant to this timeline (first working or public version)."
+      },
+      {
+        "term": "Broad impact (approx.)",
+        "definition": "Approximate year it began having a big societal impact: mass adoption, or the visibility that triggered the panic."
+      },
+      {
+        "term": "Judgment calls",
+        "definition": "Writing's impact date is anchored to the Greek literacy context of Plato's panic. The internet's origin counts ARPANET (1969), with the web (1991) noted. Novels are dated as the 18th-century mass-market form."
+      }
+    ],
+    "Impact summaries": [
+      {
+        "term": "Positive impact on education",
+        "definition": "Brief evidence-based summary of how the technology improved or transformed education, with a short in-text citation. Full citations are on the References page."
+      },
+      {
+        "term": "Negative impact on learning / education",
+        "definition": "Brief evidence-based summary of documented harm or hindrance to learning. 'None' entries mean no substantiated harm; the cited study supports that conclusion (e.g. a debunking or refutation)."
+      }
+    ],
+    "Fear ratings (Yes / Partial / No)": [
+      {
+        "term": "Based on",
+        "definition": "Contemporaries' claims at the time — not whether the fear later proved justified."
+      },
+      {
+        "term": "Yes",
+        "definition": "Fear clearly articulated at meaningful scale during the panic period."
+      },
+      {
+        "term": "Partial",
+        "definition": "Fear present but marginal, contested, or narrowly framed (judgment calls; see Notes in each technology's detail view)."
+      },
+      {
+        "term": "No",
+        "definition": "Not a feature of the panic."
+      }
+    ],
+    "Category definitions": [
+      {
+        "term": "Learning / cognitive development fears",
+        "definition": "Claimed harm to memory, attention, reasoning, literacy, skill formation, academic integrity, or study time."
+      },
+      {
+        "term": "Morality fears",
+        "definition": "Corruption of character: sexual permissiveness, idleness, occult influence, collapse of manners, delinquent values."
+      },
+      {
+        "term": "Health fears",
+        "definition": "Claimed physical or mental health harm, including medically framed addiction, sleep, eyesight, and psychiatric claims."
+      },
+      {
+        "term": "Public order fears",
+        "definition": "Crime, violence, riots, propaganda, fraud, radicalization, or political destabilization."
+      }
+    ],
+    "Transformed education": [
+      {
+        "term": "Yes",
+        "definition": "Durable structural or pedagogical change to how schooling is organized, taught, or assessed."
+      },
+      {
+        "term": "Partial",
+        "definition": "Niche or marginal absorption into schooling."
+      },
+      {
+        "term": "No",
+        "definition": "Negligible direct effect on education."
+      }
+    ],
+    "Dial (0–5)": [
+      {
+        "term": "Meaning",
+        "definition": "Education-related fear intensity at historical peak (intensity multiplied by reach), shown on each technology's fear dial. Measures the size of the fear, not its accuracy."
+      },
+      {
+        "term": "Scale",
+        "definition": "0 none, 2 low, 3 moderate, 4 high, 5 severe."
+      }
+    ],
+    "What's included": [
+      {
+        "term": "Original entries",
+        "definition": "Eighteen technologies drawn from historical scholarship on technology panics and education."
+      },
+      {
+        "term": "Added entries (*)",
+        "definition": "Pocket calculator and personal computer are marked with * — they were added to fill two notable gaps on this timeline. The calculator's dial score is assigned retrospectively."
+      }
+    ]
+  },
+  "references": [
+    {
+      "id": "ref-1",
+      "text": "Bangert-Drowns, R. L. (1993). The word processor as an instructional tool: A meta-analysis of word processing in writing instruction. Review of Educational Research, 63(1), 69–93.",
+      "url": "https://doi.org/10.3102/00346543063001069"
+    },
+    {
+      "id": "ref-2",
+      "text": "Barker, M. (Ed.). (1984). The video nasties: Freedom and censorship in the media. Pluto Press.",
+      "url": "https://books.google.com/books?id=C-FkAAAAMAAJ"
+    },
+    {
+      "id": "ref-3",
+      "text": "Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakci, O., & Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. Proceedings of the National Academy of Sciences, 122(26).",
+      "url": "https://doi.org/10.1073/pnas.2422633122"
+    },
+    {
+      "id": "ref-4",
+      "text": "Beland, L.-P., & Murphy, R. (2016). Ill communication: Technology, distraction and student performance. Labour Economics, 41, 61–76.",
+      "url": "https://doi.org/10.1016/j.labeco.2016.04.004"
+    },
+    {
+      "id": "ref-5",
+      "text": "Bogatz, G. A., & Ball, S. (1971). The second year of Sesame Street: A continuing evaluation. Educational Testing Service.",
+      "url": "https://eric.ed.gov/?id=ED122800"
+    },
+    {
+      "id": "ref-6",
+      "text": "Bowman, S. L. (2010). The functions of role-playing games: How participants create community, solve problems and explore identity. McFarland.",
+      "url": "https://mcfarlandbooks.com/product/the-functions-of-role-playing-games/"
+    },
+    {
+      "id": "ref-7",
+      "text": "Braghieri, L., Levy, R., & Makarin, A. (2022). Social media and mental health. American Economic Review, 112(11), 3660–3693.",
+      "url": "https://doi.org/10.1257/aer.20211218"
+    },
+    {
+      "id": "ref-8",
+      "text": "Carpenter, J. P., & Krutka, D. G. (2014). How and why educators use Twitter: A survey of the field. Journal of Research on Technology in Education, 46(4), 414–434.",
+      "url": "https://doi.org/10.1080/15391523.2014.925694"
+    },
+    {
+      "id": "ref-9",
+      "text": "Charters, W. W. (1933). Motion pictures and youth: A summary. Macmillan.",
+      "url": "https://books.google.com/books/about/Motion_Pictures_and_Youth.html?id=0jQ9AAAAYAAJ"
+    },
+    {
+      "id": "ref-10",
+      "text": "Clark, D. B., Tanner-Smith, E. E., & Killingsworth, S. S. (2016). Digital games, design, and learning: A systematic review and meta-analysis. Review of Educational Research, 86(1), 79–122.",
+      "url": "https://doi.org/10.3102/0034654315582065"
+    },
+    {
+      "id": "ref-11",
+      "text": "Cohen, S. (1972). Folk devils and moral panics. MacGibbon & Kee.",
+      "url": "https://books.google.com/books/about/Folk_Devils_and_Moral_Panics.html?id=8jY8AAAAIAAJ"
+    },
+    {
+      "id": "ref-12",
+      "text": "Cristia, J., Ibarraran, P., Cueto, S., Santiago, A., & Severin, E. (2017). Technology and child development: Evidence from the One Laptop per Child program. American Economic Journal: Applied Economics, 9(3), 295–320.",
+      "url": "https://doi.org/10.1257/app.20150385"
+    },
+    {
+      "id": "ref-13",
+      "text": "Cuban, L. (1986). Teachers and machines: The classroom use of technology since 1920. Teachers College Press.",
+      "url": "https://books.google.com/books/about/Teachers_and_Machines.html?id=uQeEn1vEUSQC"
+    },
+    {
+      "id": "ref-14",
+      "text": "Cuban, L. (1993). How teachers taught: Constancy and change in American classrooms, 1880–1990 (2nd ed.). Teachers College Press.",
+      "url": "https://books.google.com/books/about/How_Teachers_Taught.html?id=fQeEn1vEUSQC"
+    },
+    {
+      "id": "ref-15",
+      "text": "Cuban, L. (2001). Oversold and underused: Computers in the classroom. Harvard University Press.",
+      "url": "https://books.google.com/books/about/Oversold_and_Underused.html?id=PK1EhcrMcZ4C"
+    },
+    {
+      "id": "ref-16",
+      "text": "Cummings, H. M., & Vandewater, E. A. (2007). Relation of adolescent video game play to time spent in other activities. Archives of Pediatrics & Adolescent Medicine, 161(7), 684–689.",
+      "url": "https://doi.org/10.1001/archpedi.161.7.684"
+    },
+    {
+      "id": "ref-17",
+      "text": "De Simone, M., Tiberti, F., Barron Rodriguez, M., Manolio, F., Mosuro, W., & Dikoru, E. (2025). From chalkboards to chatbots: Evaluating the impact of generative AI on learning outcomes in Nigeria (Policy Research Working Paper 11125). World Bank.",
+      "url": "https://doi.org/10.1596/1813-9450-11125"
+    },
+    {
+      "id": "ref-18",
+      "text": "Eisenstein, E. L. (1979). The printing press as an agent of change. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/cbo9781107049963"
+    },
+    {
+      "id": "ref-19",
+      "text": "Fischer, C. S. (1992). America calling: A social history of the telephone to 1940. University of California Press.",
+      "url": "https://books.google.com/books/about/America_Calling.html?id=qs7CPF924nAC"
+    },
+    {
+      "id": "ref-20",
+      "text": "Green, L. (2008). Music, informal learning and the school: A new classroom pedagogy. Ashgate.",
+      "url": "https://www.routledge.com/Music-Informal-Learning-and-the-School-A-New-Classroom-Pedagogy/Green/p/book/9780754665229"
+    },
+    {
+      "id": "ref-21",
+      "text": "Hembree, R., & Dessart, D. J. (1986). Effects of hand-held calculators in precollege mathematics education: A meta-analysis. Journal for Research in Mathematics Education, 17(2), 83–99.",
+      "url": "https://doi.org/10.2307/749255"
+    },
+    {
+      "id": "ref-22",
+      "text": "Kearney, M. S., & Levine, P. B. (2019). Early childhood education by television: Lessons from Sesame Street. American Economic Journal: Applied Economics, 11(1), 318–350.",
+      "url": "https://doi.org/10.1257/app.20170300"
+    },
+    {
+      "id": "ref-23",
+      "text": "Kestin, G., Miller, K., Klales, A., Milbourne, T., & Ponti, G. (2025). AI tutoring outperforms in-class active learning. Scientific Reports, 15.",
+      "url": "https://doi.org/10.1038/s41598-025-97652-6"
+    },
+    {
+      "id": "ref-24",
+      "text": "Krashen, S. D. (2004). The power of reading: Insights from the research (2nd ed.). Libraries Unlimited.",
+      "url": "https://www.bloomsbury.com/us/power-of-reading-9781591581697/"
+    },
+    {
+      "id": "ref-25",
+      "text": "Laycock, J. P. (2015). Dangerous games: What the moral panic over role-playing games says about play, religion, and imagined worlds. University of California Press.",
+      "url": "https://www.ucpress.edu/book/9780520284920/dangerous-games"
+    },
+    {
+      "id": "ref-26",
+      "text": "Means, B., Toyama, Y., Murphy, R., Bakia, M., & Jones, K. (2010). Evaluation of evidence-based practices in online learning: A meta-analysis and review of online learning studies. U.S. Department of Education.",
+      "url": "https://www.ed.gov/sites/ed/files/rschstat/eval/tech/evidence-based-practices/finalreport.pdf"
+    },
+    {
+      "id": "ref-27",
+      "text": "Milne-Smith, A. (2016). Shattered minds: Madmen on the railways, 1860–80. Journal of Victorian Culture, 21(1).",
+      "url": "https://doi.org/10.1080/13555502.2015.1118851"
+    },
+    {
+      "id": "ref-28",
+      "text": "OECD. (2015). Students, computers and learning: Making the connection. OECD Publishing.",
+      "url": "https://doi.org/10.1787/9789264239555-en"
+    },
+    {
+      "id": "ref-29",
+      "text": "Ong, W. J. (1982). Orality and literacy: The technologizing of the word. Methuen.",
+      "url": "https://doi.org/10.4324/9780203328064"
+    },
+    {
+      "id": "ref-30",
+      "text": "Orben, A. (2020). The Sisyphean cycle of technology panics. Perspectives on Psychological Science, 15(5), 1143–1157.",
+      "url": "https://doi.org/10.1177/1745691620919372"
+    },
+    {
+      "id": "ref-31",
+      "text": "Postman, N. (1985). Amusing ourselves to death. Viking.",
+      "url": "https://books.google.com/books/about/Amusing_Ourselves_to_Death.html?id=HnutAgAAQBAJ"
+    },
+    {
+      "id": "ref-32",
+      "text": "Saettler, P. (1990). The evolution of American educational technology. Libraries Unlimited.",
+      "url": "https://openlibrary.org/books/OL1877291M/The_evolution_of_American_educational_technology"
+    },
+    {
+      "id": "ref-33",
+      "text": "Sparrow, B., Liu, J., & Wegner, D. M. (2011). Google effects on memory: Cognitive consequences of having information at our fingertips. Science, 333(6043), 776–778.",
+      "url": "https://doi.org/10.1126/science.1207745"
+    },
+    {
+      "id": "ref-34",
+      "text": "Standage, T. (1998). The Victorian internet. Walker.",
+      "url": "https://books.google.com/books/about/The_Victorian_Internet.html?id=6L9Stn1drH4C"
+    },
+    {
+      "id": "ref-35",
+      "text": "Tilley, C. L. (2012). Seducing the innocent: Fredric Wertham and the falsifications that helped condemn comics. Information & Culture, 47(4), 383–413.",
+      "url": "https://doi.org/10.7560/IC47304"
+    },
+    {
+      "id": "ref-36",
+      "text": "Tyack, D. B. (1974). The one best system: A history of American urban education. Harvard University Press.",
+      "url": "https://books.google.com/books/about/The_One_Best_System.html?id=4B0zAAAAIAAJ"
+    },
+    {
+      "id": "ref-37",
+      "text": "Vogrincic, A. (2008). The novel-reading panic in 18th-century England: An outline of an early moral media panic. Medijska istrazivanja / Media Research, 14(2).",
+      "url": "https://hrcak.srce.hr/31327"
+    },
+    {
+      "id": "ref-38",
+      "text": "Vogt, P., & Kuhn, J. (2012). Analyzing free fall with a smartphone acceleration sensor. The Physics Teacher, 50(3), 182–183.",
+      "url": "https://doi.org/10.1119/1.3685123"
+    },
+    {
+      "id": "ref-39",
+      "text": "Ward, A. F., Duke, K., Gneezy, A., & Bos, M. W. (2017). Brain drain: The mere presence of one's own smartphone reduces available cognitive capacity. Journal of the Association for Consumer Research, 2(2), 140–154.",
+      "url": "https://doi.org/10.1086/691462"
+    },
+    {
+      "id": "ref-40",
+      "text": "Williams, P. A., Haertel, E. H., Haertel, G. D., & Walberg, H. J. (1982). The impact of leisure-time television on school learning: A research synthesis. American Educational Research Journal, 19(1), 19–50.",
+      "url": "https://doi.org/10.3102/00028312019001019"
+    }
+  ],
+  "fearColumns": [
+    {
+      "key": "Learning",
+      "full": "Learning / cognitive development fears",
+      "desc": "Claimed harm to memory, attention, reasoning, literacy, skill formation, academic integrity, or study time."
+    },
+    {
+      "key": "Morality",
+      "full": "Morality fears",
+      "desc": "Corruption of character: sexual permissiveness, idleness, occult influence, collapse of manners, delinquent values."
+    },
+    {
+      "key": "Health",
+      "full": "Health fears",
+      "desc": "Claimed physical or mental health harm, including medically framed addiction, sleep, eyesight, and psychiatric claims."
+    },
+    {
+      "key": "Public order",
+      "full": "Public order fears",
+      "desc": "Crime, violence, riots, propaganda, fraud, radicalization, or political destabilization."
+    }
+  ],
+  "stats": {
+    "total": 20,
+    "fears": {
+      "Learning": {
+        "Yes": 14,
+        "Partial": 0,
+        "No": 6
+      },
+      "Morality": {
+        "Yes": 15,
+        "Partial": 0,
+        "No": 5
+      },
+      "Health": {
+        "Yes": 11,
+        "Partial": 5,
+        "No": 4
+      },
+      "Public order": {
+        "Yes": 13,
+        "Partial": 3,
+        "No": 4
+      }
+    },
+    "transformed": {
+      "Yes": 12,
+      "Partial": 6,
+      "No": 2
+    },
+    "dial": {
+      "0": 6,
+      "2": 4,
+      "3": 7,
+      "4": 1,
+      "5": 2
+    },
+    "avgDial": 2.15
+  },
+  "meta": {
+    "title": "Technology Panics & Education",
+    "subtitle": "How fears shaped — and transformed — learning across four millennia"
+  }
+}

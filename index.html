@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology Panics & Education — Interactive Timeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo__icon" aria-hidden="true">◆</span>
+        Tech Panics
+      </a>
+      <div class="nav-links">
+        <a href="#timeline" class="nav-link active">Timeline</a>
+        <a href="#statistics" class="nav-link">Statistics</a>
+        <a href="#legend" class="nav-link">Legend</a>
+        <a href="references.html" class="nav-link">References</a>
+      </div>
+      <a href="#timeline" class="btn-primary nav-cta">Explore timeline</a>
+    </nav>
+
+    <div class="hero">
+      <div class="hero__content">
+        <p class="hero-eyebrow">An interactive exploration</p>
+        <h1 id="hero-title">Technology Panics & Education</h1>
+        <p id="hero-subtitle" class="hero-subtitle"></p>
+        <p class="hero-intro">
+          From Plato's worry about writing to today's debates over AI — every era has feared
+          that new technology would ruin young minds. Hover each name on the timeline, share your
+          perspective, and discover which panics transformed schooling anyway.
+        </p>
+        <div class="hero__actions">
+          <a href="#timeline" class="btn-primary">Explore the timeline</a>
+          <a href="#statistics" class="btn-secondary">View the data</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero-card hero-card--back">
+          <div class="hero-card__bar"></div>
+          <div class="hero-card__row"><span class="pill pill--teal">Writing</span><span class="pill">c. 5th c. BCE</span></div>
+          <div class="hero-card__row"><span class="pill pill--muted">Fear dial</span><span class="pill pill--teal">2 / 5</span></div>
+        </div>
+        <div class="hero-card hero-card--front">
+          <div class="hero-card__label">At a glance</div>
+          <div class="hero-card__stats">
+            <div><span class="hero-stat-num">20</span><span class="hero-stat-lbl">technologies</span></div>
+            <div><span class="hero-stat-num">40</span><span class="hero-stat-lbl">sources</span></div>
+            <div><span class="hero-stat-num">4</span><span class="hero-stat-lbl">fear types</span></div>
+          </div>
+          <div class="hero-card__chips">
+            <span class="chip-mini chip-mini--learning">Learning</span>
+            <span class="chip-mini chip-mini--morality">Morality</span>
+            <span class="chip-mini chip-mini--health">Health</span>
+            <span class="chip-mini chip-mini--order">Order</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Timeline filters">
+      <div class="controls-inner">
+        <div class="filter-group">
+          <span class="filter-label">Filter by fear</span>
+          <div class="filter-chips" id="fear-filters"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Transformed education</span>
+          <div class="filter-chips" id="transform-filters">
+            <button class="chip active" data-transform="all">All</button>
+            <button class="chip" data-transform="Yes">Yes</button>
+            <button class="chip" data-transform="Partial">Partial</button>
+            <button class="chip" data-transform="No">No</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Fear intensity (dial)</span>
+          <div class="dial-slider-wrap">
+            <input type="range" id="dial-min" min="0" max="5" value="0" aria-label="Minimum dial">
+            <span class="dial-range-label">to</span>
+            <input type="range" id="dial-max" min="0" max="5" value="5" aria-label="Maximum dial">
+            <span id="dial-range-display" class="dial-range-display">0 – 5</span>
+          </div>
+        </div>
+        <button id="reset-filters" class="btn-ghost">Reset filters</button>
+      </div>
+      <p id="filter-count" class="filter-count" aria-live="polite"></p>
+    </section>
+
+    <section id="timeline" class="timeline-section">
+      <h2 class="section-title">The Timeline</h2>
+      <p class="section-desc">Scroll horizontally through four millennia of technology panics. Hover any entry for its fear dial — click for full detail and comments.</p>
+      <div class="timeline-scroll-outer" id="timeline-scroll-outer">
+        <button type="button" class="timeline-scroll-btn timeline-scroll-btn--left" id="scroll-left" aria-label="Scroll timeline left" hidden>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="timeline-scroll-btn timeline-scroll-btn--right" id="scroll-right" aria-label="Scroll timeline right">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="timeline-scroll-fade timeline-scroll-fade--left" id="fade-left" aria-hidden="true">
+          <span class="timeline-scroll-cue">Earlier</span>
+        </div>
+        <div class="timeline-scroll" id="timeline-scroll">
+          <div class="timeline-track" id="timeline-track">
+            <div class="timeline-axis" id="timeline-axis"></div>
+            <div class="timeline-nodes" id="timeline-nodes"></div>
+          </div>
+        </div>
+        <div class="timeline-scroll-fade timeline-scroll-fade--right" id="fade-right" aria-hidden="true">
+          <span class="timeline-scroll-cue">Later</span>
+        </div>
+        <p class="timeline-scroll-hint" id="timeline-scroll-hint">
+          <span class="timeline-scroll-hint__icon" aria-hidden="true">⟵</span>
+          Scroll or drag to explore the timeline
+          <span class="timeline-scroll-hint__icon" aria-hidden="true">⟶</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="statistics" class="stats-section">
+      <h2 class="section-title">By the Numbers</h2>
+      <p class="section-desc">Statistics across all 20 technologies — what contemporaries claimed, not whether those fears proved justified. Each block welcomes your perspective.</p>
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="stats-detail" id="stats-detail"></div>
+    </section>
+
+    <section id="legend" class="legend-section">
+      <h2 class="section-title">Legend & Notes</h2>
+      <div class="legend-grid" id="legend-grid"></div>
+    </section>
+  </main>
+
+  <dialog id="detail-modal" class="detail-modal">
+    <div class="modal-inner">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-content"></div>
+      <div id="modal-comments"></div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <p><em>Technology Panics &amp; Education</em> — 20 technologies, 40 references.</p>
+    <a href="references.html">View full reference list →</a>
+  </footer>
+
+  <script src="supabase-config.js"></script>
+  <script src="icons.js"></script>
+  <script src="dial-cards.js"></script>
+  <script src="comments.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
