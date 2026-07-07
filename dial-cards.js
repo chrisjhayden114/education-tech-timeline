@@ -88,6 +88,90 @@ const DIAL_CARD_COPY = {
   'generative-ai': {
     tags: ['Integrity', 'Hollow learning', 'Cognitive erosion'],
     summary: 'A cheating apocalypse plus skill non-formation through offloading; the death of the essay.'
+  },
+  paper: {
+    tags: ['Lost gatekeeping'],
+    summary: "Marked * on this timeline. Frederick II's decrees barred paper for official documents as impermanent; the fear was record integrity, not learning."
+  },
+  'hindu-arabic-numerals': {
+    tags: ['Lost gatekeeping'],
+    summary: "Marked * on this timeline. Florence barred Arabic numerals in bankers' records on forgery grounds; the zero-as-satanic story is a modern myth."
+  },
+  'handwriting-technologies-slates-to-ballpoints-typewriter': {
+    tags: ['Cognitive erosion'],
+    summary: "Marked * on this timeline. Documented worry lives in penmanship journals and 1940s–50s ballpoint resistance; many circulating 'teacher complaint' lists are apocryphal."
+  },
+  chess: {
+    tags: ['Cognitive erosion', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Scientific American (1859) condemned the chess craze as wasting young minds; devil and saviour claims both failed."
+  },
+  'penny-dreadfuls-and-dime-novels': {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Direct ancestor of the comic-book panic; schools responded with curated 'wholesome reading' lists and youth libraries."
+  },
+  'phonograph-and-player-piano': {
+    tags: ['Cognitive erosion', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Sousa's 'Menace of Mechanical Music' (1906): the first clean offloading-of-a-practised-skill panic."
+  },
+  'sunday-comic-strips': {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. 'A Crime Against American Children' (1909); the first comics panic, three decades before Wertham."
+  },
+  'crossword-puzzles': {
+    tags: ['Cognitive erosion', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. NYT editorials (1924) called the puzzle a primitive mental exercise; the Times adopted it in 1942."
+  },
+  'automation-cybernation': {
+    tags: ['Displacement', 'Lost gatekeeping'],
+    summary: "Marked * on this timeline. The Triple Revolution memorandum (1964); direct ancestor of the AI-and-jobs framing in education policy."
+  },
+  photocopier: {
+    tags: ['Displacement', 'Lost gatekeeping'],
+    summary: "Marked * on this timeline. Copyright fear settled in Williams & Wilkins (1973); Eaton's integrity-panic lineage runs print to photocopier to word processor."
+  },
+  walkman: {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Bloom (1987) made it a symbol of sealed-off youth; ancestor of earbuds-in-class and smartphone isolation fears."
+  },
+  pagers: {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. First pocket communication device banned from schools; policy template for later smartphone bans."
+  },
+  'mobile-phone-wi-fi-and-5g-radiation': {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Reynard lawsuit on Larry King Live (1993); school Wi-Fi removal campaigns and 5G arson followed."
+  },
+  'virtual-reality': {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. A panic that keeps arriving before the technology: 1990s dissociation fears, then metaverse child-safety alarm (2021–22)."
+  },
+  'texting-and-instant-messaging': {
+    tags: ['Cognitive erosion', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. The 2003 'exam essay in text-speak' story traces to a single unverified case; treat it as folklore."
+  },
+  wikipedia: {
+    tags: ['Cognitive erosion', 'Lost gatekeeping'],
+    summary: "Marked * on this timeline. Middlebury's citation ban (2007); settled into 'start there, don't cite it' — a template for AI-use norms."
+  },
+  'gps-navigation': {
+    tags: ['Cognitive erosion'],
+    summary: "Marked * on this timeline. The cleanest single-skill offloading case after the calculator."
+  },
+  'search-engines': {
+    tags: ['Cognitive erosion'],
+    summary: "Marked * on this timeline. Carr's 'Is Google Making Us Stupid?' (2008) bridges older media fears to the AI offloading debate."
+  },
+  '3d-printing': {
+    tags: ['Conduct/wellbeing', 'Lost gatekeeping'],
+    summary: "Marked * on this timeline. The gun panic never touched classrooms; the education story is makerspaces and practical health notes."
+  },
+  'smart-speakers-and-voice-assistants': {
+    tags: ['Displacement', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. The 'Alexa generation' manners alarm; Furby restrictions (1999) are the surveillance-fear precedent."
+  },
+  'fidget-spinners': {
+    tags: ['Cognitive erosion', 'Conduct/wellbeing'],
+    summary: "Marked * on this timeline. Marketed as an attention aid, banned as an attention destroyer — full cycle inside a year."
   }
 };
 

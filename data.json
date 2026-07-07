@@ -623,6 +623,629 @@
           "id": "ref-3"
         }
       ]
+    },
+    {
+      "id": "paper",
+      "name": "Paper",
+      "era": "13th c.",
+      "origin": "c. 105 CE (Europe c. 1150)",
+      "broadImpact": "c. 1400",
+      "originYear": 105,
+      "impactYear": 1400,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Cheap writing surfaces made copybooks, written exercises and paper examinations economically possible: the material precondition of mass written schooling (Kurlansky, 2016).",
+      "negative": "None for learning; the durability fear concerned legal records, and archives adapted (Kurlansky, 2016).",
+      "dial": 0,
+      "notes": "Frederick II's decrees (1221, 1231) barred paper for official documents as impermanent; the fear was record integrity, not learning.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Kurlansky, 2016",
+          "id": "ref-56"
+        }
+      ]
+    },
+    {
+      "id": "hindu-arabic-numerals",
+      "name": "Hindu–Arabic numerals",
+      "era": "13th–15th c.",
+      "origin": "c. 600s (Europe 1202)",
+      "broadImpact": "1500",
+      "originYear": 600,
+      "impactYear": 1500,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "Positional notation made written arithmetic teachable at scale; Italian abbaco schools built the first mass commercial-mathematics curriculum (Van Egmond, 1980).",
+      "negative": "None substantiated; the forgery risk in ledgers was procedural and receded with standard bookkeeping (Menninger, 1969).",
+      "dial": 0,
+      "notes": "Florence barred Arabic numerals in bankers' records (1299) on forgery grounds; the zero-as-satanic story is a modern myth.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Van Egmond, 1980",
+          "id": "ref-67"
+        },
+        {
+          "short": "Menninger, 1969",
+          "id": "ref-58"
+        }
+      ]
+    },
+    {
+      "id": "handwriting-technologies-slates-to-ballpoints-typewriter",
+      "name": "Handwriting technologies (slates to ballpoints; typewriter)",
+      "era": "19th c.–1950s",
+      "origin": "c. 1800 (school slates)",
+      "broadImpact": "1870",
+      "originYear": 1800,
+      "impactYear": 1870,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Slates, cheap steel pens and copybooks made universal writing practice affordable; typewriting became vocational and later core curriculum (Thornton, 1996).",
+      "negative": "Real skill shift: each tool eroded the previous script culture, though core literacy was unaffected (Thornton, 1996).",
+      "dial": 2,
+      "notes": "Caution: the circulating list of dated 'teacher complaints' about slates, ink and ballpoints is apocryphal; the documented worry lives in penmanship journals and 1940s–50s ballpoint resistance.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Thornton, 1996",
+          "id": "ref-66"
+        }
+      ]
+    },
+    {
+      "id": "chess",
+      "name": "Chess",
+      "era": "1859",
+      "origin": "c. 6th c. (modern rules c. 1475)",
+      "broadImpact": "1857",
+      "originYear": 1475,
+      "impactYear": 1857,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Partial",
+        "Health": "Partial",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Absorbed as a co-curricular thinking game; meta-analysis finds only modest, largely near-transfer academic benefits (Sala & Gobet, 2016).",
+      "negative": "None; the 1859 harm claims were never substantiated, and the later 'chess makes you smarter' saviour claim is equally overstated (Sala & Gobet, 2016).",
+      "dial": 0,
+      "notes": "Scientific American (1859) condemned the chess craze as wasting young minds during the Morphy boom; devil and saviour claims both failed, the whole chronology in miniature.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Sala & Gobet, 2016",
+          "id": "ref-62"
+        }
+      ]
+    },
+    {
+      "id": "penny-dreadfuls-and-dime-novels",
+      "name": "Penny dreadfuls and dime novels",
+      "era": "1860s–1890s",
+      "origin": "c. 1830",
+      "broadImpact": "1866",
+      "originYear": 1830,
+      "impactYear": 1866,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Yes",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Mass cheap fiction recruited working-class boys into regular reading, building the juvenile readership later literacy work stood on (Springhall, 1998).",
+      "negative": "None substantiated; magistrates and coroners blamed dreadfuls for juvenile crime without evidence (Springhall, 1998).",
+      "dial": 2,
+      "notes": "The direct ancestor of the comic-book panic; the education response was curated 'wholesome reading' lists and youth library collections.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Springhall, 1998",
+          "id": "ref-63"
+        }
+      ]
+    },
+    {
+      "id": "phonograph-and-player-piano",
+      "name": "Phonograph and player piano",
+      "era": "1877–1910s",
+      "origin": "1877",
+      "broadImpact": "1905",
+      "originYear": 1877,
+      "impactYear": 1905,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Partial",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Records created the music-appreciation curriculum and early recorded language instruction (Katz, 2004).",
+      "negative": "Real shift: domestic amateur music-making declined as playback replaced performance, though causality is entangled with broader leisure change (Katz, 2004).",
+      "dial": 2,
+      "notes": "Sousa's 'The Menace of Mechanical Music' (1906) is the first clean offloading-of-a-practised-skill panic, ancestor of the calculator and AI worries.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Katz, 2004",
+          "id": "ref-54"
+        }
+      ]
+    },
+    {
+      "id": "sunday-comic-strips",
+      "name": "Sunday comic strips",
+      "era": "1900s–1910s",
+      "origin": "1895",
+      "broadImpact": "1906",
+      "originYear": 1895,
+      "impactYear": 1906,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Yes",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "No",
+      "positive": "Built mass child reading habits and the visual-verbal literacy that graphic-novel pedagogy later drew on (Gordon, 1998).",
+      "negative": "None substantiated; the taste-corruption case never produced learning evidence (Gordon, 1998).",
+      "dial": 2,
+      "notes": "'A Crime Against American Children' (Ladies' Home Journal, 1909); the first comics panic, three decades before Wertham and the comic-book entry.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Gordon, 1998",
+          "id": "ref-49"
+        }
+      ]
+    },
+    {
+      "id": "crossword-puzzles",
+      "name": "Crossword puzzles",
+      "era": "1924–1925",
+      "origin": "1913",
+      "broadImpact": "1924",
+      "originYear": 1913,
+      "impactYear": 1924,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Partial",
+        "Health": "Partial",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Word puzzles settled into vocabulary and spelling practice across subjects and languages (Danesi, 2002).",
+      "negative": "None substantiated; the craze faded into a durable literate pastime (Danesi, 2002).",
+      "dial": 2,
+      "notes": "New York Times editorials (1924) called the puzzle 'a primitive sort of mental exercise'; the Times adopted it in 1942, completing the inversion.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Danesi, 2002",
+          "id": "ref-45"
+        }
+      ]
+    },
+    {
+      "id": "automation-cybernation",
+      "name": "Automation ('cybernation')",
+      "era": "1950s–1960s",
+      "origin": "c. 1950",
+      "broadImpact": "1962",
+      "originYear": 1950,
+      "impactYear": 1962,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "The scare financed vocational education and retraining (MDTA 1962; Vocational Education Act 1963) and reopened the purpose-of-schooling debate (Grubb & Lazerson, 2004).",
+      "negative": "None direct; its durable legacy is anchoring education policy to labour-market panic cycles (Grubb & Lazerson, 2004).",
+      "dial": 2,
+      "notes": "The Triple Revolution memorandum (1964); the direct ancestor of the AI-and-jobs framing now shaping education policy.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "MDTA 1962",
+          "id": "ref-69"
+        },
+        {
+          "short": "Vocational Education Act 1963",
+          "id": "ref-70"
+        },
+        {
+          "short": "Grubb & Lazerson, 2004",
+          "id": "ref-51"
+        }
+      ]
+    },
+    {
+      "id": "photocopier",
+      "name": "Photocopier",
+      "era": "1960s–1970s",
+      "origin": "1959 (Xerox 914)",
+      "broadImpact": "1970",
+      "originYear": 1959,
+      "impactYear": 1970,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Yes",
+      "positive": "The duplicated worksheet and course pack made teacher-made materials universal, loosening the textbook's monopoly on classroom content (Cuban, 1993).",
+      "negative": "Real but bounded: worksheet pedagogy entrenched low-level seatwork, and easy copying fed the academic-integrity lineage (Cuban, 1993; Eaton, 2021).",
+      "dial": 2,
+      "notes": "Williams & Wilkins v. United States (1973) settled the copyright fear; Eaton's integrity-panic lineage runs print, photocopier, word processor, AI.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Cuban, 1993",
+          "id": "ref-14"
+        },
+        {
+          "short": "Eaton, 2021",
+          "id": "ref-47"
+        }
+      ]
+    },
+    {
+      "id": "walkman",
+      "name": "Walkman",
+      "era": "1979–1980s",
+      "origin": "1979",
+      "broadImpact": "1982",
+      "originYear": 1979,
+      "impactYear": 1982,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Partial",
+        "Health": "Yes",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Personal audio normalized portable language tapes and audiobooks, an early personalized-learning channel (du Gay et al., 1997).",
+      "negative": "None substantiated for learning; the isolation critique was cultural, and hearing risk was the durable health finding (du Gay et al., 1997).",
+      "dial": 2,
+      "notes": "Bloom (1987) made it a symbol of sealed-off youth; the direct ancestor of earbuds-in-class and 'alone together' smartphone fears.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "du Gay et al., 1997",
+          "id": "ref-71"
+        }
+      ]
+    },
+    {
+      "id": "pagers",
+      "name": "Pagers",
+      "era": "1988–1990s",
+      "origin": "c. 1960s (consumer 1980s)",
+      "broadImpact": "1990",
+      "originYear": 1960,
+      "impactYear": 1990,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Yes",
+        "Health": "No",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Nothing substantive; the parent emergency-contact argument later central to phone debates was first rehearsed here (period press, 1988–1993).",
+      "negative": "None substantiated; bans policed drug-culture symbolism as much as classroom disruption (period press and state statutes, 1988–1993).",
+      "dial": 2,
+      "notes": "The first pocket communication device banned from schools; the policy template for the smartphone-ban wave three decades later.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "period press, 1988–1993",
+          "id": "ref-60"
+        },
+        {
+          "short": "period press and state statutes, 1988–1993",
+          "id": "ref-72"
+        }
+      ]
+    },
+    {
+      "id": "mobile-phone-wi-fi-and-5g-radiation",
+      "name": "Mobile-phone, Wi-Fi and 5G radiation",
+      "era": "1993–2020",
+      "origin": "1983 (consumer cellular)",
+      "broadImpact": "1993",
+      "originYear": 1983,
+      "impactYear": 1993,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "Yes",
+        "Public order": "Partial"
+      },
+      "transformed": "No",
+      "positive": "Wireless networking underpinned connected classrooms and 1:1 device programs, whatever their measured returns (OECD, 2015).",
+      "negative": "None established: reviews find no demonstrated cognitive or health harm at exposure limits; IARC's 2B 'possible' label reflects limited evidence (IARC, 2013; WHO, 2014).",
+      "dial": 2,
+      "notes": "Ignited by the Reynard lawsuit on Larry King Live (1993); school Wi-Fi removal campaigns and 5G arson followed. Distinct from the smartphone attention row in the source matrix.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "OECD, 2015",
+          "id": "ref-28"
+        },
+        {
+          "short": "IARC, 2013",
+          "id": "ref-53"
+        },
+        {
+          "short": "WHO, 2014",
+          "id": "ref-73"
+        }
+      ]
+    },
+    {
+      "id": "virtual-reality",
+      "name": "Virtual reality",
+      "era": "1990s; 2016–2022",
+      "origin": "1968 (consumer 2016)",
+      "broadImpact": "2016",
+      "originYear": 1968,
+      "impactYear": 2016,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Partial",
+        "Health": "Yes",
+        "Public order": "Partial"
+      },
+      "transformed": "Partial",
+      "positive": "Immersive simulation shows modest average learning gains, strongly moderated by instructional design (Merchant et al., 2014).",
+      "negative": "Little substantiated; headset age minimums are precautionary, and developmental evidence is thin either way (Bailey & Bailenson, 2017).",
+      "dial": 2,
+      "notes": "A panic that keeps arriving before the technology does: 1990s dissociation fears, then metaverse child-safety alarm (2021–22).",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Merchant et al., 2014",
+          "id": "ref-74"
+        },
+        {
+          "short": "Bailey & Bailenson, 2017",
+          "id": "ref-41"
+        }
+      ]
+    },
+    {
+      "id": "texting-and-instant-messaging",
+      "name": "Texting and instant messaging",
+      "era": "2000s",
+      "origin": "1992",
+      "broadImpact": "2003",
+      "originYear": 1992,
+      "impactYear": 2003,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "Yes",
+        "Health": "Partial",
+        "Public order": "Partial"
+      },
+      "transformed": "Partial",
+      "positive": "Corrective studies found textism use correlates positively with phonological awareness and literacy (Plester et al., 2009; Crystal, 2008).",
+      "negative": "None for literacy; the sexting harms were real but belong to safety, not learning (Crystal, 2008).",
+      "dial": 3,
+      "notes": "The 2003 'exam essay written in text-speak' story that anchored the panic traces to a single unverified case; treat it as folklore.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Plester et al., 2009",
+          "id": "ref-75"
+        },
+        {
+          "short": "Crystal, 2008",
+          "id": "ref-43"
+        }
+      ]
+    },
+    {
+      "id": "wikipedia",
+      "name": "Wikipedia",
+      "era": "2001–2007",
+      "origin": "2001",
+      "broadImpact": "2006",
+      "originYear": 2001,
+      "impactYear": 2006,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Expert review found accuracy comparable to Britannica; it became the default background-reading layer and a core information-literacy teaching object (Giles, 2005).",
+      "negative": "Real but bounded: sourcing worries were legitimate, and open text eased copy-paste plagiarism (Head & Eisenberg, 2010).",
+      "dial": 3,
+      "notes": "Middlebury's citation ban (2007); settled into 'start there, don't cite it', a plausible template for AI-use norms.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Giles, 2005",
+          "id": "ref-48"
+        },
+        {
+          "short": "Head & Eisenberg, 2010",
+          "id": "ref-52"
+        }
+      ]
+    },
+    {
+      "id": "gps-navigation",
+      "name": "GPS navigation",
+      "era": "2005–2010s",
+      "origin": "1978 (civilian 2000)",
+      "broadImpact": "2008",
+      "originYear": 1978,
+      "impactYear": 2008,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "GPS and GIS entered geography and science fieldwork, enabling data-rich local studies (Kerski, 2003).",
+      "negative": "Habitual GPS use is associated with poorer spatial memory; causal direction unresolved (Dahmani & Bohbot, 2020).",
+      "dial": 0,
+      "notes": "The cleanest single-skill offloading case after the calculator; a natural citation for the age-factor module.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Kerski, 2003",
+          "id": "ref-55"
+        },
+        {
+          "short": "Dahmani & Bohbot, 2020",
+          "id": "ref-44"
+        }
+      ]
+    },
+    {
+      "id": "search-engines",
+      "name": "Search engines",
+      "era": "2008–2010s",
+      "origin": "1998",
+      "broadImpact": "2008",
+      "originYear": 1998,
+      "impactYear": 2008,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Instant retrieval transformed homework and inquiry; search strategy became an explicitly taught skill (Head & Eisenberg, 2010).",
+      "negative": "Transactive-memory shift: people remember where to find information rather than the information itself (Sparrow et al., 2011).",
+      "dial": 2,
+      "notes": "Carr's 'Is Google Making Us Stupid?' (2008) is the bridge from older media fears to the AI offloading debate.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Head & Eisenberg, 2010",
+          "id": "ref-52"
+        },
+        {
+          "short": "Sparrow et al., 2011",
+          "id": "ref-76"
+        }
+      ]
+    },
+    {
+      "id": "3d-printing",
+      "name": "3D printing",
+      "era": "2013–2018",
+      "origin": "1984 (RepRap 2008)",
+      "broadImpact": "2013",
+      "originYear": 1984,
+      "impactYear": 2013,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "Partial",
+        "Public order": "Yes"
+      },
+      "transformed": "Partial",
+      "positive": "Anchored the school makerspace movement, with engagement and design-thinking gains that are strongly implementation-dependent (Blikstein, 2013).",
+      "negative": "Real but manageable: desktop printers emit ultrafine particles, a ventilation issue in classrooms (Stephens et al., 2013).",
+      "dial": 0,
+      "notes": "The gun panic never touched classrooms; the education story is makerspaces, and the health note is practical rather than moral.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Blikstein, 2013",
+          "id": "ref-42"
+        },
+        {
+          "short": "Stephens et al., 2013",
+          "id": "ref-77"
+        }
+      ]
+    },
+    {
+      "id": "smart-speakers-and-voice-assistants",
+      "name": "Smart speakers and voice assistants",
+      "era": "2014–2018",
+      "origin": "2014",
+      "broadImpact": "2017",
+      "originYear": 2014,
+      "impactYear": 2017,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "Partial",
+        "Health": "No",
+        "Public order": "Partial"
+      },
+      "transformed": "No",
+      "positive": "Voice assistants opened hands-free question-asking and accessibility affordances for young and print-impaired learners (Lovato et al., 2019).",
+      "negative": "Little substantiated; the command-style-talk and outsourced-answers worries remain unmeasured (Lovato et al., 2019).",
+      "dial": 0,
+      "notes": "The 'Alexa generation' manners alarm produced Amazon's Magic Word feature (2018); the Furby restrictions (1999) are the surveillance-fear precursor.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Lovato et al., 2019",
+          "id": "ref-78"
+        }
+      ]
+    },
+    {
+      "id": "fidget-spinners",
+      "name": "Fidget spinners",
+      "era": "2017",
+      "origin": "c. 1993 (craze 2017)",
+      "broadImpact": "2017",
+      "originYear": 1993,
+      "impactYear": 2017,
+      "fears": {
+        "Learning": "Yes",
+        "Morality": "No",
+        "Health": "Partial",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "A regulated place persists for simpler sensory tools in special-education practice (Stalvey & Brasell, 2006).",
+      "negative": "The marketed attention benefit reversed under test: spinners impaired attention in children with ADHD (Graziano et al., 2020).",
+      "dial": 2,
+      "notes": "The purest classroom micro-panic: marketed as an attention aid, banned as an attention destroyer, full cycle inside a year.",
+      "isAdded": true,
+      "references": [
+        {
+          "short": "Stalvey & Brasell, 2006",
+          "id": "ref-64"
+        },
+        {
+          "short": "Graziano et al., 2020",
+          "id": "ref-79"
+        }
+      ]
     }
   ],
   "legend": {
@@ -717,7 +1340,7 @@
       },
       {
         "term": "Added entries (*)",
-        "definition": "Pocket calculator and personal computer are marked with * — they were added to fill two notable gaps on this timeline. The calculator's dial score is assigned retrospectively."
+        "definition": "Pocket calculator, personal computer, and 21 technologies from the expanded matrix are marked with * — added to broaden the timeline. Some dial scores are assigned retrospectively."
       }
     ]
   },
@@ -921,6 +1544,201 @@
       "id": "ref-40",
       "text": "Williams, P. A., Haertel, E. H., Haertel, G. D., & Walberg, H. J. (1982). The impact of leisure-time television on school learning: A research synthesis. American Educational Research Journal, 19(1), 19–50.",
       "url": "https://doi.org/10.3102/00028312019001019"
+    },
+    {
+      "id": "ref-41",
+      "text": "Bailey, J. O., & Bailenson, J. N. (2017). Immersive virtual reality and the developing child. In F. C. Blumberg & P. J. Brooks (Eds.), Cognitive development in digital contexts (pp. 181–200). Academic Press.",
+      "url": null
+    },
+    {
+      "id": "ref-42",
+      "text": "Blikstein, P. (2013). Digital fabrication and 'making' in education: The democratization of invention. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of machines, makers and inventors (pp. 203–222). Transcript.",
+      "url": null
+    },
+    {
+      "id": "ref-43",
+      "text": "Crystal, D. (2008). Txtng: The gr8 db8. Oxford University Press.",
+      "url": null
+    },
+    {
+      "id": "ref-44",
+      "text": "Dahmani, L., & Bohbot, V. D. (2020). Habitual use of GPS negatively impacts spatial memory during self-guided navigation. Scientific Reports, 10, 6310.",
+      "url": null
+    },
+    {
+      "id": "ref-45",
+      "text": "Danesi, M. (2002). The puzzle instinct: The meaning of puzzles in human life. Indiana University Press.",
+      "url": null
+    },
+    {
+      "id": "ref-46",
+      "text": "du Gay, P., Hall, S., Janes, L., Mackay, H., & Negus, K. (1997). Doing cultural studies: The story of the Sony Walkman. Sage.",
+      "url": null
+    },
+    {
+      "id": "ref-47",
+      "text": "Eaton, S. E. (2021). Plagiarism in higher education: Tackling tough topics in academic integrity. Libraries Unlimited.",
+      "url": null
+    },
+    {
+      "id": "ref-48",
+      "text": "Giles, J. (2005). Internet encyclopaedias go head to head. Nature, 438, 900–901.",
+      "url": null
+    },
+    {
+      "id": "ref-49",
+      "text": "Gordon, I. (1998). Comic strips and consumer culture, 1890–1945. Smithsonian Institution Press.",
+      "url": null
+    },
+    {
+      "id": "ref-50",
+      "text": "Graziano, P. A., Garcia, A. M., & Landis, T. D. (2020). To fidget or not to fidget, that is the question: A systematic classroom evaluation of fidget spinners among young children with ADHD. Journal of Attention Disorders, 24(1), 163–171.",
+      "url": null
+    },
+    {
+      "id": "ref-51",
+      "text": "Grubb, W. N., & Lazerson, M. (2004). The education gospel: The economic power of schooling. Harvard University Press.",
+      "url": null
+    },
+    {
+      "id": "ref-52",
+      "text": "Head, A. J., & Eisenberg, M. B. (2010). How today's college students use Wikipedia for course-related research. First Monday, 15(3).",
+      "url": null
+    },
+    {
+      "id": "ref-53",
+      "text": "International Agency for Research on Cancer. (2013). Non-ionizing radiation, Part 2: Radiofrequency electromagnetic fields (IARC Monographs, Vol. 102). World Health Organization.",
+      "url": null
+    },
+    {
+      "id": "ref-54",
+      "text": "Katz, M. (2004). Capturing sound: How technology has changed music. University of California Press.",
+      "url": null
+    },
+    {
+      "id": "ref-55",
+      "text": "Kerski, J. J. (2003). The implementation and effectiveness of geographic information systems technology and methods in secondary education. Journal of Geography, 102(3), 128–137.",
+      "url": null
+    },
+    {
+      "id": "ref-56",
+      "text": "Kurlansky, M. (2016). Paper: Paging through history. W. W. Norton.",
+      "url": null
+    },
+    {
+      "id": "ref-57",
+      "text": "Lovato, S. B., Piper, A. M., & Wartella, E. A. (2019). 'Hey Google, do unicorns exist?': Conversational agents as a path to answers to children's questions. In Proceedings of the 18th ACM International Conference on Interaction Design and Children (pp. 301–313). ACM.",
+      "url": null
+    },
+    {
+      "id": "ref-58",
+      "text": "Menninger, K. (1969). Number words and number symbols: A cultural history of numbers. MIT Press.",
+      "url": null
+    },
+    {
+      "id": "ref-59",
+      "text": "Merchant, Z., Goetz, E. T., Cifuentes, L., Keeney-Kennicutt, W., & Davis, T. J. (2014). Effectiveness of virtual reality-based instruction on students' learning outcomes in K-12 and higher education: A meta-analysis. Computers & Education, 70, 29–40.",
+      "url": null
+    },
+    {
+      "id": "ref-60",
+      "text": "Period press and statutes on school pager bans (1988–1993), including New York Times coverage and state pager statutes such as New Jersey (1989).",
+      "url": "https://www.nytimes.com/1988/05/01/nyregion/ban-on-pagers-in-schools.html"
+    },
+    {
+      "id": "ref-61",
+      "text": "Plester, B., Wood, C., & Joshi, P. (2009). Exploring the relationship between children's knowledge of text message abbreviations and school literacy outcomes. British Journal of Developmental Psychology, 27(1), 145–161.",
+      "url": null
+    },
+    {
+      "id": "ref-62",
+      "text": "Sala, G., & Gobet, F. (2016). Do the benefits of chess instruction transfer to academic and cognitive skills? A meta-analysis. Educational Research Review, 18, 46–57.",
+      "url": null
+    },
+    {
+      "id": "ref-63",
+      "text": "Springhall, J. (1998). Youth, popular culture and moral panics: Penny gaffs to gangsta-rap, 1830–1996. Macmillan.",
+      "url": null
+    },
+    {
+      "id": "ref-64",
+      "text": "Stalvey, S., & Brasell, H. (2006). Using stress balls to focus the attention of sixth-grade learners. Journal of At-Risk Issues, 12(2), 7–16.",
+      "url": null
+    },
+    {
+      "id": "ref-65",
+      "text": "Stephens, B., Azimi, P., El Orch, Z., & Ramos, T. (2013). Ultrafine particle emissions from desktop 3D printers. Atmospheric Environment, 79, 334–339.",
+      "url": null
+    },
+    {
+      "id": "ref-66",
+      "text": "Thornton, T. P. (1996). Handwriting in America: A cultural history. Yale University Press.",
+      "url": null
+    },
+    {
+      "id": "ref-67",
+      "text": "Van Egmond, W. (1980). Practical mathematics in the Italian Renaissance: A catalog of Italian abbacus manuscripts and printed books to 1600. Istituto e Museo di Storia della Scienza.",
+      "url": null
+    },
+    {
+      "id": "ref-68",
+      "text": "World Health Organization. (2014). Electromagnetic fields and public health: Mobile phones (Fact Sheet No. 193).",
+      "url": null
+    },
+    {
+      "id": "ref-69",
+      "text": "MDTA 1962",
+      "url": null
+    },
+    {
+      "id": "ref-70",
+      "text": "Vocational Education Act 1963",
+      "url": null
+    },
+    {
+      "id": "ref-71",
+      "text": "du Gay et al., 1997",
+      "url": null
+    },
+    {
+      "id": "ref-72",
+      "text": "period press and state statutes, 1988–1993",
+      "url": null
+    },
+    {
+      "id": "ref-73",
+      "text": "WHO, 2014",
+      "url": null
+    },
+    {
+      "id": "ref-74",
+      "text": "Merchant et al., 2014",
+      "url": null
+    },
+    {
+      "id": "ref-75",
+      "text": "Plester et al., 2009",
+      "url": null
+    },
+    {
+      "id": "ref-76",
+      "text": "Sparrow et al., 2011",
+      "url": null
+    },
+    {
+      "id": "ref-77",
+      "text": "Stephens et al., 2013",
+      "url": null
+    },
+    {
+      "id": "ref-78",
+      "text": "Lovato et al., 2019",
+      "url": null
+    },
+    {
+      "id": "ref-79",
+      "text": "Graziano et al., 2020",
+      "url": null
     }
   ],
   "fearColumns": [
@@ -946,42 +1764,42 @@
     }
   ],
   "stats": {
-    "total": 20,
+    "total": 41,
     "fears": {
       "Learning": {
-        "Yes": 14,
-        "Partial": 0,
-        "No": 6
+        "Yes": 23,
+        "Partial": 9,
+        "No": 9
       },
       "Morality": {
-        "Yes": 15,
-        "Partial": 0,
-        "No": 5
+        "Yes": 19,
+        "Partial": 6,
+        "No": 16
       },
       "Health": {
-        "Yes": 11,
-        "Partial": 5,
-        "No": 4
+        "Yes": 14,
+        "Partial": 10,
+        "No": 17
       },
       "Public order": {
-        "Yes": 13,
-        "Partial": 3,
-        "No": 4
+        "Yes": 19,
+        "Partial": 9,
+        "No": 13
       }
     },
     "transformed": {
-      "Yes": 12,
-      "Partial": 6,
-      "No": 2
+      "Yes": 18,
+      "Partial": 18,
+      "No": 5
     },
     "dial": {
-      "0": 6,
-      "2": 4,
-      "3": 7,
+      "0": 12,
+      "2": 17,
+      "3": 9,
       "4": 1,
       "5": 2
     },
-    "avgDial": 2.15
+    "avgDial": 1.83
   },
   "meta": {
     "title": "Technology Panics & Education",
