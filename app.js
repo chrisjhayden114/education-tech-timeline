@@ -9,6 +9,7 @@ const FEAR_CLASS = {
 };
 
 const ANCIENT_THRESHOLD = 1400;
+const SCALE_BREAK_1850 = 1850;
 const TIMELINE_LAYOUT = {
   ancientMinYear: -3200,
   ancientMaxYear: -400,
@@ -19,18 +20,19 @@ const TIMELINE_LAYOUT = {
   modernStart: 255,
   modernMinYear: 1450,
   modernMaxYear: 2035,
-  pxPerYear: 6,
+  /** Compressed scale for 1450–1850 */
+  earlyPxPerYear: 1.15,
+  /** Expanded scale from 1850 onward (where most entries cluster) */
+  densePxPerYear: 18,
   trackHeight: 560,
-  trackPadRight: 140,
-  compactThreshold: 72,
-  laneStep: 110,
-  collisionWidth: 100,
-  spreadStep: 62,
-  maxClusterSpread: 160
+  trackPadRight: 160,
+  laneStep: 118,
+  collisionWidth: 108,
+  /** Minimum horizontal gap between node centres after packing */
+  minNodeGap: 108
 };
 
 let timelineView = {
-  layout: 'spread',
   panicScale: false,
   zoom: 1
 };
@@ -45,8 +47,14 @@ function yearToX(year, zoom = timelineView.zoom) {
     return L.ancientXStart + t * (L.ancientXEnd - L.ancientXStart);
   }
 
-  const clamped = Math.max(L.modernMinYear, Math.min(L.modernMaxYear, year));
-  return L.modernStart + (clamped - L.modernMinYear) * L.pxPerYear * zoom;
+  if (year < SCALE_BREAK_1850) {
+    const clamped = Math.max(L.modernMinYear, Math.min(SCALE_BREAK_1850, year));
+    return L.modernStart + (clamped - L.modernMinYear) * L.earlyPxPerYear;
+  }
+
+  const x1850 = L.modernStart + (SCALE_BREAK_1850 - L.modernMinYear) * L.earlyPxPerYear;
+  const clamped = Math.max(SCALE_BREAK_1850, Math.min(L.modernMaxYear, year));
+  return x1850 + (clamped - SCALE_BREAK_1850) * L.densePxPerYear * zoom;
 }
 
 function getNodeIconSize(tech) {
@@ -61,61 +69,8 @@ function getNodeIconSize(tech) {
   return { wrap, icon: Math.round(wrap * 0.5) };
 }
 
-function applyClusterSpread(positions) {
+function assignLanes(positions, xKey = 'displayX') {
   const L = TIMELINE_LAYOUT;
-  const sorted = [...positions].sort((a, b) => a.x - b.x);
-  let cluster = [];
-
-  function flushCluster() {
-    if (cluster.length <= 1) {
-      cluster = [];
-      return;
-    }
-    const anchor = cluster.reduce((sum, pos) => sum + pos.x, 0) / cluster.length;
-    const n = cluster.length;
-    cluster.forEach((pos, index) => {
-      const offset = (index - (n - 1) / 2) * L.spreadStep;
-      const spreadX = anchor + offset;
-      const clamped = Math.max(anchor - L.maxClusterSpread, Math.min(anchor + L.maxClusterSpread, spreadX));
-      pos.displayX = clamped;
-      pos.anchorX = anchor;
-      pos.clustered = true;
-    });
-    cluster = [];
-  }
-
-  for (const pos of sorted) {
-    pos.displayX = pos.x;
-    pos.anchorX = pos.x;
-    pos.clustered = false;
-    if (cluster.length && pos.x - cluster[cluster.length - 1].x < L.compactThreshold) {
-      cluster.push(pos);
-    } else {
-      flushCluster();
-      cluster = [pos];
-    }
-  }
-  flushCluster();
-}
-
-/** Exact year-proportional x; stagger y lanes to avoid overlap. */
-function assignTimelinePositions(technologies) {
-  const sorted = [...technologies].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
-  const yearSlot = {};
-  const L = TIMELINE_LAYOUT;
-
-  const positions = sorted.map(tech => {
-    const year = tech.impactYear ?? 0;
-    const slot = yearSlot[year] ?? 0;
-    yearSlot[year] = slot + 1;
-    return {
-      tech,
-      x: yearToX(year),
-      above: slot % 2 === 0,
-      lane: 0
-    };
-  });
-
   const sideLanes = { above: [], below: [] };
 
   function findTier(lanes, x) {
@@ -129,41 +84,70 @@ function assignTimelinePositions(technologies) {
     lanes[tier] = x;
   }
 
-  const byX = [...positions].sort((a, b) => a.x - b.x);
-
-  for (const pos of byX) {
+  const sorted = [...positions].sort((a, b) => a[xKey] - b[xKey]);
+  for (const pos of sorted) {
+    const x = pos[xKey];
     const primary = pos.above ? 'above' : 'below';
     const alt = pos.above ? 'below' : 'above';
-    const tierPrimary = findTier(sideLanes[primary], pos.x);
-    const tierAlt = findTier(sideLanes[alt], pos.x);
+    const tierPrimary = findTier(sideLanes[primary], x);
+    const tierAlt = findTier(sideLanes[alt], x);
 
     if (tierPrimary > 0 && tierAlt < tierPrimary) {
       pos.above = alt === 'above';
       pos.lane = tierAlt;
-      occupy(sideLanes[alt], tierAlt, pos.x);
+      occupy(sideLanes[alt], tierAlt, x);
     } else {
       pos.lane = tierPrimary;
-      occupy(sideLanes[primary], tierPrimary, pos.x);
+      occupy(sideLanes[primary], tierPrimary, x);
     }
   }
+}
 
-  if (timelineView.layout === 'spread') {
-    applyClusterSpread(byX);
-  } else {
-    const thresh = L.compactThreshold;
-    for (let i = 0; i < byX.length; i++) {
-      const nearPrev = i > 0 && byX[i].x - byX[i - 1].x < thresh;
-      const nearNext = i < byX.length - 1 && byX[i + 1].x - byX[i].x < thresh;
-      byX[i].compact = nearPrev || nearNext;
-      byX[i].displayX = byX[i].x;
-      byX[i].anchorX = byX[i].x;
-      byX[i].clustered = false;
-    }
+/** Guarantee readable horizontal spacing; preserve chronological order. */
+function applyMinimumSpacing(positions) {
+  const gap = TIMELINE_LAYOUT.minNodeGap;
+  const sorted = [...positions].sort((a, b) => {
+    const ya = a.tech.impactYear ?? 0;
+    const yb = b.tech.impactYear ?? 0;
+    if (ya !== yb) return ya - yb;
+    return a.tech.name.localeCompare(b.tech.name);
+  });
+
+  let lastX = -Infinity;
+  for (const pos of sorted) {
+    pos.anchorX = pos.x;
+    pos.displayX = Math.max(pos.x, lastX + gap);
+    pos.clustered = Math.abs(pos.displayX - pos.x) > 6;
+    lastX = pos.displayX;
   }
+}
 
-  const maxAbove = byX.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
-  const maxBelow = byX.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
-  return { positions: byX, maxAbove, maxBelow };
+/** Year-proportional x with minimum-gap packing so dense eras remain readable. */
+function assignTimelinePositions(technologies) {
+  const sorted = [...technologies].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
+  const yearSlot = {};
+
+  const positions = sorted.map(tech => {
+    const year = tech.impactYear ?? 0;
+    const slot = yearSlot[year] ?? 0;
+    yearSlot[year] = slot + 1;
+    return {
+      tech,
+      x: yearToX(year),
+      above: slot % 2 === 0,
+      lane: 0,
+      displayX: 0,
+      anchorX: 0,
+      clustered: false
+    };
+  });
+
+  applyMinimumSpacing(positions);
+  assignLanes(positions, 'displayX');
+
+  const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
+  const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
+  return { positions, maxAbove, maxBelow };
 }
 
 let filters = {
@@ -290,18 +274,6 @@ function bindControls() {
 }
 
 function bindTimelineViewControls() {
-  const layoutChips = document.querySelectorAll('[data-timeline-layout]');
-  layoutChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      layoutChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      timelineView.layout = chip.dataset.timelineLayout;
-      hideTimelineTooltip();
-      buildTimeline();
-      applyFilters();
-    });
-  });
-
   const panicScale = document.getElementById('panic-scale-view');
   if (panicScale) {
     panicScale.checked = timelineView.panicScale;
@@ -309,7 +281,6 @@ function bindTimelineViewControls() {
       timelineView.panicScale = panicScale.checked;
       hideTimelineTooltip();
       buildTimeline();
-      applyFilters();
     });
   }
 
@@ -323,7 +294,6 @@ function bindTimelineViewControls() {
       if (zoomLabel) zoomLabel.textContent = `${Math.round(timelineView.zoom * 100)}%`;
       hideTimelineTooltip();
       buildTimeline();
-      applyFilters();
     });
   }
 }
@@ -501,14 +471,13 @@ function hideTimelineTooltip() {
 }
 
 function createTechNode(tech, pos) {
-  const { displayX, above, lane, compact, clustered, anchorX } = pos;
+  const { displayX, above, lane, clustered, anchorX } = pos;
   const { wrap, icon } = getNodeIconSize(tech);
   const node = document.createElement('div');
   node.className = [
     'tech-node',
     above ? 'tech-node--above' : 'tech-node--below',
-    compact ? 'tech-node--compact' : '',
-    clustered ? 'tech-node--clustered' : '',
+    clustered ? 'tech-node--shifted' : '',
     tech.hasPanic ? 'tech-node--panic' : 'tech-node--quiet',
     timelineView.panicScale ? 'tech-node--scaled' : ''
   ].filter(Boolean).join(' ');
@@ -522,7 +491,7 @@ function createTechNode(tech, pos) {
   }
 
   const addedMarker = tech.isAdded
-    ? '<span class="tech-node__added-marker" title="Added to broaden the timeline" aria-hidden="true">*</span>'
+    ? '<span class="tech-node__added-marker" title="Added to broaden the timeline">*</span>'
     : '';
   const dialBadge = tech.hasPanic && timelineView.panicScale
     ? `<span class="tech-node__dial-badge" title="Fear dial ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
@@ -555,43 +524,46 @@ function createTechNode(tech, pos) {
 
 function buildTimelineAxis(trackWidth, positions = []) {
   const axis = document.getElementById('timeline-axis');
-  const { ancientXEnd, breakStart, breakWidth, modernStart } = TIMELINE_LAYOUT;
+  const L = TIMELINE_LAYOUT;
+  const x1850 = yearToX(SCALE_BREAK_1850, 1);
 
   axis.style.width = `${trackWidth}px`;
   axis.innerHTML = `
-    <div class="axis-seg axis-seg--ancient" style="left:40px;width:${ancientXEnd - 30}px"></div>
-    <div class="axis-break" style="left:${breakStart}px;width:${breakWidth}px">
+    <div class="axis-seg axis-seg--ancient" style="left:40px;width:${L.ancientXEnd - 30}px"></div>
+    <div class="axis-break" style="left:${L.breakStart}px;width:${L.breakWidth}px">
       <span class="axis-break__mark">//</span>
       <span class="axis-break__label">~2 millennia</span>
     </div>
-    <div class="axis-seg axis-seg--modern" style="left:${modernStart}px;width:${trackWidth - modernStart - 40}px"></div>
+    <div class="axis-seg axis-seg--early" style="left:${L.modernStart}px;width:${x1850 - L.modernStart}px"></div>
+    <div class="axis-seg axis-seg--dense" style="left:${x1850}px;width:${Math.max(0, trackWidth - x1850 - 40)}px"></div>
   `;
 
-  const yearMarkers = [-500, 1500, 1700, 1800, 1900, 1950, 2000, 2025];
+  const yearMarkers = [-500, 1500, 1700, 1800, 1850, 1900, 1950, 2000, 2025];
   yearMarkers.forEach(year => {
-    const label = year < 0 ? 'Antiquity' : (year >= 2020 ? 'Today' : String(year));
+    let label = String(year);
+    if (year < 0) label = 'Antiquity';
+    else if (year >= 2020) label = 'Today';
+    else if (year === 1850) label = '1850';
     const el = document.createElement('div');
-    el.className = `axis-marker${year < 0 ? ' axis-marker--ancient' : ''}`;
+    el.className = `axis-marker${year < 0 ? ' axis-marker--ancient' : ''}${year >= SCALE_BREAK_1850 ? ' axis-marker--dense' : ''}`;
     el.style.left = `${yearToX(year)}px`;
     el.textContent = label;
     axis.appendChild(el);
   });
 
-  if (timelineView.layout === 'spread') {
-    const anchors = new Map();
-    positions.forEach(pos => {
-      if (pos.clustered && pos.anchorX != null) {
-        anchors.set(pos.anchorX, pos.tech.impactYear);
-      }
-    });
-    anchors.forEach((year, x) => {
-      const el = document.createElement('div');
-      el.className = 'axis-cluster-anchor';
-      el.style.left = `${x}px`;
-      el.title = `Historical date anchor${year != null ? `: ${year}` : ''}`;
-      axis.appendChild(el);
-    });
-  }
+  const anchors = new Map();
+  positions.forEach(pos => {
+    if (pos.clustered && pos.anchorX != null) {
+      anchors.set(Math.round(pos.anchorX), pos.tech.impactYear);
+    }
+  });
+  anchors.forEach((year, x) => {
+    const el = document.createElement('div');
+    el.className = 'axis-cluster-anchor';
+    el.style.left = `${x}px`;
+    el.title = year != null ? `Historical date: ${year}` : 'Historical date anchor';
+    axis.appendChild(el);
+  });
 }
 
 function buildTimeline() {
@@ -617,7 +589,6 @@ function buildTimeline() {
   const trackHeight = axisY + belowH;
 
   track.classList.toggle('timeline-track--panic-scale', timelineView.panicScale);
-  track.classList.toggle('timeline-track--spread', timelineView.layout === 'spread');
   track.style.width = `${trackWidth}px`;
   track.style.height = `${trackHeight}px`;
   track.style.setProperty('--axis-y', `${axisY}px`);
@@ -878,12 +849,18 @@ function openModal(tech) {
   const content = document.getElementById('modal-content');
   const commentsEl = document.getElementById('modal-comments');
 
-  const fearCells = FEAR_KEYS.map(k => `
-    <div class="fear-cell fear-cell--${FEAR_CLASS[k]}">
-      <span>${k}</span>
-      <span class="fear-value">${tech.fears[k]}</span>
-    </div>
-  `).join('');
+  const fearCols = DATA.fearColumns || [];
+  const fearCells = fearCols.map(col => {
+    const val = tech.fears[col.key] || 'No';
+    return `
+    <div class="fear-cell fear-cell--${FEAR_CLASS[col.key]}">
+      <div class="fear-cell__text">
+        <span class="fear-cell__name">${col.full}</span>
+        <span class="fear-cell__desc">${col.desc}</span>
+      </div>
+      <span class="fear-value fear-value--${val.toLowerCase()}" title="${val === 'Yes' ? 'Fear clearly articulated at meaningful scale' : val === 'Partial' ? 'Fear present but marginal or contested' : 'Not a feature of the panic'}">${val}</span>
+    </div>`;
+  }).join('');
 
   const refBadges = tech.references.length
     ? tech.references.map(r => {
@@ -898,7 +875,16 @@ function openModal(tech) {
       <span><strong>Impact:</strong> ${tech.broadImpact}</span>
       <span><strong>Transformed:</strong> ${tech.transformed}</span>
     </div>
-    <div class="modal-fears-grid">${fearCells}</div>
+    <section class="modal-fears-section" aria-labelledby="modal-fears-heading">
+      <h3 id="modal-fears-heading">Contemporaries&rsquo; fears</h3>
+      <p class="modal-fears-intro">What critics claimed this technology would do to young people or schooling — <em>not</em> whether those fears proved justified. Ratings reflect claims at the historical peak.</p>
+      <div class="modal-fears-legend">
+        <span><strong>Yes</strong> — articulated at meaningful scale</span>
+        <span><strong>Partial</strong> — marginal or contested</span>
+        <span><strong>No</strong> — not part of the panic</span>
+      </div>
+      <div class="modal-fears-grid">${fearCells}</div>
+    </section>
     <div class="modal-impact modal-impact--positive">
       <h3>Positive impact on education</h3>
       <p>${linkifyCitations(tech.positive)}</p>

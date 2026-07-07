@@ -354,9 +354,11 @@ function dialLegendHtml(compact = false) {
 
 function getDialCardCopy(tech) {
   const copy = DIAL_CARD_COPY[tech.id] || {};
+  const raw = copy.summary || tech.notes || '';
+  const summary = raw.replace(/^Marked \* on this timeline\.\s*/i, '');
   return {
     tags: copy.tags || [],
-    summary: copy.summary || tech.notes || ''
+    summary
   };
 }
 

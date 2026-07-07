@@ -96,7 +96,7 @@
 
     <section id="timeline" class="timeline-section">
       <h2 class="section-title">The Timeline</h2>
-      <p class="section-desc">Scroll horizontally through four millennia of educational technology. <strong class="timeline-key-inline timeline-key-inline--panic">Red glow</strong> marks documented panics; plain nodes are quiet transformers. Use <strong class="timeline-key-inline">Spread clusters</strong> for dense decades, or enable <strong class="timeline-key-inline">Panic-sized markers</strong> to scale icons by fear intensity.</p>
+      <p class="section-desc">Scroll horizontally through four millennia of educational technology. The timeline <strong class="timeline-key-inline">expands from 1850 onward</strong> where most entries cluster. <strong class="timeline-key-inline timeline-key-inline--panic">Red glow</strong> marks documented panics; plain nodes are quiet transformers.</p>
       <div class="timeline-key" aria-label="Timeline legend">
         <span class="timeline-key__item timeline-key__item--panic">
           <span class="timeline-key__swatch" aria-hidden="true"></span>
@@ -112,20 +112,13 @@
         </span>
       </div>
       <div class="timeline-view-controls" aria-label="Timeline display options">
-        <div class="timeline-view-group">
-          <span class="timeline-view-label">Layout</span>
-          <div class="filter-chips">
-            <button type="button" class="chip active" data-timeline-layout="spread">Spread clusters</button>
-            <button type="button" class="chip" data-timeline-layout="compact">Compact labels</button>
-          </div>
-        </div>
         <label class="timeline-view-toggle">
           <input type="checkbox" id="panic-scale-view">
           <span>Panic-sized markers</span>
         </label>
         <div class="timeline-view-group timeline-view-group--zoom">
-          <span class="timeline-view-label">Zoom</span>
-          <input type="range" id="timeline-zoom" min="0.85" max="1.45" step="0.05" value="1" aria-label="Timeline zoom">
+          <span class="timeline-view-label">Zoom (1850+)</span>
+          <input type="range" id="timeline-zoom" min="0.85" max="1.35" step="0.05" value="1" aria-label="Timeline zoom for modern era">
           <span id="timeline-zoom-display" class="timeline-zoom-display">100%</span>
         </div>
       </div>
