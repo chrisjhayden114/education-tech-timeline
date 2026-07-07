@@ -28,10 +28,13 @@ const TIMELINE_LAYOUT = {
   trackPadRight: 160,
   laneStep: 118,
   collisionWidth: 108,
-  /** Minimum horizontal gap between node centres (floor; widened by label width) */
-  minNodeGap: 108,
   labelMaxWidth: 148,
-  labelPad: 14
+  labelPad: 14,
+  /** Horizontal fan spacing for multiple technologies in the same year */
+  sameYearMinSpread: 72,
+  sameYearMaxSpread: 100,
+  /** Max horizontal nudge from true date when resolving label overlap */
+  maxDateNudge: 40
 };
 
 let timelineView = {
@@ -144,33 +147,73 @@ function timelineDisplayName(name) {
   return name;
 }
 
-/** Guarantee readable horizontal spacing; preserve chronological order. */
-function applyMinimumSpacing(positions) {
+/** Fan multiple entries at the same year around their true date on the axis. */
+function spreadSameYearGroups(positions) {
   const L = TIMELINE_LAYOUT;
-  const sorted = [...positions].sort((a, b) => {
-    const ya = a.tech.impactYear ?? 0;
-    const yb = b.tech.impactYear ?? 0;
-    if (ya !== yb) return ya - yb;
-    return a.tech.name.localeCompare(b.tech.name);
+  const byYear = new Map();
+  positions.forEach(pos => {
+    const year = pos.tech.impactYear ?? 0;
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year).push(pos);
   });
 
-  let lastX = -Infinity;
-  let lastLabelW = 0;
-  for (const pos of sorted) {
-    pos.anchorX = pos.x;
-    const labelW = estimateLabelWidth(pos.tech.name);
-    pos.labelWidth = labelW;
-    const gap = lastX < -1e8
-      ? L.minNodeGap
-      : (lastLabelW + labelW) / 2 + L.labelPad;
-    pos.displayX = Math.max(pos.x, lastX + gap);
-    pos.clustered = Math.abs(pos.displayX - pos.x) > 6;
-    lastX = pos.displayX;
-    lastLabelW = labelW;
+  byYear.forEach(group => {
+    group.sort((a, b) => a.tech.name.localeCompare(b.tech.name));
+    const n = group.length;
+    const spread = n > 1
+      ? Math.min(L.sameYearMaxSpread, Math.max(L.sameYearMinSpread, L.labelMaxWidth * 0.68))
+      : 0;
+
+    group.forEach((pos, index) => {
+      pos.anchorX = pos.x;
+      pos.labelWidth = estimateLabelWidth(pos.tech.name);
+      pos.displayX = n === 1
+        ? pos.anchorX
+        : pos.anchorX + (index - (n - 1) / 2) * spread;
+      pos.shifted = Math.abs(pos.displayX - pos.anchorX) > 4;
+    });
+  });
+}
+
+/** Prefer extra vertical lanes; only then nudge slightly from true date. */
+function resolveLabelOverlaps(positions) {
+  const L = TIMELINE_LAYOUT;
+  const sorted = [...positions].sort((a, b) => a.displayX - b.displayX);
+
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = sorted[i - 1];
+    const curr = sorted[i];
+    const need = (prev.labelWidth + curr.labelWidth) / 2 + L.labelPad;
+    let gap = curr.displayX - prev.displayX;
+
+    if (gap >= need) continue;
+
+    if (prev.above === curr.above && prev.lane === curr.lane) {
+      curr.lane = prev.lane + 1;
+      gap = curr.displayX - prev.displayX;
+    }
+
+    if (gap >= need) continue;
+
+    const shortfall = need - gap;
+    const half = shortfall / 2;
+    const prevRoom = prev.displayX - (prev.anchorX - L.maxDateNudge);
+    const currRoom = (curr.anchorX + L.maxDateNudge) - curr.displayX;
+    const movePrev = Math.min(half, Math.max(0, prevRoom));
+    const moveCurr = Math.min(half, Math.max(0, currRoom));
+
+    if (movePrev > 0.5) {
+      prev.displayX -= movePrev;
+      prev.shifted = true;
+    }
+    if (moveCurr > 0.5) {
+      curr.displayX += moveCurr;
+      curr.shifted = true;
+    }
   }
 }
 
-/** Year-proportional x with minimum-gap packing so dense eras remain readable. */
+/** Year-proportional positions: true date stays on axis; labels may fan or use bent connectors. */
 function assignTimelinePositions(technologies) {
   const sorted = [...technologies].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
   const yearSlot = {};
@@ -179,28 +222,78 @@ function assignTimelinePositions(technologies) {
     const year = tech.impactYear ?? 0;
     const slot = yearSlot[year] ?? 0;
     yearSlot[year] = slot + 1;
+    const x = yearToX(year);
     return {
       tech,
-      x: yearToX(year),
+      x,
+      anchorX: x,
+      displayX: x,
       above: slot % 2 === 0,
       lane: 0,
-      displayX: 0,
-      anchorX: 0,
-      clustered: false
+      shifted: false,
+      labelWidth: estimateLabelWidth(tech.name)
     };
   });
 
-  applyMinimumSpacing(positions);
+  spreadSameYearGroups(positions);
+
   const maxLabelW = Math.max(
     TIMELINE_LAYOUT.labelMaxWidth,
     ...positions.map(p => p.labelWidth || 0)
   );
-  const laneCollision = Math.max(108, maxLabelW + TIMELINE_LAYOUT.labelPad);
+  const laneCollision = Math.max(96, maxLabelW * 0.85);
   assignLanes(positions, 'displayX', laneCollision);
+  resolveLabelOverlaps(positions);
 
   const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   return { positions, maxAbove, maxBelow };
+}
+
+function drawTimelineConnectors(svg, positions, axisY) {
+  const L = TIMELINE_LAYOUT;
+  svg.innerHTML = '';
+
+  const ticksDrawn = new Set();
+
+  positions.forEach(pos => {
+    const { displayX, anchorX, above, lane, tech } = pos;
+    const panic = tech.hasPanic;
+    const stroke = panic ? 'rgba(196, 30, 30, 0.5)' : 'rgba(42, 125, 114, 0.48)';
+    const laneOffset = lane * L.laneStep;
+    const nodeEdgeY = above ? axisY - laneOffset - 6 : axisY + laneOffset + 6;
+    const elbowY = above
+      ? axisY - Math.max(18, laneOffset * 0.45)
+      : axisY + Math.max(18, laneOffset * 0.45);
+
+    let d;
+    if (Math.abs(displayX - anchorX) < 3) {
+      d = `M ${displayX} ${nodeEdgeY} L ${anchorX} ${axisY}`;
+    } else {
+      d = `M ${displayX} ${nodeEdgeY} L ${displayX} ${elbowY} L ${anchorX} ${elbowY} L ${anchorX} ${axisY}`;
+    }
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', stroke);
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path);
+
+    const tickKey = `${Math.round(anchorX)}`;
+    if (!ticksDrawn.has(tickKey)) {
+      ticksDrawn.add(tickKey);
+      const tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      tick.setAttribute('cx', String(anchorX));
+      tick.setAttribute('cy', String(axisY));
+      tick.setAttribute('r', '3.5');
+      tick.setAttribute('fill', '#2a7d72');
+      tick.setAttribute('opacity', '0.9');
+      svg.appendChild(tick);
+    }
+  });
 }
 
 let filters = {
@@ -524,13 +617,13 @@ function hideTimelineTooltip() {
 }
 
 function createTechNode(tech, pos) {
-  const { displayX, above, lane, clustered, anchorX } = pos;
+  const { displayX, above, lane, shifted } = pos;
   const { wrap, icon } = getNodeIconSize(tech);
   const node = document.createElement('div');
   node.className = [
     'tech-node',
     above ? 'tech-node--above' : 'tech-node--below',
-    clustered ? 'tech-node--shifted' : '',
+    shifted ? 'tech-node--shifted' : '',
     tech.hasPanic ? 'tech-node--panic' : 'tech-node--quiet',
     timelineView.panicScale ? 'tech-node--scaled' : ''
   ].filter(Boolean).join(' ');
@@ -539,9 +632,6 @@ function createTechNode(tech, pos) {
   node.style.setProperty('--lane', lane);
   node.style.setProperty('--node-size', `${wrap}px`);
   node.style.setProperty('--icon-size', `${icon}px`);
-  if (clustered && anchorX != null) {
-    node.style.setProperty('--anchor-offset', `${anchorX - displayX}px`);
-  }
 
   const addedMarker = tech.isAdded
     ? '<span class="tech-node__added-marker" title="Added to broaden the timeline">*</span>'
@@ -552,7 +642,6 @@ function createTechNode(tech, pos) {
   const displayName = timelineDisplayName(tech.name);
 
   node.innerHTML = `
-    <div class="tech-node__stem" aria-hidden="true"></div>
     <button type="button" class="tech-node__trigger" aria-label="${tech.name}, ${tech.broadImpact}${tech.isAdded ? ', added entry' : ''}">
       <div class="tech-node__icon-wrap">
         ${addedMarker}
@@ -576,7 +665,7 @@ function createTechNode(tech, pos) {
   return node;
 }
 
-function buildTimelineAxis(trackWidth, positions = []) {
+function buildTimelineAxis(trackWidth) {
   const axis = document.getElementById('timeline-axis');
   const L = TIMELINE_LAYOUT;
   const x1850 = yearToX(SCALE_BREAK_1850, 1);
@@ -604,20 +693,19 @@ function buildTimelineAxis(trackWidth, positions = []) {
     el.textContent = label;
     axis.appendChild(el);
   });
+}
 
-  const anchors = new Map();
-  positions.forEach(pos => {
-    if (pos.clustered && pos.anchorX != null) {
-      anchors.set(Math.round(pos.anchorX), pos.tech.impactYear);
-    }
-  });
-  anchors.forEach((year, x) => {
-    const el = document.createElement('div');
-    el.className = 'axis-cluster-anchor';
-    el.style.left = `${x}px`;
-    el.title = year != null ? `Historical date: ${year}` : 'Historical date anchor';
-    axis.appendChild(el);
-  });
+function ensureTimelineConnectors(track) {
+  let svg = document.getElementById('timeline-connectors');
+  if (!svg) {
+    svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.id = 'timeline-connectors';
+    svg.classList.add('timeline-connectors');
+    svg.setAttribute('aria-hidden', 'true');
+    const nodesEl = document.getElementById('timeline-nodes');
+    track.insertBefore(svg, nodesEl);
+  }
+  return svg;
 }
 
 function buildTimeline() {
@@ -630,16 +718,15 @@ function buildTimeline() {
 
   const trackWidth = Math.max(
     yearToX(TIMELINE_LAYOUT.modernMaxYear),
-    ...positions.map(p => p.displayX ?? p.x)
+    ...positions.flatMap(p => [p.displayX, p.anchorX, p.x])
   ) + TIMELINE_LAYOUT.trackPadRight;
 
   const lanePad = TIMELINE_LAYOUT.laneStep;
   const maxNodeSize = timelineView.panicScale ? 84 : 52;
-  const nodeBlock = maxNodeSize + 80;
-  const stemH = 32;
+  const nodeBlock = maxNodeSize + 72;
   const edgePad = 56;
   const axisY = edgePad + maxAbove * lanePad + nodeBlock;
-  const belowH = maxBelow * lanePad + nodeBlock + stemH + edgePad;
+  const belowH = maxBelow * lanePad + nodeBlock + edgePad;
   const trackHeight = axisY + belowH;
 
   track.classList.toggle('timeline-track--panic-scale', timelineView.panicScale);
@@ -652,8 +739,15 @@ function buildTimeline() {
 
   nodesEl.innerHTML = '';
 
-  buildTimelineAxis(trackWidth, positions);
+  buildTimelineAxis(trackWidth);
   buildDecadeNavigator(positions);
+
+  const connectorsSvg = ensureTimelineConnectors(track);
+  connectorsSvg.setAttribute('width', String(trackWidth));
+  connectorsSvg.setAttribute('height', String(trackHeight));
+  connectorsSvg.style.width = `${trackWidth}px`;
+  connectorsSvg.style.height = `${trackHeight}px`;
+  drawTimelineConnectors(connectorsSvg, positions, axisY);
 
   positions.forEach(pos => {
     nodesEl.appendChild(createTechNode(pos.tech, pos));
@@ -835,8 +929,8 @@ function buildStats() {
   const dBlock = document.createElement('div');
   dBlock.className = 'fear-stat-block';
   dBlock.innerHTML = `
-    <h3>Fear intensity dial (0–5)</h3>
-    <p class="fear-desc">Education-related fear intensity at historical peak — measures the size of the fear, not its accuracy.</p>
+    <h3>Learning &amp; cognitive panic dial (0–5)</h3>
+    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak, not for accuracy.</p>
     <div class="bar-chart">
       ${[0, 2, 3, 4, 5].map(n => {
         const c = s.dial[String(n)];
