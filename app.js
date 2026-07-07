@@ -175,7 +175,16 @@ function spreadSameYearGroups(positions) {
   });
 }
 
-/** Prefer extra vertical lanes; only then nudge slightly from true date. */
+/** Labels that share a side + lane compete horizontally; otherwise vertical stacking is enough. */
+function labelsShareRow(prev, curr) {
+  return prev.above === curr.above && prev.lane === curr.lane;
+}
+
+function labelGapNeed(prev, curr) {
+  return (prev.labelWidth + curr.labelWidth) / 2 + TIMELINE_LAYOUT.labelPad;
+}
+
+/** Prefer extra vertical lanes; only nudge horizontally when labels truly share a row. */
 function resolveLabelOverlaps(positions) {
   const L = TIMELINE_LAYOUT;
   const sorted = [...positions].sort((a, b) => a.displayX - b.displayX);
@@ -183,15 +192,27 @@ function resolveLabelOverlaps(positions) {
   for (let i = 1; i < sorted.length; i++) {
     const prev = sorted[i - 1];
     const curr = sorted[i];
-    const need = (prev.labelWidth + curr.labelWidth) / 2 + L.labelPad;
-    let gap = curr.displayX - prev.displayX;
+
+    if (!labelsShareRow(prev, curr)) continue;
+
+    const need = labelGapNeed(prev, curr);
+    const gap = curr.displayX - prev.displayX;
 
     if (gap >= need) continue;
 
-    if (prev.above === curr.above && prev.lane === curr.lane) {
-      curr.lane = prev.lane + 1;
-      gap = curr.displayX - prev.displayX;
-    }
+    // Stack vertically first — keeps the node on its true date with a straight connector.
+    curr.lane = prev.lane + 1;
+  }
+
+  // Last resort: slight horizontal nudge only for entries still sharing a crowded row.
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = sorted[i - 1];
+    const curr = sorted[i];
+
+    if (!labelsShareRow(prev, curr)) continue;
+
+    const need = labelGapNeed(prev, curr);
+    const gap = curr.displayX - prev.displayX;
 
     if (gap >= need) continue;
 
@@ -277,13 +298,12 @@ function getConnectorPoints(pos, axisY) {
   };
 }
 
-/** L-shaped path: node → toward axis → along axis level → date tick on axis. */
-function buildConnectorPath(points) {
+/** Straight drop when the label sits on its true date; L-bend only when horizontally shifted. */
+function buildConnectorPath(points, shifted) {
   const { attachX, attachY, bendY, axisX, axisY } = points;
-  const dx = Math.abs(attachX - axisX);
 
-  if (dx < 4) {
-    return `M ${attachX} ${attachY} L ${axisX} ${axisY}`;
+  if (!shifted) {
+    return `M ${axisX} ${attachY} L ${axisX} ${axisY}`;
   }
 
   return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
@@ -299,7 +319,7 @@ function drawTimelineConnectors(svg, positions, axisY) {
     const panic = tech.hasPanic;
     const stroke = panic ? 'rgba(196, 30, 30, 0.55)' : 'rgba(42, 125, 114, 0.5)';
     const points = getConnectorPoints(pos, axisY);
-    const d = buildConnectorPath(points);
+    const d = buildConnectorPath(points, pos.shifted);
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
