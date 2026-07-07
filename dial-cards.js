@@ -347,7 +347,7 @@ function dialLegendHtml(compact = false) {
   return `
     <footer class="fear-dial-card__legend${compact ? ' fear-dial-card__legend--compact' : ''}">
       <p class="fear-dial-card__legend-title">Learning &amp; cognitive-development panic intensity (0–5)</p>
-      <p class="fear-dial-card__legend-desc">Peak fear that this technology would harm memory, attention, literacy, reasoning, or skill formation — the core &ldquo;ruining young minds&rdquo; claim. Scored at historical peak; measures size of the panic, not accuracy.</p>
+      <p class="fear-dial-card__legend-desc">Peak fear that this technology would harm memory, attention, literacy, reasoning, or skill formation — the core &ldquo;ruining young minds&rdquo; claim. Each score is a retrospective judgment synthesizing contemporaneous claims, scale, and reach at the panic&rsquo;s peak; it measures the size of the fear, not its accuracy.</p>
       <div class="fear-dial-legend">${items}</div>
     </footer>
   `;

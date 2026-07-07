@@ -359,17 +359,65 @@ let filters = {
   dialMax: 5
 };
 
+/**
+ * Data notes:
+ * - Personal computer: learning fear = yes but engines = [] — exclusion fear (not having it), unique in dataset.
+ * - Home video (VHS): natural experiment — moral panic at home, model classroom technology at school.
+ */
+function verifyControlEnginesSchema(technologies) {
+  const missingControl = technologies.filter(t => !t.control).map(t => t.name);
+  if (missingControl.length) {
+    console.warn('[timeline data] entries missing control value:', missingControl);
+  }
+
+  const withControl = technologies.filter(t => t.control);
+  const controlCounts = { child: 0, adult: 0, institution: 0 };
+  withControl.forEach(t => { controlCounts[t.control] = (controlCounts[t.control] || 0) + 1; });
+
+  const learningYes = technologies.filter(t => t.fears?.Learning === 'Yes');
+  const learningByControl = { child: 0, adult: 0, institution: 0 };
+  learningYes.forEach(t => {
+    if (t.control in learningByControl) learningByControl[t.control] += 1;
+  });
+
+  const highDial = technologies.filter(t => (t.dial ?? 0) >= 3);
+  const maxDial = group =>
+    Math.max(0, ...technologies.filter(t => t.control === group).map(t => t.dial ?? 0));
+
+  const checks = [
+    [withControl.length === 67, `control values: expected 67, got ${withControl.length}`],
+    [controlCounts.child === 30, `control child: expected 30, got ${controlCounts.child}`],
+    [controlCounts.adult === 10, `control adult: expected 10, got ${controlCounts.adult}`],
+    [controlCounts.institution === 27, `control institution: expected 27, got ${controlCounts.institution}`],
+    [learningYes.length === 23, `learning fear Yes: expected 23, got ${learningYes.length}`],
+    [learningByControl.child === 20, `learning Yes child: expected 20, got ${learningByControl.child}`],
+    [learningByControl.adult === 2, `learning Yes adult: expected 2, got ${learningByControl.adult}`],
+    [learningByControl.institution === 1, `learning Yes institution: expected 1, got ${learningByControl.institution}`],
+    [highDial.length === 12, `dial >= 3: expected 12, got ${highDial.length}`],
+    [highDial.every(t => t.control === 'child'), 'dial >= 3: not all control = child'],
+    [maxDial('institution') === 2, `max dial institution: expected 2, got ${maxDial('institution')}`],
+    [maxDial('adult') === 2, `max dial adult: expected 2, got ${maxDial('adult')}`]
+  ];
+
+  const failures = checks.filter(([ok]) => !ok).map(([, msg]) => msg);
+  if (failures.length) {
+    console.warn('[timeline data] control/engines verification mismatch:', failures);
+  }
+}
+
 async function init() {
   await Comments.init();
   const res = await fetch('data.json');
   DATA = await res.json();
   window.__TIMELINE_DATA = DATA;
+  verifyControlEnginesSchema(DATA.technologies);
 
   document.getElementById('hero-title').textContent = DATA.meta.title;
   document.getElementById('hero-subtitle').textContent = DATA.meta.subtitle;
 
   buildFearFilters();
   buildTimeline();
+  buildPattern();
   buildStats();
   buildLegend();
   bindControls();
@@ -721,6 +769,48 @@ function createTechNode(tech, pos) {
   return node;
 }
 
+function buildPattern() {
+  const grid = document.getElementById('panic-grid');
+  if (grid && PanicGrid) PanicGrid.build(grid, DATA.technologies);
+
+  const fork = document.getElementById('panic-fork');
+  if (fork && PanicFork) PanicFork.build(fork, DATA.technologies);
+
+  const matrix = document.getElementById('engines-matrix');
+  if (matrix && EnginesMatrix) EnginesMatrix.build(matrix, DATA.technologies);
+
+  const subGrad = document.getElementById('substitution-gradient');
+  if (subGrad && SubstitutionGradient) SubstitutionGradient.build(subGrad, DATA.technologies);
+
+  const paired = document.getElementById('paired-fates');
+  if (paired && PairedFates) PairedFates.build(paired, DATA.technologies);
+
+  const flow = document.getElementById('panic-flow');
+  if (flow && PanicFlow) PanicFlow.build(flow);
+}
+
+/** Scroll timeline to a technology and briefly highlight its node (from Panic Grid clicks). */
+function focusTimelineTechnology(techId) {
+  const section = document.getElementById('timeline');
+  const scroller = document.getElementById('timeline-scroll');
+  const node = document.querySelector(`.tech-node[data-id="${CSS.escape(techId)}"]`);
+  if (!section || !node) return;
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (scroller) {
+    const nodeX = parseFloat(node.style.left) || 0;
+    const target = Math.max(0, nodeX - scroller.clientWidth * 0.42);
+    scroller.scrollTo({ left: target, behavior: 'smooth' });
+  }
+
+  node.classList.add('tech-node--grid-focus');
+  node.querySelector('.tech-node__trigger')?.focus({ preventScroll: true });
+  window.setTimeout(() => node.classList.remove('tech-node--grid-focus'), 2600);
+}
+
+window.focusTimelineTechnology = focusTimelineTechnology;
+
 function buildTimelineAxis(trackWidth) {
   const axis = document.getElementById('timeline-axis');
   const L = TIMELINE_LAYOUT;
@@ -986,7 +1076,7 @@ function buildStats() {
   dBlock.className = 'fear-stat-block';
   dBlock.innerHTML = `
     <h3>Learning &amp; cognitive panic dial (0–5)</h3>
-    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak, not for accuracy.</p>
+    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#legend-dial">see Legend for how dials are assigned</a>.</p>
     <div class="bar-chart">
       ${[0, 2, 3, 4, 5].map(n => {
         const c = s.dial[String(n)];
@@ -1007,6 +1097,10 @@ function buildLegend() {
   for (const [section, items] of Object.entries(DATA.legend)) {
     const block = document.createElement('div');
     block.className = 'legend-block';
+    const sectionId = section.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    if (section === 'Dial (0–5)') {
+      block.id = 'legend-dial';
+    }
     block.innerHTML = `<h3>${section}</h3>`;
     const dl = document.createElement('dl');
     items.forEach(item => {
@@ -1018,8 +1112,8 @@ function buildLegend() {
       dl.appendChild(dd);
     });
     block.appendChild(dl);
-    const sectionId = section.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    appendCommentSlot(block, 'legend', sectionId, section);
+    const commentSectionId = section.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    appendCommentSlot(block, 'legend', commentSectionId, section);
     grid.appendChild(block);
   }
 }

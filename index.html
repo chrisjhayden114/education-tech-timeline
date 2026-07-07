@@ -18,6 +18,7 @@
       </a>
       <div class="nav-links">
         <a href="#timeline" class="nav-link active">Timeline</a>
+        <a href="#pattern" class="nav-link">The Pattern</a>
         <a href="#statistics" class="nav-link">Statistics</a>
         <a href="#legend" class="nav-link">Legend</a>
         <a href="references.html" class="nav-link">References</a>
@@ -88,6 +89,10 @@
             <input type="range" id="dial-max" min="0" max="5" value="5" aria-label="Maximum dial">
             <span id="dial-range-display" class="dial-range-display">0 – 5</span>
           </div>
+          <p class="method-footnote method-footnote--compact">
+            Dials are retrospective judgment scores, not calculated metrics.
+            <a href="#legend-dial">See Legend</a>.
+          </p>
         </div>
         <button id="reset-filters" class="btn-ghost">Reset filters</button>
       </div>
@@ -154,6 +159,39 @@
       </div>
     </section>
 
+    <section id="pattern" class="pattern-section">
+      <h2 class="section-title">The Pattern</h2>
+      <p class="section-desc pattern-intro">
+        Across all 67 technologies, one variable does most of the work: who controls the moment of use.
+        Every panic that reached public scale attached to a technology children used autonomously; the technologies
+        that quietly transformed schooling were controlled by teachers and institutions from birth. Transformation
+        and panic turn out to be nearly orthogonal.
+      </p>
+      <p class="method-footnote">
+        Fear dial scores (0–5) and related codings are judgment-based and assigned retrospectively — not computed from a formula.
+        <a href="#legend-dial">How dials are determined (Legend)</a>:
+        measures the size of the fear, not its accuracy; codings are judgment calls.
+      </p>
+      <div id="panic-grid" class="panic-grid" aria-labelledby="panic-grid-heading">
+        <h3 id="panic-grid-heading" class="panic-grid__title">Panic Grid</h3>
+      </div>
+      <div id="panic-fork" class="panic-fork" aria-labelledby="panic-fork-heading">
+        <h3 id="panic-fork-heading" class="panic-grid__title">What kind of panic fires</h3>
+      </div>
+      <div id="engines-matrix" class="engines-matrix" aria-labelledby="engines-matrix-heading">
+        <h3 id="engines-matrix-heading" class="panic-grid__title">Four engines make a panic cognitive</h3>
+      </div>
+      <div id="substitution-gradient" class="sub-gradient" aria-labelledby="sub-gradient-heading">
+        <h3 id="sub-gradient-heading" class="panic-grid__title">Substitution intensity tracks assessment centrality</h3>
+      </div>
+      <div id="paired-fates" class="paired-fates" aria-labelledby="paired-fates-heading">
+        <h3 id="paired-fates-heading" class="panic-grid__title">Same capability, different control, different fate</h3>
+      </div>
+      <div id="panic-flow" class="panic-flow" aria-labelledby="panic-flow-heading">
+        <h3 id="panic-flow-heading" class="panic-grid__title">How an education panic runs</h3>
+      </div>
+    </section>
+
     <section id="statistics" class="stats-section">
       <h2 class="section-title">By the Numbers</h2>
       <p class="section-desc">Statistics across all 67 technologies — what contemporaries claimed, not whether those fears proved justified. Each block welcomes your perspective.</p>
@@ -184,6 +222,13 @@
   <script src="icons.js"></script>
   <script src="dial-cards.js"></script>
   <script src="comments.js"></script>
+  <script src="pattern-tooltips.js"></script>
+  <script src="panic-grid.js"></script>
+  <script src="panic-fork.js"></script>
+  <script src="engines-matrix.js"></script>
+  <script src="substitution-gradient.js"></script>
+  <script src="paired-fates.js"></script>
+  <script src="panic-flow.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

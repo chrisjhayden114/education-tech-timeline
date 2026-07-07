@@ -30,7 +30,11 @@
           "id": "ref-33"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "printing-press",
@@ -62,7 +66,11 @@
           "id": "ref-14"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ]
     },
     {
       "id": "novels",
@@ -90,7 +98,12 @@
           "id": "ref-24"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ]
     },
     {
       "id": "railways",
@@ -122,7 +135,9 @@
           "id": "ref-27"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "telegraph",
@@ -154,7 +169,9 @@
           "id": "ref-31"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "telephone",
@@ -182,7 +199,9 @@
           "id": "ref-19"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "movies",
@@ -214,7 +233,12 @@
           "id": "ref-9"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ],
+      "pair": "projection"
     },
     {
       "id": "radio",
@@ -246,7 +270,11 @@
           "id": "ref-30"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ]
     },
     {
       "id": "comic-books",
@@ -278,7 +306,11 @@
           "id": "ref-35"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ]
     },
     {
       "id": "television",
@@ -314,7 +346,12 @@
           "id": "ref-40"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ]
     },
     {
       "id": "rock-and-roll",
@@ -346,7 +383,9 @@
           "id": "ref-11"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": []
     },
     {
       "id": "pocket-calculator",
@@ -374,7 +413,12 @@
           "id": "ref-21"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ],
+      "pair": "computation"
     },
     {
       "id": "home-video-vhs",
@@ -406,7 +450,11 @@
           "id": "ref-2"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ]
     },
     {
       "id": "personal-computer",
@@ -438,7 +486,9 @@
           "id": "ref-15"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": []
     },
     {
       "id": "dungeons-and-dragons",
@@ -470,7 +520,9 @@
           "id": "ref-25"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": []
     },
     {
       "id": "video-games",
@@ -502,7 +554,12 @@
           "id": "ref-16"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ]
     },
     {
       "id": "internet",
@@ -538,7 +595,13 @@
           "id": "ref-28"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "integrity",
+        "contamination"
+      ]
     },
     {
       "id": "social-media",
@@ -570,7 +633,12 @@
           "id": "ref-7"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ]
     },
     {
       "id": "smartphones",
@@ -606,7 +674,13 @@
           "id": "ref-4"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ],
+      "pair": "screens"
     },
     {
       "id": "generative-ai",
@@ -642,7 +716,15 @@
           "id": "ref-3"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution",
+        "displacement",
+        "integrity",
+        "contamination"
+      ],
+      "pair": "language"
     },
     {
       "id": "paper",
@@ -670,7 +752,9 @@
           "id": "ref-56"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "hindu-arabic-numerals",
@@ -702,7 +786,9 @@
           "id": "ref-58"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "handwriting-technologies-slates-to-ballpoints-typewriter",
@@ -730,7 +816,11 @@
           "id": "ref-66"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "institution",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "chess",
@@ -758,7 +848,11 @@
           "id": "ref-62"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement"
+      ]
     },
     {
       "id": "penny-dreadfuls-and-dime-novels",
@@ -786,7 +880,12 @@
           "id": "ref-63"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement",
+        "contamination"
+      ]
     },
     {
       "id": "phonograph-and-player-piano",
@@ -814,7 +913,11 @@
           "id": "ref-54"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "sunday-comic-strips",
@@ -842,7 +945,11 @@
           "id": "ref-49"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "contamination"
+      ]
     },
     {
       "id": "crossword-puzzles",
@@ -870,7 +977,11 @@
           "id": "ref-45"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": [
+        "displacement"
+      ]
     },
     {
       "id": "automation-cybernation",
@@ -906,7 +1017,9 @@
           "id": "ref-51"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "photocopier",
@@ -938,7 +1051,11 @@
           "id": "ref-47"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "institution",
+      "engines": [
+        "integrity"
+      ]
     },
     {
       "id": "walkman",
@@ -966,7 +1083,11 @@
           "id": "ref-71"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement"
+      ]
     },
     {
       "id": "pagers",
@@ -998,7 +1119,9 @@
           "id": "ref-72"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": []
     },
     {
       "id": "mobile-phone-wi-fi-and-5g-radiation",
@@ -1034,7 +1157,9 @@
           "id": "ref-73"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "virtual-reality",
@@ -1066,7 +1191,9 @@
           "id": "ref-41"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": []
     },
     {
       "id": "texting-and-instant-messaging",
@@ -1098,7 +1225,11 @@
           "id": "ref-43"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "wikipedia",
@@ -1130,7 +1261,11 @@
           "id": "ref-52"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "integrity"
+      ]
     },
     {
       "id": "gps-navigation",
@@ -1162,7 +1297,11 @@
           "id": "ref-44"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "search-engines",
@@ -1194,7 +1333,11 @@
           "id": "ref-76"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "3d-printing",
@@ -1226,7 +1369,9 @@
           "id": "ref-77"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "smart-speakers-and-voice-assistants",
@@ -1254,7 +1399,11 @@
           "id": "ref-78"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "substitution"
+      ]
     },
     {
       "id": "fidget-spinners",
@@ -1286,7 +1435,11 @@
           "id": "ref-79"
         }
       ],
-      "hasPanic": true
+      "hasPanic": true,
+      "control": "child",
+      "engines": [
+        "displacement"
+      ]
     },
     {
       "id": "spectacles",
@@ -1315,7 +1468,9 @@
           "short": "Ilardi, 2007",
           "id": "ref-86"
         }
-      ]
+      ],
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "blackboard-and-chalk",
@@ -1348,7 +1503,9 @@
           "short": "Krause, 2000",
           "id": "ref-87"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "braille",
@@ -1377,7 +1534,9 @@
           "short": "Mellor, 2006",
           "id": "ref-91"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "penny-post-and-correspondence-education",
@@ -1410,7 +1569,9 @@
           "short": "Moore & Kearsley, 2011",
           "id": "ref-92"
         }
-      ]
+      ],
+      "control": "adult",
+      "engines": []
     },
     {
       "id": "pencil-with-attached-eraser",
@@ -1439,7 +1600,9 @@
           "short": "Petroski, 1990",
           "id": "ref-96"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "the-school-science-laboratory",
@@ -1472,7 +1635,9 @@
           "short": "DeBoer, 1991",
           "id": "ref-82"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "mimeograph-and-spirit-duplicators",
@@ -1505,7 +1670,9 @@
           "short": "Cuban, 1993",
           "id": "ref-14"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "electric-school-clocks-and-bells",
@@ -1534,7 +1701,9 @@
           "short": "Tyack, 1974",
           "id": "ref-36"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "slide-rule-in-schooling",
@@ -1563,7 +1732,10 @@
           "short": "Stoll, 2006",
           "id": "ref-101"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": [],
+      "pair": "computation"
     },
     {
       "id": "school-building-services-lighting-heating-cooling",
@@ -1592,7 +1764,9 @@
           "short": "Park et al., 2020",
           "id": "ref-107"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "filmstrip-and-slide-projectors",
@@ -1625,7 +1799,10 @@
           "short": "Cuban, 1986",
           "id": "ref-13"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": [],
+      "pair": "projection"
     },
     {
       "id": "machine-test-scoring-ibm-805-to-scantron",
@@ -1662,7 +1839,9 @@
           "short": "Lemann, 1999",
           "id": "ref-89"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "the-yellow-school-bus",
@@ -1691,7 +1870,9 @@
           "short": "Tyack, 1974",
           "id": "ref-36"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "overhead-projector",
@@ -1720,7 +1901,9 @@
           "short": "Cuban, 1986",
           "id": "ref-13"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "language-laboratory",
@@ -1753,7 +1936,9 @@
           "short": "Salaberry, 2001",
           "id": "ref-99"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "educational-programming-environments-logo-to-scratch",
@@ -1794,7 +1979,9 @@
           "short": "Pea & Kurland, 1984",
           "id": "ref-95"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "assistive-and-accessibility-technologies",
@@ -1827,7 +2014,9 @@
           "short": "Rose & Meyer, 2002",
           "id": "ref-98"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "probeware-and-microcomputer-based-labs",
@@ -1856,7 +2045,9 @@
           "short": "Thornton & Sokoloff, 1990",
           "id": "ref-102"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "classroom-response-systems-clickers-to-kahoot",
@@ -1885,7 +2076,9 @@
           "short": "Mazur, 1997",
           "id": "ref-90"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "interactive-whiteboards",
@@ -1914,7 +2107,9 @@
           "short": "Higgins et al., 2007",
           "id": "ref-112"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "learning-management-systems",
@@ -1951,7 +2146,9 @@
           "short": "Watson & Watson, 2007",
           "id": "ref-103"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "plagiarism-detection-services",
@@ -1984,7 +2181,9 @@
           "short": "A.V. v. iParadigms, 2009",
           "id": "ref-113"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "interactive-science-simulations-phet",
@@ -2013,7 +2212,9 @@
           "short": "Wieman et al., 2008",
           "id": "ref-114"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     },
     {
       "id": "chromebooks-and-cloud-classroom-suites",
@@ -2046,7 +2247,10 @@
           "short": "Krutka et al., 2021",
           "id": "ref-115"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": [],
+      "pair": "screens"
     },
     {
       "id": "machine-translation-in-the-language-classroom",
@@ -2075,7 +2279,13 @@
           "short": "Ducar & Schocket, 2018",
           "id": "ref-83"
         }
-      ]
+      ],
+      "control": "child",
+      "engines": [
+        "substitution",
+        "integrity"
+      ],
+      "pair": "language"
     },
     {
       "id": "videoconferencing-and-emergency-remote-teaching",
@@ -2104,7 +2314,9 @@
           "short": "Hodges et al., 2020",
           "id": "ref-116"
         }
-      ]
+      ],
+      "control": "institution",
+      "engines": []
     }
   ],
   "legend": {
@@ -2186,6 +2398,10 @@
       {
         "term": "Meaning",
         "definition": "Education-related fear intensity at historical peak (intensity multiplied by reach), shown on each technology's fear dial. Measures the size of the fear, not its accuracy."
+      },
+      {
+        "term": "How assigned",
+        "definition": "Each dial is a retrospective judgment call, not a computed statistic. The score synthesizes contemporaneous claims, their scale and persistence, and how directly they targeted learning or cognitive development — weighted by historical reach at the panic's peak. Related codings (fear type, engines, control) use the same judgment-based method."
       },
       {
         "term": "Scale",
@@ -2857,6 +3073,10 @@
   },
   "meta": {
     "title": "Technology Panics & Education",
-    "subtitle": "How fears shaped — and transformed — learning across four millennia"
+    "subtitle": "How fears shaped — and transformed — learning across four millennia",
+    "schemaNotes": [
+      "Personal computer has learning fear = yes but engines = [] because its learning fear was exclusion (fear of not having it), unique in the dataset.",
+      "Home video (VHS) is its own natural experiment: the same device was a moral panic at home and a model classroom technology at school."
+    ]
   }
 }
