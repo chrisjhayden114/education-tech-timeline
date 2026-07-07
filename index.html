@@ -49,8 +49,8 @@
         <div class="hero-card hero-card--front">
           <div class="hero-card__label">At a glance</div>
           <div class="hero-card__stats">
-            <div><span class="hero-stat-num">41</span><span class="hero-stat-lbl">technologies</span></div>
-            <div><span class="hero-stat-num">79</span><span class="hero-stat-lbl">sources</span></div>
+            <div><span class="hero-stat-num">67</span><span class="hero-stat-lbl">technologies</span></div>
+            <div><span class="hero-stat-num">116</span><span class="hero-stat-lbl">sources</span></div>
             <div><span class="hero-stat-num">4</span><span class="hero-stat-lbl">fear types</span></div>
           </div>
           <div class="hero-card__chips">
@@ -96,7 +96,17 @@
 
     <section id="timeline" class="timeline-section">
       <h2 class="section-title">The Timeline</h2>
-      <p class="section-desc">Scroll horizontally through four millennia of technology panics. Hover any entry for its fear dial — click for full detail and comments.</p>
+      <p class="section-desc">Scroll horizontally through four millennia of educational technology. <strong class="timeline-key-inline timeline-key-inline--panic">Red glow</strong> marks documented panics; plain nodes are quiet transformers that changed schooling without meaningful fear. Hover for detail — click for full entries and comments.</p>
+      <div class="timeline-key" aria-label="Timeline legend">
+        <span class="timeline-key__item timeline-key__item--panic">
+          <span class="timeline-key__swatch" aria-hidden="true"></span>
+          Documented panic
+        </span>
+        <span class="timeline-key__item timeline-key__item--quiet">
+          <span class="timeline-key__swatch" aria-hidden="true"></span>
+          Quiet transformer
+        </span>
+      </div>
       <div class="timeline-scroll-outer" id="timeline-scroll-outer">
         <button type="button" class="timeline-scroll-btn timeline-scroll-btn--left" id="scroll-left" aria-label="Scroll timeline left" hidden>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -126,7 +136,7 @@
 
     <section id="statistics" class="stats-section">
       <h2 class="section-title">By the Numbers</h2>
-      <p class="section-desc">Statistics across all 41 technologies — what contemporaries claimed, not whether those fears proved justified. Each block welcomes your perspective.</p>
+      <p class="section-desc">Statistics across all 67 technologies — what contemporaries claimed, not whether those fears proved justified. Each block welcomes your perspective.</p>
       <div class="stats-grid" id="stats-grid"></div>
       <div class="stats-detail" id="stats-detail"></div>
     </section>
@@ -146,7 +156,7 @@
   </dialog>
 
   <footer class="site-footer">
-    <p><em>Technology Panics &amp; Education</em> — 41 technologies, 79 references.</p>
+    <p><em>Technology Panics &amp; Education</em> — 67 technologies, 116 references.</p>
     <a href="references.html">View full reference list →</a>
   </footer>
 

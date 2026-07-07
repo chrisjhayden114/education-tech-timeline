@@ -348,7 +348,7 @@ function hideTimelineTooltip() {
 
 function createTechNode(tech, x, above, lane = 0, compact = false) {
   const node = document.createElement('div');
-  node.className = `tech-node ${above ? 'tech-node--above' : 'tech-node--below'}${compact ? ' tech-node--compact' : ''}`;
+  node.className = `tech-node ${above ? 'tech-node--above' : 'tech-node--below'}${compact ? ' tech-node--compact' : ''}${tech.hasPanic ? ' tech-node--panic' : ''}`;
   node.dataset.id = tech.id;
   node.style.left = `${x}px`;
   node.style.setProperty('--lane', lane);

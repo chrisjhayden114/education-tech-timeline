@@ -172,6 +172,110 @@ const DIAL_CARD_COPY = {
   'fidget-spinners': {
     tags: ['Cognitive erosion', 'Conduct/wellbeing'],
     summary: "Marked * on this timeline. Marketed as an attention aid, banned as an attention destroyer — full cycle inside a year."
+  },
+  spectacles: {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Mass-market reading glasses enabled the print boom's literacy expansion."
+  },
+  'blackboard-and-chalk': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Coulson's last dramatic instructional innovation — adopted c. 1801 without comment."
+  },
+  braille: {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Invented by a 15-year-old student; assistive technologies attract essentially no panic."
+  },
+  'penny-post-and-correspondence-education': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. The origin of distance education; every later remote-learning technology inherits its model."
+  },
+  'pencil-with-attached-eraser': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Later the required instrument of machine-scored testing — the humble No. 2 pencil."
+  },
+  'the-school-science-laboratory': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Hands-on science entered schooling with saviour rhetoric only — no transformation panic."
+  },
+  'mimeograph-and-spirit-duplicators': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. The purple ditto page ancestor of the photocopied worksheet economy."
+  },
+  'electric-school-clocks-and-bells': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Railway time discipline entering the building — adopted without comment."
+  },
+  'slide-rule-in-schooling': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. No panic at arrival; the panic at its departure attached to its replacement, the calculator."
+  },
+  'school-building-services-lighting-heating-cooling': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Infrastructure beats gadgets — and nobody has ever panicked about a boiler."
+  },
+  'filmstrip-and-slide-projectors': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Teacher control, low cost, zero panic — Cuban's fit principle embodied."
+  },
+  'machine-test-scoring-ibm-805-to-scantron': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Among the most consequential education technologies of the century and among the least feared."
+  },
+  'the-yellow-school-bus': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. A transformation of access on the railway's scale with none of the railway's dread."
+  },
+  'overhead-projector': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Cuban's contrast case: the technology teachers chose rather than the ones chosen for them."
+  },
+  'language-laboratory': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. A saviour claim that failed quietly — neither devil nor miracle materialized."
+  },
+  'educational-programming-environments-logo-to-scratch': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Pure saviour framing for four decades; panic about code arrived only when AI began writing it."
+  },
+  'assistive-and-accessibility-technologies': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Technologies framed as access are welcomed; technologies framed as youth leisure are feared."
+  },
+  'probeware-and-microcomputer-based-labs': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Teacher-controlled, curriculum-embedded, strong evidence, zero fear."
+  },
+  'classroom-response-systems-clickers-to-kahoot': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Formative-assessment machinery adopted through teachers; students never controlled it."
+  },
+  'interactive-whiteboards': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Transformation-scale spending with neither panic nor much measured payoff."
+  },
+  'learning-management-systems': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Probably the most-used education technology on Earth, almost never discussed outside the profession."
+  },
+  'plagiarism-detection-services': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Created in response to a panic but generates none itself — institutions control it."
+  },
+  'interactive-science-simulations-phet': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Founded by a Nobel physicist; hundreds of millions of runs a year, not one recorded fear."
+  },
+  'chromebooks-and-cloud-classroom-suites': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. The largest device transformation since the textbook, arriving to almost no public comment."
+  },
+  'machine-translation-in-the-language-classroom': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. The quiet dress rehearsal for generative AI in one subject — same integrity questions, no public alarm."
+  },
+  'videoconferencing-and-emergency-remote-teaching': {
+    tags: ['Quiet transformer', 'No meaningful panic'],
+    summary: "Transformed schooling without a meaningful public panic. Learning-loss alarm targeted school closure, not videoconferencing itself."
   }
 };
 

@@ -29,7 +29,8 @@
           "short": "Sparrow et al., 2011",
           "id": "ref-33"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "printing-press",
@@ -60,7 +61,8 @@
           "short": "Cuban, 1993",
           "id": "ref-14"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "novels",
@@ -87,7 +89,8 @@
           "short": "Krashen, 2004",
           "id": "ref-24"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "railways",
@@ -118,7 +121,8 @@
           "short": "Milne-Smith, 2016",
           "id": "ref-27"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "telegraph",
@@ -149,7 +153,8 @@
           "short": "Postman, 1985",
           "id": "ref-31"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "telephone",
@@ -176,7 +181,8 @@
           "short": "Fischer, 1992",
           "id": "ref-19"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "movies",
@@ -207,7 +213,8 @@
           "short": "Charters, 1933",
           "id": "ref-9"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "radio",
@@ -238,7 +245,8 @@
           "short": "Orben, 2020",
           "id": "ref-30"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "comic-books",
@@ -269,7 +277,8 @@
           "short": "Tilley, 2012",
           "id": "ref-35"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "television",
@@ -304,7 +313,8 @@
           "short": "Williams et al., 1982",
           "id": "ref-40"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "rock-and-roll",
@@ -335,7 +345,8 @@
           "short": "Cohen, 1972",
           "id": "ref-11"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "pocket-calculator",
@@ -362,7 +373,8 @@
           "short": "Hembree & Dessart, 1986",
           "id": "ref-21"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "home-video-vhs",
@@ -393,7 +405,8 @@
           "short": "Barker, 1984",
           "id": "ref-2"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "personal-computer",
@@ -424,7 +437,8 @@
           "short": "Cuban, 2001",
           "id": "ref-15"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "dungeons-and-dragons",
@@ -455,7 +469,8 @@
           "short": "Laycock, 2015",
           "id": "ref-25"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "video-games",
@@ -486,7 +501,8 @@
           "short": "Cummings & Vandewater, 2007",
           "id": "ref-16"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "internet",
@@ -521,7 +537,8 @@
           "short": "OECD, 2015",
           "id": "ref-28"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "social-media",
@@ -552,7 +569,8 @@
           "short": "Braghieri et al., 2022",
           "id": "ref-7"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "smartphones",
@@ -587,7 +605,8 @@
           "short": "Beland & Murphy, 2016",
           "id": "ref-4"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "generative-ai",
@@ -622,7 +641,8 @@
           "short": "Bastani et al., 2025",
           "id": "ref-3"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "paper",
@@ -649,7 +669,8 @@
           "short": "Kurlansky, 2016",
           "id": "ref-56"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "hindu-arabic-numerals",
@@ -680,7 +701,8 @@
           "short": "Menninger, 1969",
           "id": "ref-58"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "handwriting-technologies-slates-to-ballpoints-typewriter",
@@ -707,7 +729,8 @@
           "short": "Thornton, 1996",
           "id": "ref-66"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "chess",
@@ -734,7 +757,8 @@
           "short": "Sala & Gobet, 2016",
           "id": "ref-62"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "penny-dreadfuls-and-dime-novels",
@@ -761,7 +785,8 @@
           "short": "Springhall, 1998",
           "id": "ref-63"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "phonograph-and-player-piano",
@@ -788,7 +813,8 @@
           "short": "Katz, 2004",
           "id": "ref-54"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "sunday-comic-strips",
@@ -815,7 +841,8 @@
           "short": "Gordon, 1998",
           "id": "ref-49"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "crossword-puzzles",
@@ -842,7 +869,8 @@
           "short": "Danesi, 2002",
           "id": "ref-45"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "automation-cybernation",
@@ -877,7 +905,8 @@
           "short": "Grubb & Lazerson, 2004",
           "id": "ref-51"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "photocopier",
@@ -908,7 +937,8 @@
           "short": "Eaton, 2021",
           "id": "ref-47"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "walkman",
@@ -935,7 +965,8 @@
           "short": "du Gay et al., 1997",
           "id": "ref-71"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "pagers",
@@ -966,7 +997,8 @@
           "short": "period press and state statutes, 1988–1993",
           "id": "ref-72"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "mobile-phone-wi-fi-and-5g-radiation",
@@ -1001,7 +1033,8 @@
           "short": "WHO, 2014",
           "id": "ref-73"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "virtual-reality",
@@ -1032,7 +1065,8 @@
           "short": "Bailey & Bailenson, 2017",
           "id": "ref-41"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "texting-and-instant-messaging",
@@ -1063,7 +1097,8 @@
           "short": "Crystal, 2008",
           "id": "ref-43"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "wikipedia",
@@ -1094,7 +1129,8 @@
           "short": "Head & Eisenberg, 2010",
           "id": "ref-52"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "gps-navigation",
@@ -1125,7 +1161,8 @@
           "short": "Dahmani & Bohbot, 2020",
           "id": "ref-44"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "search-engines",
@@ -1156,7 +1193,8 @@
           "short": "Sparrow et al., 2011",
           "id": "ref-76"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "3d-printing",
@@ -1187,7 +1225,8 @@
           "short": "Stephens et al., 2013",
           "id": "ref-77"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "smart-speakers-and-voice-assistants",
@@ -1214,7 +1253,8 @@
           "short": "Lovato et al., 2019",
           "id": "ref-78"
         }
-      ]
+      ],
+      "hasPanic": true
     },
     {
       "id": "fidget-spinners",
@@ -1244,6 +1284,825 @@
         {
           "short": "Graziano et al., 2020",
           "id": "ref-79"
+        }
+      ],
+      "hasPanic": true
+    },
+    {
+      "id": "spectacles",
+      "name": "Spectacles",
+      "era": "13th c.–15th c.",
+      "origin": "c. 1285 (Italy)",
+      "broadImpact": "c. 1450",
+      "originYear": 1285,
+      "impactYear": 1450,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Extended reading lives by decades and widened who could study and teach; presbyopia stopped ending scholarly careers (Ilardi, 2007).",
+      "negative": "None; among the least contested technologies ever adopted (Ilardi, 2007).",
+      "dial": 0,
+      "notes": "Invented c. 1285 in northern Italy; the printing boom made reading glasses a mass market. A reminder that access technologies can transform learning without a single recorded fear.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Ilardi, 2007",
+          "id": "ref-86"
+        }
+      ]
+    },
+    {
+      "id": "blackboard-and-chalk",
+      "name": "Blackboard and chalk",
+      "era": "1801–1850s",
+      "origin": "c. 1801",
+      "broadImpact": "1840",
+      "originYear": 1801,
+      "impactYear": 1840,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Enabled whole-class simultaneous instruction and cheap shared display; hailed in 1841 as ranking its inventor 'among the greatest benefactors of mankind' (Bumstead, 1841; Krause, 2000).",
+      "negative": "None; later critics complain only that pedagogy froze around it (Krause, 2000).",
+      "dial": 0,
+      "notes": "Coulson's quip that the last dramatic instructional innovation 'occurred while Thomas Jefferson was president' names the chalkboard, c. 1801. The inverse of a panic: instant, celebrated, universal adoption.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Bumstead, 1841",
+          "id": "ref-81"
+        },
+        {
+          "short": "Krause, 2000",
+          "id": "ref-87"
+        }
+      ]
+    },
+    {
+      "id": "braille",
+      "name": "Braille",
+      "era": "1824–1900s",
+      "origin": "1824",
+      "broadImpact": "1854",
+      "originYear": 1824,
+      "impactYear": 1854,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Gave blind students direct literacy rather than mediated listening, transforming education for the blind worldwide (Mellor, 2006).",
+      "negative": "None; the 'War of the Dots' was a professional dispute between rival tactile codes, not a fear of the technology (Mellor, 2006).",
+      "dial": 0,
+      "notes": "Invented by a 15-year-old student (1824); officially adopted in France in 1854. Assistive technologies as a class attract essentially no panic.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Mellor, 2006",
+          "id": "ref-91"
+        }
+      ]
+    },
+    {
+      "id": "penny-post-and-correspondence-education",
+      "name": "Penny post and correspondence education",
+      "era": "1840s–1900s",
+      "origin": "1840 (Penny Post)",
+      "broadImpact": "1890",
+      "originYear": 1840,
+      "impactYear": 1890,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Cheap uniform postage made education-at-a-distance a mass product, from Pitman's shorthand lessons (1840s) to International Correspondence Schools' millions of enrolments (Moore & Kearsley, 2011).",
+      "negative": "Little for learning; fringe diploma-mill fraud shadowed the sector without discrediting it (Moore & Kearsley, 2011).",
+      "dial": 0,
+      "notes": "The origin of distance education; every later remote-learning technology (radio, TV, internet, videoconferencing) inherits its model.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1840s",
+          "id": "ref-105"
+        },
+        {
+          "short": "Moore & Kearsley, 2011",
+          "id": "ref-92"
+        }
+      ]
+    },
+    {
+      "id": "pencil-with-attached-eraser",
+      "name": "Pencil with attached eraser",
+      "era": "1858–1900s",
+      "origin": "1858 (Lipman patent)",
+      "broadImpact": "1875",
+      "originYear": 1858,
+      "impactYear": 1875,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Cheap, erasable, sharpenable writing put low-stakes practice and revision in every hand; the attached eraser normalized visible error correction (Petroski, 1990).",
+      "negative": "Trace of a worry: some nineteenth-century teachers argued erasers would encourage carelessness, a grumble that never scaled (Petroski, 1990).",
+      "dial": 0,
+      "notes": "Later the required instrument of machine-scored testing (the No. 2 pencil), tying the humblest technology on this sheet to the most consequential one.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Petroski, 1990",
+          "id": "ref-96"
+        }
+      ]
+    },
+    {
+      "id": "the-school-science-laboratory",
+      "name": "The school science laboratory",
+      "era": "1860s–1900s",
+      "origin": "c. 1855 (Bunsen burner)",
+      "broadImpact": "1900",
+      "originYear": 1855,
+      "impactYear": 1900,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "The Bunsen burner (1855), cheap glassware and student benches made experiment a school activity rather than a demonstration, institutionalized by the heuristic movement (DeBoer, 1991).",
+      "negative": "None at introduction; the durable critique is cost and cookbook practicals, a design problem rather than a fear (DeBoer, 1991).",
+      "dial": 0,
+      "notes": "A transformation panic never touched: hands-on science entered schooling with saviour rhetoric only.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1855",
+          "id": "ref-106"
+        },
+        {
+          "short": "DeBoer, 1991",
+          "id": "ref-82"
+        }
+      ]
+    },
+    {
+      "id": "mimeograph-and-spirit-duplicators",
+      "name": "Mimeograph and spirit duplicators",
+      "era": "1887–1970s",
+      "origin": "1887",
+      "broadImpact": "1930",
+      "originYear": 1887,
+      "impactYear": 1930,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Stencil and spirit duplicators gave teachers cheap in-house publishing decades before xerography: the worksheet, the class newsletter, the exam paper (Proudfoot, 1972).",
+      "negative": "None recorded; its legacy critique is the same seatwork worry later attached to the photocopier (Proudfoot, 1972; Cuban, 1993).",
+      "dial": 0,
+      "notes": "The purple ditto page is the ancestor of the photocopied worksheet economy; adoption was silent and total.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Proudfoot, 1972",
+          "id": "ref-97"
+        },
+        {
+          "short": "Cuban, 1993",
+          "id": "ref-14"
+        }
+      ]
+    },
+    {
+      "id": "electric-school-clocks-and-bells",
+      "name": "Electric school clocks and bells",
+      "era": "1890s–1930s",
+      "origin": "c. 1890 (master clocks)",
+      "broadImpact": "1915",
+      "originYear": 1890,
+      "impactYear": 1915,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Master-clock and bell systems synchronized mass schooling, making the period, the timetable and the bell schedule possible (Tyack, 1974).",
+      "negative": "None contemporaneously; the deep critique of factory time-discipline in schooling came generations later (Tyack, 1974).",
+      "dial": 0,
+      "notes": "The railway's time discipline entering the building; arguably the most structural technology on this sheet, adopted without comment.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Tyack, 1974",
+          "id": "ref-36"
+        }
+      ]
+    },
+    {
+      "id": "slide-rule-in-schooling",
+      "name": "Slide rule (in schooling)",
+      "era": "1900s–1975",
+      "origin": "c. 1622 (school era c. 1900)",
+      "broadImpact": "1940",
+      "originYear": 1622,
+      "impactYear": 1940,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "The standard computational instrument of STEM schooling for most of a century; slide-rule fluency structured physics and engineering curricula (Stoll, 2006).",
+      "negative": "None; it died in about five years after 1972 without ever having been feared (Stoll, 2006).",
+      "dial": 0,
+      "notes": "The inverse case study: no panic at arrival, and the panic at its departure attached to its replacement, the calculator.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Stoll, 2006",
+          "id": "ref-101"
+        }
+      ]
+    },
+    {
+      "id": "school-building-services-lighting-heating-cooling",
+      "name": "School building services (lighting, heating, cooling)",
+      "era": "1900s–2020s",
+      "origin": "c. 1900 (electric lighting)",
+      "broadImpact": "1950",
+      "originYear": 1900,
+      "impactYear": 1950,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Lighting, heating, ventilation and cooling measurably condition learning: hot school years reduce learning, and air conditioning offsets most of the loss (Park et al., 2020).",
+      "negative": "None; the finding runs the other way, that missing infrastructure quietly harms achievement (Park et al., 2020).",
+      "dial": 0,
+      "notes": "The least glamorous row and among the best evidenced: infrastructure beats gadgets, and nobody has ever panicked about a boiler.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Park et al., 2020",
+          "id": "ref-107"
+        }
+      ]
+    },
+    {
+      "id": "filmstrip-and-slide-projectors",
+      "name": "Filmstrip and slide projectors",
+      "era": "1920s–1980s",
+      "origin": "c. 1920",
+      "broadImpact": "1945",
+      "originYear": 1920,
+      "impactYear": 1945,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Cheap, teacher-paced visual media that actually fit classroom routines, unlike the film reels they simplified (Saettler, 1990).",
+      "negative": "None; the format quietly delivered what instructional film had promised (Saettler, 1990; Cuban, 1986).",
+      "dial": 0,
+      "notes": "The beep-and-advance filmstrip is Cuban's fit principle embodied: teacher control, low cost, zero panic.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Saettler, 1990",
+          "id": "ref-32"
+        },
+        {
+          "short": "Cuban, 1986",
+          "id": "ref-13"
+        }
+      ]
+    },
+    {
+      "id": "machine-test-scoring-ibm-805-to-scantron",
+      "name": "Machine test scoring (IBM 805 to Scantron)",
+      "era": "1937–1990s",
+      "origin": "1937 (IBM 805)",
+      "broadImpact": "1972",
+      "originYear": 1937,
+      "impactYear": 1972,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "The IBM 805 (1937) and Scantron (1972) made mass objective testing economical, enabling standardized assessment systems at national scale (Lemann, 1999).",
+      "negative": "Real but professional: machine-scorable formats tilted assessment toward selected response, a pedagogical critique that never became a public fear (Lemann, 1999).",
+      "dial": 0,
+      "notes": "Among the most consequential education technologies of the century and among the least feared; today's anxiety belongs to testing policy, not the machine.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1937",
+          "id": "ref-108"
+        },
+        {
+          "short": "1972",
+          "id": "ref-11"
+        },
+        {
+          "short": "Lemann, 1999",
+          "id": "ref-89"
+        }
+      ]
+    },
+    {
+      "id": "the-yellow-school-bus",
+      "name": "The yellow school bus",
+      "era": "1939–1960s",
+      "origin": "1939 (national standards)",
+      "broadImpact": "1950",
+      "originYear": 1939,
+      "impactYear": 1950,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Standardized in 1939 (the national minimum-standards conference that fixed the yellow), busing made school consolidation and rural secondary schooling possible (Tyack, 1974).",
+      "negative": "None for learning; long ride times in consolidated districts are the quiet cost (Tyack, 1974).",
+      "dial": 0,
+      "notes": "A transformation of access on the railway's scale with none of the railway's dread.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Tyack, 1974",
+          "id": "ref-36"
+        }
+      ]
+    },
+    {
+      "id": "overhead-projector",
+      "name": "Overhead projector",
+      "era": "1950s–1990s",
+      "origin": "c. 1942 (military training)",
+      "broadImpact": "1965",
+      "originYear": 1942,
+      "impactYear": 1965,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "The exemplar of classroom-fit technology: face-the-class projection, teacher-made transparencies, no darkened room; near-universal adoption by the 1980s (Cuban, 1986).",
+      "negative": "None; its failure mode was transparency-driven lecturing, a pedagogy critique (Cuban, 1986).",
+      "dial": 0,
+      "notes": "Cuban's contrast case for film, radio and TV: the technology teachers chose, rather than the ones chosen for them.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Cuban, 1986",
+          "id": "ref-13"
+        }
+      ]
+    },
+    {
+      "id": "language-laboratory",
+      "name": "Language laboratory",
+      "era": "1958–1970s",
+      "origin": "c. 1950",
+      "broadImpact": "1962",
+      "originYear": 1950,
+      "impactYear": 1962,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "NDEA funding (1958) built audio labs nationwide, institutionalizing listening and drill in language teaching (Salaberry, 2001).",
+      "negative": "Its own disappointment: audiolingual drill underdelivered and labs decayed, the hype half of Cuban's cycle without the panic half (Salaberry, 2001).",
+      "dial": 0,
+      "notes": "A saviour claim that failed quietly; useful as the control case where neither devil nor miracle materialized.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1958",
+          "id": "ref-109"
+        },
+        {
+          "short": "Salaberry, 2001",
+          "id": "ref-99"
+        }
+      ]
+    },
+    {
+      "id": "educational-programming-environments-logo-to-scratch",
+      "name": "Educational programming environments (Logo to Scratch)",
+      "era": "1967–2010s",
+      "origin": "1967 (Logo)",
+      "broadImpact": "1983",
+      "originYear": 1967,
+      "impactYear": 1983,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Constructionist environments from Logo (1967) to Scratch (2007) made programming a school literacy and seeded today's computing curricula (Papert, 1980).",
+      "negative": "None feared; measured transfer from programming to general problem-solving proved weaker than the rhetoric (Pea & Kurland, 1984).",
+      "dial": 0,
+      "notes": "Pure saviour framing for four decades; the panic about code arrived only when AI began writing it.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1967",
+          "id": "ref-110"
+        },
+        {
+          "short": "2007",
+          "id": "ref-16"
+        },
+        {
+          "short": "Papert, 1980",
+          "id": "ref-93"
+        },
+        {
+          "short": "Pea & Kurland, 1984",
+          "id": "ref-95"
+        }
+      ]
+    },
+    {
+      "id": "assistive-and-accessibility-technologies",
+      "name": "Assistive and accessibility technologies",
+      "era": "1970s–2010s",
+      "origin": "1976 (Kurzweil reader)",
+      "broadImpact": "2000",
+      "originYear": 1976,
+      "impactYear": 2000,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "From the Kurzweil reading machine (1976) to screen readers, captioning and text-to-speech, assistive technology moved disabled students toward inclusion, generalized as universal design for learning (Rose & Meyer, 2002).",
+      "negative": "None; the category is effectively panic-free (Rose & Meyer, 2002).",
+      "dial": 0,
+      "notes": "The strongest counter-pattern on the sheet: technologies framed as access are welcomed; technologies framed as youth leisure are feared.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1976",
+          "id": "ref-111"
+        },
+        {
+          "short": "Rose & Meyer, 2002",
+          "id": "ref-98"
+        }
+      ]
+    },
+    {
+      "id": "probeware-and-microcomputer-based-labs",
+      "name": "Probeware and microcomputer-based labs",
+      "era": "1981–2000s",
+      "origin": "1981 (Vernier)",
+      "broadImpact": "1995",
+      "originYear": 1981,
+      "impactYear": 1995,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Real-time sensors and microcomputer-based labs measurably improved conceptual learning in physics, among the best-evidenced classroom technologies (Thornton & Sokoloff, 1990).",
+      "negative": "None; cost and calibration are the only complaints on record (Thornton & Sokoloff, 1990).",
+      "dial": 0,
+      "notes": "A teacher-controlled, curriculum-embedded technology with strong evidence and zero fear: the anti-panic profile in pure form.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Thornton & Sokoloff, 1990",
+          "id": "ref-102"
+        }
+      ]
+    },
+    {
+      "id": "classroom-response-systems-clickers-to-kahoot",
+      "name": "Classroom response systems (clickers to Kahoot)",
+      "era": "1985–2010s",
+      "origin": "1985 (Classtalk)",
+      "broadImpact": "2005",
+      "originYear": 1985,
+      "impactYear": 2005,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Response systems turned lectures interactive and normalized whole-class formative assessment, from Classtalk through peer instruction to Kahoot (Mazur, 1997).",
+      "negative": "None; the gamified descendants draw only engagement-versus-substance quibbles (Mazur, 1997).",
+      "dial": 0,
+      "notes": "Formative-assessment machinery adopted through teachers; the panic never came because students never controlled it.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Mazur, 1997",
+          "id": "ref-90"
+        }
+      ]
+    },
+    {
+      "id": "interactive-whiteboards",
+      "name": "Interactive whiteboards",
+      "era": "1991–2010s",
+      "origin": "1991 (SMART Board)",
+      "broadImpact": "2005",
+      "originYear": 1991,
+      "impactYear": 2005,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Interactive whiteboards reached near-saturation in UK classrooms within a decade, carrying digital display into ordinary teaching (Higgins et al., 2007).",
+      "negative": "Measured learning gains were marginal relative to cost; reviews find the board changes presentation more than pedagogy (Higgins et al., 2007).",
+      "dial": 0,
+      "notes": "A billion-pound quiet purchase: the clearest modern case of transformation-scale spending with neither panic nor much measured payoff.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Higgins et al., 2007",
+          "id": "ref-112"
+        }
+      ]
+    },
+    {
+      "id": "learning-management-systems",
+      "name": "Learning management systems",
+      "era": "1997–2020s",
+      "origin": "1997 (Blackboard; Moodle 2002)",
+      "broadImpact": "2014",
+      "originYear": 1997,
+      "impactYear": 2014,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Learning management systems became schooling's administrative nervous system: assignments, submission, feedback and records in one place, from Blackboard (1997) to Google Classroom (2014) (Watson & Watson, 2007).",
+      "negative": "None publicly; the professional worries are workload, lock-in and the quiet datafication of students (Watson & Watson, 2007).",
+      "dial": 0,
+      "notes": "Probably the most-used education technology on Earth, and almost never discussed outside the profession.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "1997",
+          "id": "ref-46"
+        },
+        {
+          "short": "2014",
+          "id": "ref-8"
+        },
+        {
+          "short": "Watson & Watson, 2007",
+          "id": "ref-103"
+        }
+      ]
+    },
+    {
+      "id": "plagiarism-detection-services",
+      "name": "Plagiarism-detection services",
+      "era": "2000s–2020s",
+      "origin": "c. 1998 (Turnitin)",
+      "broadImpact": "2005",
+      "originYear": 1998,
+      "impactYear": 2005,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Yes",
+      "positive": "Similarity-checking industrialized integrity enforcement and, used formatively, teaches citation practice (Eaton, 2021).",
+      "negative": "Professional critique rather than fear: false confidence in scores, student IP objections (A.V. v. iParadigms, 2009), and policing displacing integrity teaching (Eaton, 2021).",
+      "dial": 0,
+      "notes": "The inversion that proves the pattern: a technology created in response to a panic generates none itself, because institutions rather than students wield it.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Eaton, 2021",
+          "id": "ref-47"
+        },
+        {
+          "short": "A.V. v. iParadigms, 2009",
+          "id": "ref-113"
+        }
+      ]
+    },
+    {
+      "id": "interactive-science-simulations-phet",
+      "name": "Interactive science simulations (PhET)",
+      "era": "2002–2010s",
+      "origin": "2002",
+      "broadImpact": "2010",
+      "originYear": 2002,
+      "impactYear": 2010,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Free research-based simulations became standard physics and chemistry teaching tools worldwide, with conceptual gains comparable or superior to equipment labs for many targets (Wieman et al., 2008).",
+      "negative": "None; the live professional debate is when simulations should replace rather than precede hands-on work (Wieman et al., 2008).",
+      "dial": 0,
+      "notes": "Founded by a Nobel physicist; hundreds of millions of runs a year and not one recorded fear.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Wieman et al., 2008",
+          "id": "ref-114"
+        }
+      ]
+    },
+    {
+      "id": "chromebooks-and-cloud-classroom-suites",
+      "name": "Chromebooks and cloud classroom suites",
+      "era": "2006–2020s",
+      "origin": "2006 (Docs; Chromebook 2011)",
+      "broadImpact": "2014",
+      "originYear": 2006,
+      "impactYear": 2014,
+      "fears": {
+        "Learning": "No",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Cheap managed laptops plus cloud suites made 1:1 provision affordable and collaborative documents routine, taking a majority of US school device purchases within five years (Singer, 2017).",
+      "negative": "Bounded: student-data privacy complaints and lock-in concerns, raised by advocates rather than the public (Krutka et al., 2021).",
+      "dial": 0,
+      "notes": "The largest device transformation since the textbook, arriving to almost no public comment; the privacy critique stayed professional.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Singer, 2017",
+          "id": "ref-100"
+        },
+        {
+          "short": "Krutka et al., 2021",
+          "id": "ref-115"
+        }
+      ]
+    },
+    {
+      "id": "machine-translation-in-the-language-classroom",
+      "name": "Machine translation in the language classroom",
+      "era": "2016–2020s",
+      "origin": "2006 (neural 2016)",
+      "broadImpact": "2017",
+      "originYear": 2006,
+      "impactYear": 2017,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "No",
+        "Public order": "No"
+      },
+      "transformed": "Partial",
+      "positive": "Instant translation lowered barriers for EAL students and families, and pushed language teaching toward tasks translation cannot do (Ducar & Schocket, 2018).",
+      "negative": "Professional worry, not panic: unedited machine translation as unauthorized aid in language classes, prefiguring the AI-writing debate (Ducar & Schocket, 2018).",
+      "dial": 0,
+      "notes": "The quiet dress rehearsal for generative AI in one subject: the same integrity questions, none of the public alarm.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Ducar & Schocket, 2018",
+          "id": "ref-83"
+        }
+      ]
+    },
+    {
+      "id": "videoconferencing-and-emergency-remote-teaching",
+      "name": "Videoconferencing and emergency remote teaching",
+      "era": "2020–2022",
+      "origin": "2011 (Zoom; roots 1990s)",
+      "broadImpact": "2020",
+      "originYear": 2011,
+      "impactYear": 2020,
+      "fears": {
+        "Learning": "Partial",
+        "Morality": "No",
+        "Health": "Partial",
+        "Public order": "Partial"
+      },
+      "transformed": "Yes",
+      "positive": "Made system-wide remote schooling possible at days' notice in 2020, and normalized hybrid parent conferences and remote guest expertise thereafter (Hodges et al., 2020).",
+      "negative": "Emergency remote teaching underperformed classrooms, but the documented harm belongs to closure and circumstance rather than to the tool (Hodges et al., 2020).",
+      "dial": 2,
+      "notes": "The Partial fears: 'Zoom fatigue' claims, Zoombombing incidents, and learning-loss alarm that targeted school closure, not videoconferencing itself.",
+      "isAdded": false,
+      "isQuietTransformer": true,
+      "hasPanic": false,
+      "references": [
+        {
+          "short": "Hodges et al., 2020",
+          "id": "ref-116"
         }
       ]
     }
@@ -1341,6 +2200,16 @@
       {
         "term": "Added entries (*)",
         "definition": "Pocket calculator, personal computer, and 21 technologies from the expanded matrix are marked with * — added to broaden the timeline. Some dial scores are assigned retrospectively."
+      }
+    ],
+    "Timeline display": [
+      {
+        "term": "Red glow on timeline",
+        "definition": "Technologies with documented education-related public panics — the entries this project originally tracked."
+      },
+      {
+        "term": "Plain nodes on timeline",
+        "definition": "Quiet transformers: technologies that measurably changed schooling without a meaningful associated panic."
       }
     ]
   },
@@ -1739,6 +2608,191 @@
       "id": "ref-79",
       "text": "Graziano et al., 2020",
       "url": null
+    },
+    {
+      "id": "ref-80",
+      "text": "A.V. et al. v. iParadigms, LLC, 562 F.3d 630 (4th Cir. 2009).",
+      "url": "https://casetext.com/case/av-ex-rel-vanderhye-v-iparadigms-llc"
+    },
+    {
+      "id": "ref-81",
+      "text": "Bumstead, J. F. (1841). The blackboard in the primary school: A manual for teachers. Perkins & Marvin.",
+      "url": null
+    },
+    {
+      "id": "ref-82",
+      "text": "DeBoer, G. E. (1991). A history of ideas in science education: Implications for practice. Teachers College Press.",
+      "url": null
+    },
+    {
+      "id": "ref-83",
+      "text": "Ducar, C., & Schocket, D. H. (2018). Machine translation and the L2 classroom: Pedagogical solutions for making peace with Google Translate. Foreign Language Annals, 51(4), 779–795.",
+      "url": null
+    },
+    {
+      "id": "ref-84",
+      "text": "Higgins, S., Beauchamp, G., & Miller, D. (2007). Reviewing the literature on interactive whiteboards. Learning, Media and Technology, 32(3), 213–225.",
+      "url": null
+    },
+    {
+      "id": "ref-85",
+      "text": "Hodges, C., Moore, S., Lockee, B., Trust, T., & Bond, A. (2020). The difference between emergency remote teaching and online learning. EDUCAUSE Review.",
+      "url": null
+    },
+    {
+      "id": "ref-86",
+      "text": "Ilardi, V. (2007). Renaissance vision from spectacles to telescopes. American Philosophical Society.",
+      "url": null
+    },
+    {
+      "id": "ref-87",
+      "text": "Krause, S. D. (2000). 'Among the greatest benefactors of mankind': What the success of chalkboards tells us about the future of computers in the classroom. The Journal of the Midwest Modern Language Association, 33(2), 6–16.",
+      "url": null
+    },
+    {
+      "id": "ref-88",
+      "text": "Krutka, D. G., Smits, R. M., & Willhelm, T. A. (2021). Don't be evil: Should we use Google in schools? TechTrends, 65(4), 421–431.",
+      "url": null
+    },
+    {
+      "id": "ref-89",
+      "text": "Lemann, N. (1999). The big test: The secret history of the American meritocracy. Farrar, Straus and Giroux.",
+      "url": null
+    },
+    {
+      "id": "ref-90",
+      "text": "Mazur, E. (1997). Peer instruction: A user's manual. Prentice Hall.",
+      "url": null
+    },
+    {
+      "id": "ref-91",
+      "text": "Mellor, C. M. (2006). Louis Braille: A touch of genius. National Braille Press.",
+      "url": null
+    },
+    {
+      "id": "ref-92",
+      "text": "Moore, M. G., & Kearsley, G. (2011). Distance education: A systems view of online learning (3rd ed.). Wadsworth.",
+      "url": null
+    },
+    {
+      "id": "ref-93",
+      "text": "Papert, S. (1980). Mindstorms: Children, computers, and powerful ideas. Basic Books.",
+      "url": null
+    },
+    {
+      "id": "ref-94",
+      "text": "Park, R. J., Goodman, J., Hurwitz, M., & Smith, J. (2020). Heat and learning. American Economic Journal: Economic Policy, 12(2), 306–339.",
+      "url": null
+    },
+    {
+      "id": "ref-95",
+      "text": "Pea, R. D., & Kurland, D. M. (1984). On the cognitive effects of learning computer programming. New Ideas in Psychology, 2(2), 137–168.",
+      "url": null
+    },
+    {
+      "id": "ref-96",
+      "text": "Petroski, H. (1990). The pencil: A history of design and circumstance. Alfred A. Knopf.",
+      "url": null
+    },
+    {
+      "id": "ref-97",
+      "text": "Proudfoot, W. B. (1972). The origin of stencil duplicating. Hutchinson.",
+      "url": null
+    },
+    {
+      "id": "ref-98",
+      "text": "Rose, D. H., & Meyer, A. (2002). Teaching every student in the digital age: Universal design for learning. ASCD.",
+      "url": null
+    },
+    {
+      "id": "ref-99",
+      "text": "Salaberry, M. R. (2001). The use of technology for second language learning and teaching: A retrospective. The Modern Language Journal, 85(1), 39–56.",
+      "url": null
+    },
+    {
+      "id": "ref-100",
+      "text": "Singer, N. (2017, May 13). How Google took over the classroom. The New York Times.",
+      "url": null
+    },
+    {
+      "id": "ref-101",
+      "text": "Stoll, C. (2006). When slide rules ruled. Scientific American, 294(5), 80–87.",
+      "url": null
+    },
+    {
+      "id": "ref-102",
+      "text": "Thornton, R. K., & Sokoloff, D. R. (1990). Learning motion concepts using real-time microcomputer-based laboratory tools. American Journal of Physics, 58(9), 858–867.",
+      "url": null
+    },
+    {
+      "id": "ref-103",
+      "text": "Watson, W. R., & Watson, S. L. (2007). An argument for clarity: What are learning management systems, what are they not, and what should they become? TechTrends, 51(2), 28–34.",
+      "url": null
+    },
+    {
+      "id": "ref-104",
+      "text": "Wieman, C. E., Adams, W. K., & Perkins, K. K. (2008). PhET: Simulations that enhance learning. Science, 322(5902), 682–683.",
+      "url": null
+    },
+    {
+      "id": "ref-105",
+      "text": "1840s",
+      "url": null
+    },
+    {
+      "id": "ref-106",
+      "text": "1855",
+      "url": null
+    },
+    {
+      "id": "ref-107",
+      "text": "Park et al., 2020",
+      "url": null
+    },
+    {
+      "id": "ref-108",
+      "text": "1937",
+      "url": null
+    },
+    {
+      "id": "ref-109",
+      "text": "1958",
+      "url": null
+    },
+    {
+      "id": "ref-110",
+      "text": "1967",
+      "url": null
+    },
+    {
+      "id": "ref-111",
+      "text": "1976",
+      "url": null
+    },
+    {
+      "id": "ref-112",
+      "text": "Higgins et al., 2007",
+      "url": null
+    },
+    {
+      "id": "ref-113",
+      "text": "A.V. v. iParadigms, 2009",
+      "url": "https://casetext.com/case/av-ex-rel-vanderhye-v-iparadigms-llc"
+    },
+    {
+      "id": "ref-114",
+      "text": "Wieman et al., 2008",
+      "url": null
+    },
+    {
+      "id": "ref-115",
+      "text": "Krutka et al., 2021",
+      "url": null
+    },
+    {
+      "id": "ref-116",
+      "text": "Hodges et al., 2020",
+      "url": null
     }
   ],
   "fearColumns": [
@@ -1764,42 +2818,42 @@
     }
   ],
   "stats": {
-    "total": 41,
+    "total": 67,
     "fears": {
       "Learning": {
         "Yes": 23,
-        "Partial": 9,
-        "No": 9
+        "Partial": 12,
+        "No": 32
       },
       "Morality": {
         "Yes": 19,
         "Partial": 6,
-        "No": 16
+        "No": 42
       },
       "Health": {
         "Yes": 14,
-        "Partial": 10,
-        "No": 17
+        "Partial": 11,
+        "No": 42
       },
       "Public order": {
         "Yes": 19,
-        "Partial": 9,
-        "No": 13
+        "Partial": 12,
+        "No": 36
       }
     },
     "transformed": {
-      "Yes": 18,
-      "Partial": 18,
+      "Yes": 34,
+      "Partial": 28,
       "No": 5
     },
     "dial": {
-      "0": 12,
-      "2": 17,
+      "0": 37,
+      "2": 18,
       "3": 9,
       "4": 1,
       "5": 2
     },
-    "avgDial": 1.83
+    "avgDial": 1.15
   },
   "meta": {
     "title": "Technology Panics & Education",
