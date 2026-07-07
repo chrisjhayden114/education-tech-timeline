@@ -24,10 +24,18 @@ const TIMELINE_LAYOUT = {
   trackPadRight: 140,
   compactThreshold: 72,
   laneStep: 110,
-  collisionWidth: 100
+  collisionWidth: 100,
+  spreadStep: 62,
+  maxClusterSpread: 160
 };
 
-function yearToX(year) {
+let timelineView = {
+  layout: 'spread',
+  panicScale: false,
+  zoom: 1
+};
+
+function yearToX(year, zoom = timelineView.zoom) {
   if (year == null) return TIMELINE_LAYOUT.modernStart;
   const L = TIMELINE_LAYOUT;
 
@@ -38,7 +46,56 @@ function yearToX(year) {
   }
 
   const clamped = Math.max(L.modernMinYear, Math.min(L.modernMaxYear, year));
-  return L.modernStart + (clamped - L.modernMinYear) * L.pxPerYear;
+  return L.modernStart + (clamped - L.modernMinYear) * L.pxPerYear * zoom;
+}
+
+function getNodeIconSize(tech) {
+  if (!timelineView.panicScale) {
+    return { wrap: 52, icon: 26 };
+  }
+  if (!tech.hasPanic) {
+    return { wrap: 38, icon: 19 };
+  }
+  const dial = tech.dial ?? 0;
+  const wrap = 44 + dial * 8;
+  return { wrap, icon: Math.round(wrap * 0.5) };
+}
+
+function applyClusterSpread(positions) {
+  const L = TIMELINE_LAYOUT;
+  const sorted = [...positions].sort((a, b) => a.x - b.x);
+  let cluster = [];
+
+  function flushCluster() {
+    if (cluster.length <= 1) {
+      cluster = [];
+      return;
+    }
+    const anchor = cluster.reduce((sum, pos) => sum + pos.x, 0) / cluster.length;
+    const n = cluster.length;
+    cluster.forEach((pos, index) => {
+      const offset = (index - (n - 1) / 2) * L.spreadStep;
+      const spreadX = anchor + offset;
+      const clamped = Math.max(anchor - L.maxClusterSpread, Math.min(anchor + L.maxClusterSpread, spreadX));
+      pos.displayX = clamped;
+      pos.anchorX = anchor;
+      pos.clustered = true;
+    });
+    cluster = [];
+  }
+
+  for (const pos of sorted) {
+    pos.displayX = pos.x;
+    pos.anchorX = pos.x;
+    pos.clustered = false;
+    if (cluster.length && pos.x - cluster[cluster.length - 1].x < L.compactThreshold) {
+      cluster.push(pos);
+    } else {
+      flushCluster();
+      cluster = [pos];
+    }
+  }
+  flushCluster();
 }
 
 /** Exact year-proportional x; stagger y lanes to avoid overlap. */
@@ -90,16 +147,23 @@ function assignTimelinePositions(technologies) {
     }
   }
 
-  const thresh = L.compactThreshold;
-  for (let i = 0; i < byX.length; i++) {
-    const nearPrev = i > 0 && byX[i].x - byX[i - 1].x < thresh;
-    const nearNext = i < byX.length - 1 && byX[i + 1].x - byX[i].x < thresh;
-    byX[i].compact = nearPrev || nearNext;
+  if (timelineView.layout === 'spread') {
+    applyClusterSpread(byX);
+  } else {
+    const thresh = L.compactThreshold;
+    for (let i = 0; i < byX.length; i++) {
+      const nearPrev = i > 0 && byX[i].x - byX[i - 1].x < thresh;
+      const nearNext = i < byX.length - 1 && byX[i + 1].x - byX[i].x < thresh;
+      byX[i].compact = nearPrev || nearNext;
+      byX[i].displayX = byX[i].x;
+      byX[i].anchorX = byX[i].x;
+      byX[i].clustered = false;
+    }
   }
 
   const maxAbove = byX.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = byX.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
-  return { positions, maxAbove, maxBelow };
+  return { positions: byX, maxAbove, maxBelow };
 }
 
 let filters = {
@@ -123,6 +187,7 @@ async function init() {
   buildStats();
   buildLegend();
   bindControls();
+  bindTimelineViewControls();
   bindTimelineScroll();
   updateFilterCount();
 
@@ -221,6 +286,95 @@ function bindControls() {
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('detail-modal').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
+  });
+}
+
+function bindTimelineViewControls() {
+  const layoutChips = document.querySelectorAll('[data-timeline-layout]');
+  layoutChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      layoutChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      timelineView.layout = chip.dataset.timelineLayout;
+      hideTimelineTooltip();
+      buildTimeline();
+      applyFilters();
+    });
+  });
+
+  const panicScale = document.getElementById('panic-scale-view');
+  if (panicScale) {
+    panicScale.checked = timelineView.panicScale;
+    panicScale.addEventListener('change', () => {
+      timelineView.panicScale = panicScale.checked;
+      hideTimelineTooltip();
+      buildTimeline();
+      applyFilters();
+    });
+  }
+
+  const zoom = document.getElementById('timeline-zoom');
+  const zoomLabel = document.getElementById('timeline-zoom-display');
+  if (zoom) {
+    zoom.value = timelineView.zoom;
+    if (zoomLabel) zoomLabel.textContent = `${Math.round(timelineView.zoom * 100)}%`;
+    zoom.addEventListener('input', () => {
+      timelineView.zoom = parseFloat(zoom.value);
+      if (zoomLabel) zoomLabel.textContent = `${Math.round(timelineView.zoom * 100)}%`;
+      hideTimelineTooltip();
+      buildTimeline();
+      applyFilters();
+    });
+  }
+}
+
+function buildDecadeNavigator(positions) {
+  const nav = document.getElementById('timeline-decade-nav');
+  if (!nav) return;
+
+  const buckets = new Map();
+  positions.forEach(({ tech, displayX }) => {
+    const year = tech.impactYear;
+    if (year == null || year < 1400) return;
+    const decade = Math.floor(year / 10) * 10;
+    if (!buckets.has(decade)) buckets.set(decade, { count: 0, x: displayX ?? yearToX(year) });
+    const bucket = buckets.get(decade);
+    bucket.count += 1;
+    bucket.x = Math.min(bucket.x, displayX ?? yearToX(year));
+  });
+
+  const dense = [...buckets.entries()]
+    .filter(([, bucket]) => bucket.count >= 3)
+    .sort((a, b) => a[0] - b[0]);
+
+  nav.innerHTML = '';
+  if (!dense.length) {
+    nav.hidden = true;
+    return;
+  }
+
+  nav.hidden = false;
+  const label = document.createElement('span');
+  label.className = 'timeline-decade-nav__label';
+  label.textContent = 'Jump to busy decades:';
+  nav.appendChild(label);
+
+  dense.forEach(([decade, bucket]) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'timeline-decade-chip';
+    const suffix = decade % 100;
+    const era = decade >= 2000 ? `${decade}s` : `${Math.floor(decade / 100)}${String(suffix).padStart(2, '0')}s`;
+    btn.textContent = `${era} (${bucket.count})`;
+    btn.addEventListener('click', () => {
+      const scroller = document.getElementById('timeline-scroll');
+      if (!scroller) return;
+      scroller.scrollTo({
+        left: Math.max(0, bucket.x - scroller.clientWidth * 0.35),
+        behavior: 'smooth'
+      });
+    });
+    nav.appendChild(btn);
   });
 }
 
@@ -346,18 +500,43 @@ function hideTimelineTooltip() {
   timelineTooltipNode = null;
 }
 
-function createTechNode(tech, x, above, lane = 0, compact = false) {
+function createTechNode(tech, pos) {
+  const { displayX, above, lane, compact, clustered, anchorX } = pos;
+  const { wrap, icon } = getNodeIconSize(tech);
   const node = document.createElement('div');
-  node.className = `tech-node ${above ? 'tech-node--above' : 'tech-node--below'}${compact ? ' tech-node--compact' : ''}${tech.hasPanic ? ' tech-node--panic' : ''}`;
+  node.className = [
+    'tech-node',
+    above ? 'tech-node--above' : 'tech-node--below',
+    compact ? 'tech-node--compact' : '',
+    clustered ? 'tech-node--clustered' : '',
+    tech.hasPanic ? 'tech-node--panic' : 'tech-node--quiet',
+    timelineView.panicScale ? 'tech-node--scaled' : ''
+  ].filter(Boolean).join(' ');
   node.dataset.id = tech.id;
-  node.style.left = `${x}px`;
+  node.style.left = `${displayX}px`;
   node.style.setProperty('--lane', lane);
+  node.style.setProperty('--node-size', `${wrap}px`);
+  node.style.setProperty('--icon-size', `${icon}px`);
+  if (clustered && anchorX != null) {
+    node.style.setProperty('--anchor-offset', `${anchorX - displayX}px`);
+  }
+
+  const addedMarker = tech.isAdded
+    ? '<span class="tech-node__added-marker" title="Added to broaden the timeline" aria-hidden="true">*</span>'
+    : '';
+  const dialBadge = tech.hasPanic && timelineView.panicScale
+    ? `<span class="tech-node__dial-badge" title="Fear dial ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
+    : '';
 
   node.innerHTML = `
     <div class="tech-node__stem" aria-hidden="true"></div>
-    <button type="button" class="tech-node__trigger" aria-label="${tech.name}, ${tech.broadImpact}">
-      <div class="tech-node__icon-wrap">${techIconSvg(tech.id, 26)}</div>
-      <span class="tech-node__name">${tech.name}${tech.isAdded ? '<span class="added-badge">*</span>' : ''}</span>
+    <button type="button" class="tech-node__trigger" aria-label="${tech.name}, ${tech.broadImpact}${tech.isAdded ? ', added entry' : ''}">
+      <div class="tech-node__icon-wrap">
+        ${addedMarker}
+        ${dialBadge}
+        ${techIconSvg(tech.id, icon)}
+      </div>
+      <span class="tech-node__name">${tech.name}</span>
       <span class="tech-node__year">${tech.broadImpact}</span>
     </button>
   `;
@@ -374,7 +553,7 @@ function createTechNode(tech, x, above, lane = 0, compact = false) {
   return node;
 }
 
-function buildTimelineAxis(trackWidth) {
+function buildTimelineAxis(trackWidth, positions = []) {
   const axis = document.getElementById('timeline-axis');
   const { ancientXEnd, breakStart, breakWidth, modernStart } = TIMELINE_LAYOUT;
 
@@ -397,28 +576,48 @@ function buildTimelineAxis(trackWidth) {
     el.textContent = label;
     axis.appendChild(el);
   });
+
+  if (timelineView.layout === 'spread') {
+    const anchors = new Map();
+    positions.forEach(pos => {
+      if (pos.clustered && pos.anchorX != null) {
+        anchors.set(pos.anchorX, pos.tech.impactYear);
+      }
+    });
+    anchors.forEach((year, x) => {
+      const el = document.createElement('div');
+      el.className = 'axis-cluster-anchor';
+      el.style.left = `${x}px`;
+      el.title = `Historical date anchor${year != null ? `: ${year}` : ''}`;
+      axis.appendChild(el);
+    });
+  }
 }
 
 function buildTimeline() {
   const track = document.getElementById('timeline-track');
   const nodesEl = document.getElementById('timeline-nodes');
+  const visible = DATA.technologies.filter(matchesFilters);
 
-  const sorted = [...DATA.technologies].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
+  const sorted = [...visible].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
   const { positions, maxAbove, maxBelow } = assignTimelinePositions(sorted);
 
   const trackWidth = Math.max(
     yearToX(TIMELINE_LAYOUT.modernMaxYear),
-    ...positions.map(p => p.x)
+    ...positions.map(p => p.displayX ?? p.x)
   ) + TIMELINE_LAYOUT.trackPadRight;
 
   const lanePad = TIMELINE_LAYOUT.laneStep;
-  const nodeBlock = 132;
+  const maxNodeSize = timelineView.panicScale ? 84 : 52;
+  const nodeBlock = maxNodeSize + 80;
   const stemH = 32;
   const edgePad = 56;
   const axisY = edgePad + maxAbove * lanePad + nodeBlock;
   const belowH = maxBelow * lanePad + nodeBlock + stemH + edgePad;
   const trackHeight = axisY + belowH;
 
+  track.classList.toggle('timeline-track--panic-scale', timelineView.panicScale);
+  track.classList.toggle('timeline-track--spread', timelineView.layout === 'spread');
   track.style.width = `${trackWidth}px`;
   track.style.height = `${trackHeight}px`;
   track.style.setProperty('--axis-y', `${axisY}px`);
@@ -428,10 +627,11 @@ function buildTimeline() {
 
   nodesEl.innerHTML = '';
 
-  buildTimelineAxis(trackWidth);
+  buildTimelineAxis(trackWidth, positions);
+  buildDecadeNavigator(positions);
 
-  positions.forEach(({ tech, x, above, lane, compact }) => {
-    nodesEl.appendChild(createTechNode(tech, x, above, lane, compact));
+  positions.forEach(pos => {
+    nodesEl.appendChild(createTechNode(pos.tech, pos));
   });
 
   requestAnimationFrame(updateScrollAffordances);
@@ -524,10 +724,8 @@ function matchesFilters(tech) {
 }
 
 function applyFilters() {
-  document.querySelectorAll('.tech-node').forEach(node => {
-    const tech = DATA.technologies.find(t => t.id === node.dataset.id);
-    node.classList.toggle('hidden', !matchesFilters(tech));
-  });
+  hideTimelineTooltip();
+  buildTimeline();
   updateFilterCount();
 }
 

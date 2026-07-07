@@ -96,7 +96,7 @@
 
     <section id="timeline" class="timeline-section">
       <h2 class="section-title">The Timeline</h2>
-      <p class="section-desc">Scroll horizontally through four millennia of educational technology. <strong class="timeline-key-inline timeline-key-inline--panic">Red glow</strong> marks documented panics; plain nodes are quiet transformers that changed schooling without meaningful fear. Hover for detail — click for full entries and comments.</p>
+      <p class="section-desc">Scroll horizontally through four millennia of educational technology. <strong class="timeline-key-inline timeline-key-inline--panic">Red glow</strong> marks documented panics; plain nodes are quiet transformers. Use <strong class="timeline-key-inline">Spread clusters</strong> for dense decades, or enable <strong class="timeline-key-inline">Panic-sized markers</strong> to scale icons by fear intensity.</p>
       <div class="timeline-key" aria-label="Timeline legend">
         <span class="timeline-key__item timeline-key__item--panic">
           <span class="timeline-key__swatch" aria-hidden="true"></span>
@@ -106,7 +106,30 @@
           <span class="timeline-key__swatch" aria-hidden="true"></span>
           Quiet transformer
         </span>
+        <span class="timeline-key__item timeline-key__item--added">
+          <span class="timeline-key__swatch timeline-key__swatch--added" aria-hidden="true">*</span>
+          Added entry
+        </span>
       </div>
+      <div class="timeline-view-controls" aria-label="Timeline display options">
+        <div class="timeline-view-group">
+          <span class="timeline-view-label">Layout</span>
+          <div class="filter-chips">
+            <button type="button" class="chip active" data-timeline-layout="spread">Spread clusters</button>
+            <button type="button" class="chip" data-timeline-layout="compact">Compact labels</button>
+          </div>
+        </div>
+        <label class="timeline-view-toggle">
+          <input type="checkbox" id="panic-scale-view">
+          <span>Panic-sized markers</span>
+        </label>
+        <div class="timeline-view-group timeline-view-group--zoom">
+          <span class="timeline-view-label">Zoom</span>
+          <input type="range" id="timeline-zoom" min="0.85" max="1.45" step="0.05" value="1" aria-label="Timeline zoom">
+          <span id="timeline-zoom-display" class="timeline-zoom-display">100%</span>
+        </div>
+      </div>
+      <nav class="timeline-decade-nav" id="timeline-decade-nav" hidden aria-label="Jump to busy decades"></nav>
       <div class="timeline-scroll-outer" id="timeline-scroll-outer">
         <button type="button" class="timeline-scroll-btn timeline-scroll-btn--left" id="scroll-left" aria-label="Scroll timeline left" hidden>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
