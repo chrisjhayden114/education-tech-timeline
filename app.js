@@ -250,28 +250,56 @@ function assignTimelinePositions(technologies) {
   return { positions, maxAbove, maxBelow };
 }
 
+/** Connector attach points aligned with tech-node CSS (lane gap 10px). */
+function getConnectorPoints(pos, axisY) {
+  const laneOffset = pos.lane * TIMELINE_LAYOUT.laneStep;
+  const laneGap = 10;
+  const axisClearance = 5;
+
+  if (pos.above) {
+    const nodeBottom = axisY - laneOffset - laneGap;
+    return {
+      attachX: pos.displayX,
+      attachY: nodeBottom,
+      bendY: axisY - axisClearance,
+      axisX: pos.anchorX,
+      axisY
+    };
+  }
+
+  const nodeTop = axisY + laneOffset + laneGap;
+  return {
+    attachX: pos.displayX,
+    attachY: nodeTop,
+    bendY: axisY + axisClearance,
+    axisX: pos.anchorX,
+    axisY
+  };
+}
+
+/** L-shaped path: node → toward axis → along axis level → date tick on axis. */
+function buildConnectorPath(points) {
+  const { attachX, attachY, bendY, axisX, axisY } = points;
+  const dx = Math.abs(attachX - axisX);
+
+  if (dx < 4) {
+    return `M ${attachX} ${attachY} L ${axisX} ${axisY}`;
+  }
+
+  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
+}
+
 function drawTimelineConnectors(svg, positions, axisY) {
-  const L = TIMELINE_LAYOUT;
   svg.innerHTML = '';
 
   const ticksDrawn = new Set();
 
   positions.forEach(pos => {
-    const { displayX, anchorX, above, lane, tech } = pos;
+    const { tech } = pos;
     const panic = tech.hasPanic;
-    const stroke = panic ? 'rgba(196, 30, 30, 0.5)' : 'rgba(42, 125, 114, 0.48)';
-    const laneOffset = lane * L.laneStep;
-    const nodeEdgeY = above ? axisY - laneOffset - 6 : axisY + laneOffset + 6;
-    const elbowY = above
-      ? axisY - Math.max(18, laneOffset * 0.45)
-      : axisY + Math.max(18, laneOffset * 0.45);
-
-    let d;
-    if (Math.abs(displayX - anchorX) < 3) {
-      d = `M ${displayX} ${nodeEdgeY} L ${anchorX} ${axisY}`;
-    } else {
-      d = `M ${displayX} ${nodeEdgeY} L ${displayX} ${elbowY} L ${anchorX} ${elbowY} L ${anchorX} ${axisY}`;
-    }
+    const stroke = panic ? 'rgba(196, 30, 30, 0.55)' : 'rgba(42, 125, 114, 0.5)';
+    const points = getConnectorPoints(pos, axisY);
+    const d = buildConnectorPath(points);
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
@@ -282,11 +310,19 @@ function drawTimelineConnectors(svg, positions, axisY) {
     path.setAttribute('stroke-linejoin', 'round');
     svg.appendChild(path);
 
-    const tickKey = `${Math.round(anchorX)}`;
+    const joint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    joint.setAttribute('cx', String(points.attachX));
+    joint.setAttribute('cy', String(points.attachY));
+    joint.setAttribute('r', '2.5');
+    joint.setAttribute('fill', panic ? '#c41e1e' : '#2a7d72');
+    joint.setAttribute('opacity', '0.7');
+    svg.appendChild(joint);
+
+    const tickKey = String(Math.round(points.axisX));
     if (!ticksDrawn.has(tickKey)) {
       ticksDrawn.add(tickKey);
       const tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      tick.setAttribute('cx', String(anchorX));
+      tick.setAttribute('cx', tickKey);
       tick.setAttribute('cy', String(axisY));
       tick.setAttribute('r', '3.5');
       tick.setAttribute('fill', '#2a7d72');

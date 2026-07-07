@@ -690,14 +690,14 @@ main {
   top: auto;
   flex-direction: column-reverse;
   transform: translateX(-50%);
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 .tech-node--below {
   top: calc(var(--axis-y) + var(--lane, 0) * var(--lane-step) + 10px);
   bottom: auto;
   transform: translateX(-50%);
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .tech-node.hidden {
@@ -814,15 +814,6 @@ main {
     0 0 22px rgba(224, 32, 32, 0.28),
     0 4px 14px rgba(224, 32, 32, 0.12);
   color: #c41e1e;
-}
-
-.tech-node--panic .tech-node__stem {
-  background: linear-gradient(180deg, rgba(224, 32, 32, 0.75), transparent);
-  opacity: 0.85;
-}
-
-.tech-node--panic.tech-node--below .tech-node__stem {
-  background: linear-gradient(0deg, rgba(224, 32, 32, 0.75), transparent);
 }
 
 .tech-node--panic:hover .tech-node__icon-wrap,
