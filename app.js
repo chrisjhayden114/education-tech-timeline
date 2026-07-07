@@ -28,8 +28,10 @@ const TIMELINE_LAYOUT = {
   trackPadRight: 160,
   laneStep: 118,
   collisionWidth: 108,
-  /** Minimum horizontal gap between node centres after packing */
-  minNodeGap: 108
+  /** Minimum horizontal gap between node centres (floor; widened by label width) */
+  minNodeGap: 108,
+  labelMaxWidth: 148,
+  labelPad: 14
 };
 
 let timelineView = {
@@ -69,13 +71,13 @@ function getNodeIconSize(tech) {
   return { wrap, icon: Math.round(wrap * 0.5) };
 }
 
-function assignLanes(positions, xKey = 'displayX') {
+function assignLanes(positions, xKey = 'displayX', collisionWidth = TIMELINE_LAYOUT.collisionWidth) {
   const L = TIMELINE_LAYOUT;
   const sideLanes = { above: [], below: [] };
 
   function findTier(lanes, x) {
     let tier = 0;
-    while (tier < lanes.length && x - lanes[tier] < L.collisionWidth) tier++;
+    while (tier < lanes.length && x - lanes[tier] < collisionWidth) tier++;
     return tier;
   }
 
@@ -103,9 +105,48 @@ function assignLanes(positions, xKey = 'displayX') {
   }
 }
 
+function estimateLabelWidth(name) {
+  const L = TIMELINE_LAYOUT;
+  const maxW = L.labelMaxWidth;
+  const charW = 7;
+  const words = name.split(/\s+/);
+  const longestWord = Math.max(...words.map(w => w.length), 1);
+  const charsPerLine = Math.max(1, Math.floor(maxW / charW));
+  const lines = Math.ceil(name.length / charsPerLine);
+  const avgCharsPerLine = Math.min(charsPerLine, Math.max(longestWord, name.length / lines));
+  return Math.min(maxW, Math.max(92, avgCharsPerLine * charW));
+}
+
+/** Shorter on-timeline label for very long names; full name stays in tooltip/modal. */
+function timelineDisplayName(name) {
+  if (name.length <= 32) return name;
+
+  const trimPhrases = [
+    ' in the language classroom',
+    ' and emergency remote teaching',
+    ' and voice assistants',
+    ' and cloud classroom suites',
+    ' (slates to ballpoints; typewriter)',
+    ' (clickers to Kahoot)',
+    ' (Logo to Scratch)'
+  ];
+  for (const phrase of trimPhrases) {
+    if (name.includes(phrase)) {
+      const short = name.replace(phrase, '').trim();
+      if (short.length <= 34) return short;
+    }
+  }
+
+  const beforeAnd = name.split(' and ')[0];
+  if (beforeAnd.length >= 10 && beforeAnd.length <= 30) return `${beforeAnd}…`;
+
+  if (name.length > 36) return `${name.slice(0, 34).trim()}…`;
+  return name;
+}
+
 /** Guarantee readable horizontal spacing; preserve chronological order. */
 function applyMinimumSpacing(positions) {
-  const gap = TIMELINE_LAYOUT.minNodeGap;
+  const L = TIMELINE_LAYOUT;
   const sorted = [...positions].sort((a, b) => {
     const ya = a.tech.impactYear ?? 0;
     const yb = b.tech.impactYear ?? 0;
@@ -114,11 +155,18 @@ function applyMinimumSpacing(positions) {
   });
 
   let lastX = -Infinity;
+  let lastLabelW = 0;
   for (const pos of sorted) {
     pos.anchorX = pos.x;
+    const labelW = estimateLabelWidth(pos.tech.name);
+    pos.labelWidth = labelW;
+    const gap = lastX < -1e8
+      ? L.minNodeGap
+      : (lastLabelW + labelW) / 2 + L.labelPad;
     pos.displayX = Math.max(pos.x, lastX + gap);
     pos.clustered = Math.abs(pos.displayX - pos.x) > 6;
     lastX = pos.displayX;
+    lastLabelW = labelW;
   }
 }
 
@@ -143,7 +191,12 @@ function assignTimelinePositions(technologies) {
   });
 
   applyMinimumSpacing(positions);
-  assignLanes(positions, 'displayX');
+  const maxLabelW = Math.max(
+    TIMELINE_LAYOUT.labelMaxWidth,
+    ...positions.map(p => p.labelWidth || 0)
+  );
+  const laneCollision = Math.max(108, maxLabelW + TIMELINE_LAYOUT.labelPad);
+  assignLanes(positions, 'displayX', laneCollision);
 
   const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
@@ -496,6 +549,7 @@ function createTechNode(tech, pos) {
   const dialBadge = tech.hasPanic && timelineView.panicScale
     ? `<span class="tech-node__dial-badge" title="Fear dial ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
     : '';
+  const displayName = timelineDisplayName(tech.name);
 
   node.innerHTML = `
     <div class="tech-node__stem" aria-hidden="true"></div>
@@ -505,7 +559,7 @@ function createTechNode(tech, pos) {
         ${dialBadge}
         ${techIconSvg(tech.id, icon)}
       </div>
-      <span class="tech-node__name">${tech.name}</span>
+      <span class="tech-node__name" title="${tech.name}">${displayName}</span>
       <span class="tech-node__year">${tech.broadImpact}</span>
     </button>
   `;
@@ -720,7 +774,7 @@ function buildStats() {
   const summary = [
     { value: s.total, label: 'Technologies tracked', id: 'stat-total' },
     { value: s.transformed.Yes, label: 'Transformed education (Yes)', id: 'stat-transformed' },
-    { value: s.avgDial, label: 'Average fear dial (0–5)', id: 'stat-dial' },
+    { value: s.avgDial, label: 'Avg. learning/cognitive panic dial (0–5)', id: 'stat-dial' },
     { value: DATA.references.length, label: 'Academic references', id: 'stat-refs' }
   ];
 

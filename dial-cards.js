@@ -346,7 +346,8 @@ function dialLegendHtml(compact = false) {
   ).join('');
   return `
     <footer class="fear-dial-card__legend${compact ? ' fear-dial-card__legend--compact' : ''}">
-      <p class="fear-dial-card__legend-title">Education-related fear, 0–5 (intensity at historical peak)</p>
+      <p class="fear-dial-card__legend-title">Learning &amp; cognitive-development panic intensity (0–5)</p>
+      <p class="fear-dial-card__legend-desc">Peak fear that this technology would harm memory, attention, literacy, reasoning, or skill formation — the core &ldquo;ruining young minds&rdquo; claim. Scored at historical peak; measures size of the panic, not accuracy.</p>
       <div class="fear-dial-legend">${items}</div>
     </footer>
   `;
@@ -371,14 +372,18 @@ function renderFearDialCard(tech, opts = {}) {
   const tagHtml = tags.map(t => `<span class="fear-dial-card__tag">${t}</span>`).join('');
   const added = addedBadge && tech.isAdded ? '<span class="added-badge">*</span>' : '';
   const dialSize = panel ? 'panel' : (compact ? 'compact' : 'full');
+  const dialHeading = panel
+    ? '<p class="fear-dial-card__dial-heading fear-dial-card__dial-heading--panel">Learning &amp; cognitive panic (0–5)</p>'
+    : '<p class="fear-dial-card__dial-heading">Learning &amp; cognitive-development panic intensity</p>';
 
   return `
     <article class="fear-dial-card fear-dial-card--level-${level}${compact ? ' fear-dial-card--compact' : ''}${panel ? ' fear-dial-card--panel' : ''}${clickable ? ' fear-dial-card--clickable' : ''}"
              data-tech-id="${tech.id}"
              style="--dial-color:${color}">
       <div class="fear-dial-card__gauge-wrap">
+        ${dialHeading}
         ${fearDialSvg(level, dialSize)}
-        <p class="fear-dial-card__score" aria-label="Fear intensity ${level} out of 5, ${label}">
+        <p class="fear-dial-card__score" aria-label="Learning and cognitive-development panic intensity ${level} out of 5, ${label}">
           <span class="fear-dial-card__number">${level}</span>
           <span class="fear-dial-card__label">${label}</span>
         </p>
