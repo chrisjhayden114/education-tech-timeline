@@ -1,2 +1,3 @@
 # Add real Supabase keys only in a local override — the committed file uses empty placeholders.
 # supabase-config.local.js
+.DS_Store
