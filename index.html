@@ -18,6 +18,7 @@
       </a>
       <div class="nav-links">
         <a href="#timeline" class="nav-link active">Timeline</a>
+        <a href="#fear-dial-method" class="nav-link">Fear Dial</a>
         <a href="#pattern-primer" class="nav-link">Variables</a>
         <a href="#pattern" class="nav-link">The Pattern</a>
         <a href="#statistics" class="nav-link">Statistics</a>
@@ -92,7 +93,7 @@
           </div>
           <p class="method-footnote method-footnote--compact">
             Dials are retrospective judgment scores, not calculated metrics.
-            <a href="#legend-dial">See Legend</a>.
+            <a href="#fear-dial-method">How dials are scored</a>.
           </p>
         </div>
         <button id="reset-filters" class="btn-ghost">Reset filters</button>
@@ -160,6 +161,61 @@
       </div>
     </section>
 
+    <section id="fear-dial-method" class="dial-method-section" aria-labelledby="fear-dial-method-heading">
+      <h2 id="fear-dial-method-heading" class="section-title">How the Fear Dial is scored</h2>
+      <p class="section-desc">
+        Every technology carries a learning/cognitive panic dial from <strong>0 to 5</strong>.
+        These scores are <strong>not calculated by a formula</strong> — they are retrospective judgment calls
+        about the size of the historical panic, not whether the fear proved true.
+      </p>
+
+      <div class="dial-method-card">
+        <h3 class="dial-method-card__title">What the dial measures</h3>
+        <p>
+          Peak <em>education-related</em> fear intensity at the historical high point of the panic:
+          roughly <strong>intensity × reach</strong>. A quiet scholarly worry scores low; a mass panic
+          that pulls in schools, courts, parliament, or health authorities scores high.
+          The dial measures the <strong>size of the fear</strong>, not its accuracy.
+        </p>
+
+        <h3 class="dial-method-card__title">How a score is assigned</h3>
+        <ol class="dial-method-steps">
+          <li>
+            <strong>Contemporaneous claims</strong> — What did people at the time say the technology
+            would do to memory, attention, literacy, reasoning, or skill formation?
+          </li>
+          <li>
+            <strong>Scale and persistence</strong> — Was the worry niche or public? Brief or sustained?
+            Did it produce bans, burnings, curriculum fights, or lasting policy settlements?
+          </li>
+          <li>
+            <strong>Learning focus</strong> — How directly did the panic target schooling or cognitive
+            development (versus morality, health, or public order alone)?
+          </li>
+          <li>
+            <strong>Reach at peak</strong> — How widely did the fear circulate among parents, teachers,
+            journalists, and institutions? Tiny elite debates stay low even when intense;
+            mass panics climb the dial.
+          </li>
+        </ol>
+
+        <h3 class="dial-method-card__title">The scale</h3>
+        <ul class="dial-method-scale">
+          <li><span class="dial-method-scale__n" style="--c:#9aa09a">0</span> None — no meaningful learning/cognitive panic</li>
+          <li><span class="dial-method-scale__n" style="--c:#e09545">2</span> Low — documented worry, limited reach or short-lived</li>
+          <li><span class="dial-method-scale__n" style="--c:#d05d38">3</span> Moderate — clear public learning panic</li>
+          <li><span class="dial-method-scale__n" style="--c:#e02020">4</span> High — major, multi-institution panic</li>
+          <li><span class="dial-method-scale__n" style="--c:#8b1a1a">5</span> Severe — mass panic with lasting settlement or prohibition</li>
+        </ul>
+
+        <p class="dial-method-note">
+          Related codings (fear type Yes/Partial/No, engines, and control) use the same judgment-based method.
+          Some added entries (*) are scored retrospectively from the historical record.
+          A short reference version also appears in the <a href="#legend-dial">Legend &amp; Notes</a>.
+        </p>
+      </div>
+    </section>
+
     <section id="pattern-primer" class="pattern-primer" aria-labelledby="pattern-primer-heading">
       <h2 id="pattern-primer-heading" class="section-title">Reading the Pattern</h2>
       <p class="section-desc">
@@ -185,7 +241,7 @@
               <dd>
                 Peak learning/cognitive panic intensity (0–5): intensity × reach at historical peak.
                 Measures the size of the fear, not its accuracy —
-                <a href="#legend-dial">how dials are assigned</a>.
+                <a href="#fear-dial-method">how dials are scored</a>.
               </dd>
             </div>
             <div class="primer-vars__row">
@@ -257,7 +313,7 @@
       </p>
       <p class="method-footnote">
         Fear dial scores (0–5) and related codings are judgment-based and assigned retrospectively — not computed from a formula.
-        <a href="#legend-dial">How dials are determined (Legend)</a>:
+        <a href="#fear-dial-method">How dials are scored</a>:
         measures the size of the fear, not its accuracy; codings are judgment calls.
       </p>
       <div id="panic-grid" class="panic-grid" aria-labelledby="panic-grid-heading">

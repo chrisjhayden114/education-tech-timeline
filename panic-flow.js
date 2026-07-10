@@ -83,6 +83,15 @@ const PanicFlow = (function () {
 
     container.innerHTML = '';
 
+    const intro = document.createElement('p');
+    intro.className = 'panic-flow__intro section-desc';
+    intro.innerHTML =
+      'Put together, the pattern is a sequence rather than a single cause. ' +
+      'This diagram summarizes how an education panic typically <strong>runs</strong>: ' +
+      'youth autonomy ignites concern; the engines that fire decide whether the panic stays moral or becomes cognitive; ' +
+      'intensity rises with engine count and assessment centrality; and resolution arrives when institutions ' +
+      'retake the classroom form — not when the evidence finally settles.';
+
     const list = document.createElement('ol');
     list.className = 'panic-flow__stages';
 
@@ -93,6 +102,7 @@ const PanicFlow = (function () {
       }
     });
 
+    container.appendChild(intro);
     container.appendChild(list);
 
     const footer = document.createElement('div');

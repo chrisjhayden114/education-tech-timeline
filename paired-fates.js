@@ -230,6 +230,14 @@ const PairedFates = (function () {
     verifyPairs(technologies);
     container.innerHTML = '';
 
+    const intro = document.createElement('p');
+    intro.className = 'paired-fates__intro section-desc';
+    intro.innerHTML =
+      'Natural experiments hold the <strong>capability</strong> roughly constant and vary only <strong>control</strong>. ' +
+      'Each pair below links two technologies that do a similar job — one typically institution-managed in school, ' +
+      'the other child- or consumer-controlled outside it. The dial gap shows how fate diverges when the same kind of tool ' +
+      'leaves adult hands. The final card is a single device that lived both lives at once.';
+
     const grid = document.createElement('div');
     grid.className = 'paired-fates__grid';
 
@@ -238,6 +246,7 @@ const PairedFates = (function () {
     });
 
     grid.appendChild(createSingle(SINGLE_CARD, technologies));
+    container.appendChild(intro);
     container.appendChild(grid);
 
     const closing = document.createElement('p');

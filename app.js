@@ -1125,7 +1125,7 @@ function buildStats() {
   dBlock.className = 'fear-stat-block';
   dBlock.innerHTML = `
     <h3>Learning &amp; cognitive panic dial (0–5)</h3>
-    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#legend-dial">see Legend for how dials are assigned</a>.</p>
+    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#fear-dial-method">see how dials are scored</a>.</p>
     <div class="bar-chart">
       ${[0, 2, 3, 4, 5].map(n => {
         const c = s.dial[String(n)];

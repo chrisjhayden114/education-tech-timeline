@@ -39,11 +39,12 @@ const SubstitutionGradient = (function () {
   ];
 
   const EXTRA_DOTS = [
-    { id: 'handwriting-technologies-slates-to-ballpoints-typewriter', displayDial: 2, x: 0.18 },
-    { id: 'search-engines', displayDial: 2, x: 0.38 },
-    { id: 'texting-and-instant-messaging', displayDial: 3, x: 0.62 },
-    { id: 'machine-translation-in-the-language-classroom', displayDial: 1, x: 0.08 },
-    { id: 'smart-speakers-and-voice-assistants', displayDial: 1, x: 0.28 }
+    // Place in gutters between step columns so dots never cover step labels.
+    { id: 'machine-translation-in-the-language-classroom', displayDial: 1, x: 0.22 },
+    { id: 'smart-speakers-and-voice-assistants', displayDial: 1, x: 0.28 },
+    { id: 'handwriting-technologies-slates-to-ballpoints-typewriter', displayDial: 2, x: 0.47 },
+    { id: 'search-engines', displayDial: 2, x: 0.53 },
+    { id: 'texting-and-instant-messaging', displayDial: 3, x: 0.72 }
   ];
 
   function dialColor(dial) {
@@ -53,6 +54,10 @@ const SubstitutionGradient = (function () {
     return DIAL_COLORS[dial] ?? DIAL_COLORS[0];
   }
 
+  function stepTextTone(dial) {
+    return dial <= 2 ? 'dark' : 'light';
+  }
+
   function findTech(technologies, id) {
     return technologies.find(t => t.id === id);
   }
@@ -60,9 +65,10 @@ const SubstitutionGradient = (function () {
   function stepBlock(step, tech) {
     const dial = step.displayDial;
     const color = dialColor(dial);
+    const tone = stepTextTone(dial);
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'sub-gradient__step';
+    btn.className = `sub-gradient__step sub-gradient__step--${tone}`;
     btn.style.setProperty('--step-dial', String(dial));
     btn.style.setProperty('--step-color', color);
     btn.setAttribute('aria-label', PatternTooltips.accessibleLabel(tech));
