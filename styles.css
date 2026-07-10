@@ -116,8 +116,10 @@ h1, h2, h3, h4, h5, h6 {
 .btn-ghost {
   background: transparent;
   color: var(--accent);
-  padding: 0.4rem 0.75rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.92rem;
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Header & nav */
@@ -238,17 +240,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-card--back {
-  top: 20px;
-  right: 40px;
+  top: 28px;
+  right: 36px;
   width: 240px;
-  opacity: 0.7;
+  opacity: 0.55;
   transform: rotate(3deg);
+  z-index: 0;
 }
 
 .hero-card--front {
   top: 60px;
   right: 0;
-  width: 280px;
+  width: 300px;
+  z-index: 1;
 }
 
 .hero-card__label {
@@ -262,7 +266,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-card__stats {
   display: flex;
   gap: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .hero-stat-num {
@@ -273,6 +277,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-stat-lbl { font-size: 0.7rem; color: var(--text-muted); }
+
+.hero-card__fears {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-card__fears-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
 
 .hero-card__chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 
@@ -288,14 +307,6 @@ h1, h2, h3, h4, h5, h6 {
 .chip-mini--morality { color: var(--morality); }
 .chip-mini--health { color: var(--health); }
 .chip-mini--order { color: var(--order); }
-
-.hero-card__bar {
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin-bottom: 1rem;
-  width: 40%;
-}
 
 .hero-card__row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
 
@@ -361,35 +372,36 @@ main {
 .controls-inner {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 1.5rem;
+  gap: 1.25rem 2rem;
   align-items: flex-end;
 }
 
-.filter-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.filter-group { display: flex; flex-direction: column; gap: 0.55rem; }
 
 .filter-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--text-muted);
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
-.filter-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 
 .chip {
-  padding: 0.35rem 0.8rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 9px;
   background: #ffffff;
   font-family: var(--font);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.chip:hover { border-color: var(--accent); color: var(--text); }
+.chip:hover { border-color: var(--accent); color: var(--text); background: var(--accent-dim); }
 .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 .chip--learning.active { background: var(--learning); border-color: var(--learning); color: #fff; }
@@ -397,10 +409,10 @@ main {
 .chip--health.active { background: var(--health); border-color: var(--health); color: #fff; }
 .chip--order.active { background: var(--order); border-color: var(--order); color: #fff; }
 
-.dial-slider-wrap { display: flex; align-items: center; gap: 0.5rem; }
-.dial-slider-wrap input { width: 72px; accent-color: var(--accent); }
-.dial-range-label, .dial-range-display, .filter-count { font-size: 0.85rem; color: var(--text-muted); }
-.filter-count { margin: 0.75rem 0 0; }
+.dial-slider-wrap { display: flex; align-items: center; gap: 0.55rem; }
+.dial-slider-wrap input { width: 88px; accent-color: var(--accent); height: 1.1rem; }
+.dial-range-label, .dial-range-display { font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); }
+.filter-count { margin: 0.85rem 0 0; font-size: 0.92rem; color: var(--text-secondary); font-weight: 500; }
 
 /* Timeline — horizontal scroll */
 .timeline-section {
@@ -1813,6 +1825,19 @@ main {
   color: var(--text-secondary);
   margin: 0 0 1rem;
   letter-spacing: -0.01em;
+}
+
+.pattern-subhead {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 2.75rem 0 0.65rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.pattern-section > .pattern-subhead:first-of-type {
+  margin-top: 1.75rem;
 }
 
 .panic-grid__scroll {

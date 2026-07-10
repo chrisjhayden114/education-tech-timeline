@@ -45,7 +45,6 @@
       </div>
       <div class="hero__visual" aria-hidden="true">
         <div class="hero-card hero-card--back">
-          <div class="hero-card__bar"></div>
           <div class="hero-card__row"><span class="pill pill--teal">Writing</span><span class="pill">c. 5th c. BCE</span></div>
           <div class="hero-card__row"><span class="pill pill--muted">Fear dial</span><span class="pill pill--teal">2 / 5</span></div>
         </div>
@@ -56,11 +55,14 @@
             <div><span class="hero-stat-num">116</span><span class="hero-stat-lbl">sources</span></div>
             <div><span class="hero-stat-num">4</span><span class="hero-stat-lbl">fear types</span></div>
           </div>
-          <div class="hero-card__chips">
-            <span class="chip-mini chip-mini--learning">Learning</span>
-            <span class="chip-mini chip-mini--morality">Morality</span>
-            <span class="chip-mini chip-mini--health">Health</span>
-            <span class="chip-mini chip-mini--order">Order</span>
+          <div class="hero-card__fears">
+            <span class="hero-card__fears-label">Those four fear types</span>
+            <div class="hero-card__chips">
+              <span class="chip-mini chip-mini--learning">Learning</span>
+              <span class="chip-mini chip-mini--morality">Morality</span>
+              <span class="chip-mini chip-mini--health">Health</span>
+              <span class="chip-mini chip-mini--order">Order</span>
+            </div>
           </div>
         </div>
       </div>
@@ -116,10 +118,6 @@
         <span class="timeline-key__item timeline-key__item--connector">
           <span class="timeline-key__connector" aria-hidden="true"></span>
           Bent line = true date on axis
-        </span>
-        <span class="timeline-key__item timeline-key__item--added">
-          <span class="timeline-key__swatch timeline-key__swatch--added" aria-hidden="true">*</span>
-          Added entry
         </span>
       </div>
       <div class="timeline-view-controls" aria-label="Timeline display options">
@@ -210,7 +208,7 @@
 
         <p class="dial-method-note">
           Related codings (fear type Yes/Partial/No, engines, and control) use the same judgment-based method.
-          Some added entries (*) are scored retrospectively from the historical record.
+          Some later-added technologies are scored retrospectively from the historical record.
           A short reference version also appears in the <a href="#legend-dial">Legend &amp; Notes</a>.
         </p>
       </div>
@@ -316,24 +314,23 @@
         <a href="#fear-dial-method">How dials are scored</a>:
         measures the size of the fear, not its accuracy; codings are judgment calls.
       </p>
-      <div id="panic-grid" class="panic-grid" aria-labelledby="panic-grid-heading">
-        <h3 id="panic-grid-heading" class="panic-grid__title">Panic Grid</h3>
-      </div>
-      <div id="panic-fork" class="panic-fork" aria-labelledby="panic-fork-heading">
-        <h3 id="panic-fork-heading" class="panic-grid__title">What kind of panic fires</h3>
-      </div>
-      <div id="engines-matrix" class="engines-matrix" aria-labelledby="engines-matrix-heading">
-        <h3 id="engines-matrix-heading" class="panic-grid__title">Four engines make a panic cognitive</h3>
-      </div>
-      <div id="substitution-gradient" class="sub-gradient" aria-labelledby="sub-gradient-heading">
-        <h3 id="sub-gradient-heading" class="panic-grid__title">Substitution intensity tracks assessment centrality</h3>
-      </div>
-      <div id="paired-fates" class="paired-fates" aria-labelledby="paired-fates-heading">
-        <h3 id="paired-fates-heading" class="panic-grid__title">Same capability, different control, different fate</h3>
-      </div>
-      <div id="panic-flow" class="panic-flow" aria-labelledby="panic-flow-heading">
-        <h3 id="panic-flow-heading" class="panic-grid__title">How an education panic runs</h3>
-      </div>
+      <h3 id="panic-grid-heading" class="pattern-subhead">Panic Grid</h3>
+      <div id="panic-grid" class="panic-grid" aria-labelledby="panic-grid-heading"></div>
+
+      <h3 id="panic-fork-heading" class="pattern-subhead">What kind of panic fires</h3>
+      <div id="panic-fork" class="panic-fork" aria-labelledby="panic-fork-heading"></div>
+
+      <h3 id="engines-matrix-heading" class="pattern-subhead">Four engines make a panic cognitive</h3>
+      <div id="engines-matrix" class="engines-matrix" aria-labelledby="engines-matrix-heading"></div>
+
+      <h3 id="sub-gradient-heading" class="pattern-subhead">The substitution engine</h3>
+      <div id="substitution-gradient" class="sub-gradient" aria-labelledby="sub-gradient-heading"></div>
+
+      <h3 id="paired-fates-heading" class="pattern-subhead">Same capability, different control</h3>
+      <div id="paired-fates" class="paired-fates" aria-labelledby="paired-fates-heading"></div>
+
+      <h3 id="panic-flow-heading" class="pattern-subhead">How an education panic runs</h3>
+      <div id="panic-flow" class="panic-flow" aria-labelledby="panic-flow-heading"></div>
     </section>
 
     <section id="statistics" class="stats-section">

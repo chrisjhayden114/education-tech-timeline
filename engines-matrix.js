@@ -120,7 +120,8 @@ const EnginesMatrix = (function () {
     intro.className = 'engines-matrix__intro section-desc';
     intro.innerHTML =
       'Once a panic is cognitive, <strong>which engines fire</strong> shapes its character. ' +
-      'This matrix shows all <strong>23</strong> technologies with a learning fear of Yes, sorted by dial (high → low). ' +
+      'This matrix shows all <strong>23</strong> technologies coded <strong>Yes</strong> for learning fear ' +
+      '(the Learning fear-type filter on the timeline), sorted by dial (high → low). ' +
       'A filled red dot means that engine engaged for that technology; an empty ring means it did not. ' +
       'Most panics fire one or two engines — <strong>Generative AI</strong> is the rare case that fires all four.';
 

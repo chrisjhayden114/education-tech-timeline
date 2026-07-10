@@ -843,18 +843,15 @@ function createTechNode(tech, pos) {
   node.style.setProperty('--node-size', `${wrap}px`);
   node.style.setProperty('--icon-size', `${icon}px`);
 
-  const addedMarker = tech.isAdded
-    ? '<span class="tech-node__added-marker" title="Added to broaden the timeline">*</span>'
-    : '';
+  const addedMarker = '';
   const dialBadge = tech.hasPanic && timelineView.panicScale
     ? `<span class="tech-node__dial-badge" title="Fear dial ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
     : '';
   const displayName = timelineDisplayName(tech.name);
 
   node.innerHTML = `
-    <button type="button" class="tech-node__trigger" aria-label="${tech.name}, ${tech.broadImpact}${tech.isAdded ? ', added entry' : ''}">
+    <button type="button" class="tech-node__trigger" aria-label="${tech.name}, ${tech.broadImpact}">
       <div class="tech-node__icon-wrap">
-        ${addedMarker}
         ${dialBadge}
         ${techIconSvg(tech.id, icon)}
       </div>
@@ -1130,7 +1127,7 @@ function buildStats() {
 
   const summary = [
     { value: s.total, label: 'Technologies tracked', id: 'stat-total' },
-    { value: s.transformed.Yes, label: 'Transformed education (Yes)', id: 'stat-transformed' },
+    { value: s.transformed.Yes, label: 'Transformed education', id: 'stat-transformed' },
     { value: s.avgDial, label: 'Avg. learning/cognitive panic dial (0–5)', id: 'stat-dial' },
     { value: DATA.references.length, label: 'Academic references', id: 'stat-refs' }
   ];

@@ -369,13 +369,12 @@ function getDialCardCopy(tech) {
 }
 
 function renderFearDialCard(tech, opts = {}) {
-  const { showLegend = true, compact = false, panel = false, clickable = false, addedBadge = true } = opts;
+  const { showLegend = true, compact = false, panel = false, clickable = false } = opts;
   const level = tech.dial ?? 0;
   const meta = DIAL_LEVELS[level] || DIAL_LEVELS[0];
   const { label, color } = meta;
   const { tags, summary } = getDialCardCopy(tech);
   const tagHtml = tags.map(t => `<span class="fear-dial-card__tag">${t}</span>`).join('');
-  const added = addedBadge && tech.isAdded ? '<span class="added-badge">*</span>' : '';
   const dialSize = panel ? 'panel' : (compact ? 'compact' : 'full');
   const dialHeading = panel
     ? '<p class="fear-dial-card__dial-heading fear-dial-card__dial-heading--panel">Learning &amp; cognitive panic (0–5)</p>'
@@ -393,7 +392,7 @@ function renderFearDialCard(tech, opts = {}) {
           <span class="fear-dial-card__label">${label}</span>
         </p>
       </div>
-      <h3 class="fear-dial-card__title">${tech.name}${added}</h3>
+      <h3 class="fear-dial-card__title">${tech.name}</h3>
       <p class="fear-dial-card__era">${tech.era}</p>
       ${tags.length ? `<div class="fear-dial-card__tags">${tagHtml}</div>` : ''}
       <p class="fear-dial-card__summary">${summary}</p>
