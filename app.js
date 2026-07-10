@@ -75,7 +75,6 @@ function getNodeIconSize(tech) {
 }
 
 function assignLanes(positions, xKey = 'displayX', collisionWidth = TIMELINE_LAYOUT.collisionWidth) {
-  const L = TIMELINE_LAYOUT;
   const sideLanes = { above: [], below: [] };
 
   function findTier(lanes, x) {
@@ -92,19 +91,12 @@ function assignLanes(positions, xKey = 'displayX', collisionWidth = TIMELINE_LAY
   const sorted = [...positions].sort((a, b) => a[xKey] - b[xKey]);
   for (const pos of sorted) {
     const x = pos[xKey];
-    const primary = pos.above ? 'above' : 'below';
-    const alt = pos.above ? 'below' : 'above';
-    const tierPrimary = findTier(sideLanes[primary], x);
-    const tierAlt = findTier(sideLanes[alt], x);
-
-    if (tierPrimary > 0 && tierAlt < tierPrimary) {
-      pos.above = alt === 'above';
-      pos.lane = tierAlt;
-      occupy(sideLanes[alt], tierAlt, x);
-    } else {
-      pos.lane = tierPrimary;
-      occupy(sideLanes[primary], tierPrimary, x);
-    }
+    // Keep the intended side (above/below). Flipping sides was collapsing
+    // same-year pairs onto one side and forcing sideways U-shaped connectors.
+    const side = pos.above ? 'above' : 'below';
+    const tier = findTier(sideLanes[side], x);
+    pos.lane = tier;
+    occupy(sideLanes[side], tier, x);
   }
 }
 
@@ -147,17 +139,21 @@ function timelineDisplayName(name) {
   return name;
 }
 
-/** Fan multiple entries at the same year around their true date on the axis. */
+/** Fan multiple entries that share a year AND the same side of the axis.
+ * Opposite-side pairs (e.g. Railways above / Blackboard below) keep a shared
+ * date X with straight connectors — no sideways U-shapes.
+ */
 function spreadSameYearGroups(positions) {
   const L = TIMELINE_LAYOUT;
-  const byYear = new Map();
+  const byYearSide = new Map();
   positions.forEach(pos => {
     const year = pos.tech.impactYear ?? 0;
-    if (!byYear.has(year)) byYear.set(year, []);
-    byYear.get(year).push(pos);
+    const key = `${year}:${pos.above ? 'a' : 'b'}`;
+    if (!byYearSide.has(key)) byYearSide.set(key, []);
+    byYearSide.get(key).push(pos);
   });
 
-  byYear.forEach(group => {
+  byYearSide.forEach(group => {
     group.sort((a, b) => a.tech.name.localeCompare(b.tech.name));
     const n = group.length;
     const spread = n > 1
@@ -166,7 +162,7 @@ function spreadSameYearGroups(positions) {
 
     group.forEach((pos, index) => {
       pos.anchorX = pos.x;
-      pos.labelWidth = estimateLabelWidth(pos.tech.name);
+      pos.labelWidth = estimateLabelWidth(timelineDisplayName(pos.tech.name));
       pos.displayX = n === 1
         ? pos.anchorX
         : pos.anchorX + (index - (n - 1) / 2) * spread;
@@ -252,19 +248,22 @@ function assignTimelinePositions(technologies) {
       above: slot % 2 === 0,
       lane: 0,
       shifted: false,
-      labelWidth: estimateLabelWidth(tech.name)
+      labelWidth: estimateLabelWidth(timelineDisplayName(tech.name))
     };
   });
 
-  spreadSameYearGroups(positions);
-
+  // Lane assignment may flip above/below — fan only after sides are final.
   const maxLabelW = Math.max(
     TIMELINE_LAYOUT.labelMaxWidth,
     ...positions.map(p => p.labelWidth || 0)
   );
   const laneCollision = Math.max(96, maxLabelW * 0.85);
   assignLanes(positions, 'displayX', laneCollision);
+  spreadSameYearGroups(positions);
   resolveLabelOverlaps(positions);
+
+  // If overlap resolution flipped lanes onto a crowded same-year side, re-fan once.
+  spreadSameYearGroups(positions);
 
   const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
@@ -272,25 +271,20 @@ function assignTimelinePositions(technologies) {
 }
 
 /**
- * Connector geometry: attach just outside the year label (not through it),
- * with a unique horizontal runway per lane so stacked nodes stay traceable.
+ * Connector geometry: attach just outside the year label (not through it).
+ * Bend runways sit near the node — not along the axis — so L-shapes stay readable.
  */
 function getConnectorPoints(pos, axisY, bendSlot = 0) {
   const laneOffset = pos.lane * TIMELINE_LAYOUT.laneStep;
   const laneGap = 10;
-  /** Keep the joint clear of the year text sitting at the node edge. */
   const labelClear = 14;
-  /** Per-lane runway so horizontals don't stack on the same line. */
-  const runwayStep = 16;
-  const axisClearance = 8 + bendSlot * 5;
+  const runwayGap = 22 + bendSlot * 6;
 
   if (pos.above) {
     const nodeEdge = axisY - laneOffset - laneGap;
     const attachY = nodeEdge + labelClear;
-    const bendY = Math.min(
-      attachY + 18,
-      axisY - axisClearance - pos.lane * runwayStep
-    );
+    // Prefer a bend close to the node so the horizontal never hugs the axis.
+    const bendY = Math.min(attachY + runwayGap, axisY - 14 - pos.lane * 10);
     return {
       attachX: pos.displayX,
       attachY,
@@ -305,10 +299,7 @@ function getConnectorPoints(pos, axisY, bendSlot = 0) {
 
   const nodeEdge = axisY + laneOffset + laneGap;
   const attachY = nodeEdge - labelClear;
-  const bendY = Math.max(
-    attachY - 18,
-    axisY + axisClearance + pos.lane * runwayStep
-  );
+  const bendY = Math.max(attachY - runwayGap, axisY + 14 + pos.lane * 10);
   return {
     attachX: pos.displayX,
     attachY,
@@ -323,34 +314,24 @@ function getConnectorPoints(pos, axisY, bendSlot = 0) {
 
 /**
  * Orthogonal routing:
- * - lane 0 + aligned → straight vertical
- * - shifted → classic L (node → runway → date → axis)
- * - higher lane while aligned → small Z-jog so the line doesn't pierce lower labels
+ * - aligned (on true date) → straight vertical, even in higher lanes (e.g. Chess)
+ * - shifted → clean L: node → across at mid-height → date tick on axis
  */
 function buildConnectorPath(points) {
-  const { attachX, attachY, bendY, axisX, axisY, lane, shifted } = points;
-  const dx = Math.abs(attachX - axisX);
-  const aligned = dx < 4;
+  const { attachX, attachY, bendY, axisX, axisY } = points;
+  const aligned = Math.abs(attachX - axisX) < 4;
 
-  if (aligned && lane === 0 && !shifted) {
+  if (aligned) {
     return `M ${axisX} ${attachY} L ${axisX} ${axisY}`;
   }
 
-  if (!aligned || shifted) {
-    return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
-  }
-
-  // Aligned but elevated lane: jog sideways so the stem is visually distinct.
-  const jog = 14 + lane * 4;
-  const jogX = attachX + (lane % 2 === 0 ? jog : -jog);
-  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${jogX} ${bendY} L ${jogX} ${axisY} L ${axisX} ${axisY}`;
+  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
 }
 
 function drawTimelineConnectors(svg, positions, axisY) {
   svg.innerHTML = '';
 
   const ticksDrawn = new Set();
-  /** Stagger bend runways when several connectors share a date tick. */
   const bendSlots = new Map();
 
   const ordered = [...positions].sort((a, b) => {
@@ -376,8 +357,8 @@ function drawTimelineConnectors(svg, positions, axisY) {
     path.setAttribute('stroke', stroke);
     path.setAttribute('stroke-width', '2');
     path.setAttribute('fill', 'none');
-    path.setAttribute('stroke-linecap', 'round');
-    path.setAttribute('stroke-linejoin', 'round');
+    path.setAttribute('stroke-linecap', 'butt');
+    path.setAttribute('stroke-linejoin', 'miter');
     svg.appendChild(path);
 
     const joint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
