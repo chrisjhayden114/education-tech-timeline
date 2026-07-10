@@ -327,7 +327,12 @@ function fearDialSvg(level, size = 'full') {
     : `<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="${color}" stroke-width="2.2" stroke-linecap="round"/>
        <circle cx="${cx}" cy="${cy}" r="4.5" fill="${color}"/>`;
 
-  const sizes = { compact: [120, 68, '40 30 120 78'], panel: [160, 82, '30 24 140 84'], full: [200, 108, '0 0 200 108'] };
+  // viewBox min-y leaves a few units of air above the arc so the heading never collides.
+  const sizes = {
+    compact: [120, 74, '36 8 128 90'],
+    panel: [160, 92, '28 6 144 98'],
+    full: [200, 116, '0 0 200 116']
+  };
   const [w, h, vb] = sizes[size] || sizes.full;
 
   return `<svg class="fear-dial-svg fear-dial-svg--${size}" width="${w}" height="${h}" viewBox="${vb}" aria-hidden="true">${segments}${needle}</svg>`;
@@ -380,8 +385,8 @@ function renderFearDialCard(tech, opts = {}) {
     <article class="fear-dial-card fear-dial-card--level-${level}${compact ? ' fear-dial-card--compact' : ''}${panel ? ' fear-dial-card--panel' : ''}${clickable ? ' fear-dial-card--clickable' : ''}"
              data-tech-id="${tech.id}"
              style="--dial-color:${color}">
+      ${dialHeading}
       <div class="fear-dial-card__gauge-wrap">
-        ${dialHeading}
         ${fearDialSvg(level, dialSize)}
         <p class="fear-dial-card__score" aria-label="Learning and cognitive-development panic intensity ${level} out of 5, ${label}">
           <span class="fear-dial-card__number">${level}</span>

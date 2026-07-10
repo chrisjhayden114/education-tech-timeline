@@ -139,9 +139,10 @@ function timelineDisplayName(name) {
   return name;
 }
 
-/** Fan multiple entries that share a year AND the same side of the axis.
- * Opposite-side pairs (e.g. Railways above / Blackboard below) keep a shared
- * date X with straight connectors — no sideways U-shapes.
+/** Same-year layout on one side of the axis.
+ * Pairs stack on the shared date X (straight connectors) — fanning two items
+ * created long L-bends through neighboring labels in dense eras.
+ * Only fan when 3+ share a year+side.
  */
 function spreadSameYearGroups(positions) {
   const L = TIMELINE_LAYOUT;
@@ -156,19 +157,47 @@ function spreadSameYearGroups(positions) {
   byYearSide.forEach(group => {
     group.sort((a, b) => a.tech.name.localeCompare(b.tech.name));
     const n = group.length;
-    const spread = n > 1
-      ? Math.min(L.sameYearMaxSpread, Math.max(L.sameYearMinSpread, L.labelMaxWidth * 0.68))
+    const spread = n >= 3
+      ? Math.min(L.sameYearMaxSpread, Math.max(L.sameYearMinSpread * 0.85, L.labelMaxWidth * 0.5))
       : 0;
 
     group.forEach((pos, index) => {
       pos.anchorX = pos.x;
       pos.labelWidth = estimateLabelWidth(timelineDisplayName(pos.tech.name));
-      pos.displayX = n === 1
+      pos.displayX = spread === 0
         ? pos.anchorX
         : pos.anchorX + (index - (n - 1) / 2) * spread;
       pos.shifted = Math.abs(pos.displayX - pos.anchorX) > 4;
     });
   });
+}
+
+/** Nudge a lower-lane label off a higher-lane node's vertical connector.
+ * Same-date stacks share an anchor X on purpose — leave those alone; opaque
+ * label chips hide the shared vertical behind the text.
+ */
+function clearConnectorPierces(positions) {
+  const L = TIMELINE_LAYOUT;
+  const maxNudge = L.maxDateNudge + 28;
+
+  for (const above of [true, false]) {
+    const side = positions.filter(p => p.above === above);
+    for (const high of side) {
+      for (const low of side) {
+        if (high.lane <= low.lane) continue;
+        if (Math.abs(high.anchorX - low.anchorX) < 4) continue;
+        const half = (low.labelWidth || L.labelMaxWidth) / 2 + 6;
+        if (high.anchorX < low.displayX - half || high.anchorX > low.displayX + half) continue;
+
+        const dir = low.displayX >= high.anchorX ? 1 : -1;
+        const clearX = high.anchorX + dir * half;
+        const next = Math.max(low.anchorX - maxNudge, Math.min(low.anchorX + maxNudge, clearX));
+        if (Math.abs(next - low.displayX) < 1) continue;
+        low.displayX = next;
+        low.shifted = Math.abs(low.displayX - low.anchorX) > 4;
+      }
+    }
+  }
 }
 
 /** Labels that share a side + lane compete horizontally; otherwise vertical stacking is enough. */
@@ -234,36 +263,47 @@ function resolveLabelOverlaps(positions) {
 function assignTimelinePositions(technologies) {
   const sorted = [...technologies].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
   const yearSlot = {};
+  const positions = [];
 
-  const positions = sorted.map(tech => {
+  sorted.forEach((tech, index) => {
     const year = tech.impactYear ?? 0;
     const slot = yearSlot[year] ?? 0;
     yearSlot[year] = slot + 1;
     const x = yearToX(year);
-    return {
+
+    // Global zigzag keeps dense eras from piling entirely above the axis.
+    // Within a shared year, alternate from the first item of that year.
+    let above;
+    if (slot === 0) {
+      above = index % 2 === 0;
+    } else {
+      const first = positions.find(p => (p.tech.impactYear ?? 0) === year);
+      above = first ? (slot % 2 === 0 ? first.above : !first.above) : index % 2 === 0;
+    }
+
+    positions.push({
       tech,
       x,
       anchorX: x,
       displayX: x,
-      above: slot % 2 === 0,
+      above,
       lane: 0,
       shifted: false,
       labelWidth: estimateLabelWidth(timelineDisplayName(tech.name))
-    };
+    });
   });
 
-  // Lane assignment may flip above/below — fan only after sides are final.
   const maxLabelW = Math.max(
     TIMELINE_LAYOUT.labelMaxWidth,
     ...positions.map(p => p.labelWidth || 0)
   );
-  const laneCollision = Math.max(96, maxLabelW * 0.85);
+  const laneCollision = Math.max(110, maxLabelW * 0.9);
   assignLanes(positions, 'displayX', laneCollision);
   spreadSameYearGroups(positions);
   resolveLabelOverlaps(positions);
-
-  // If overlap resolution flipped lanes onto a crowded same-year side, re-fan once.
   spreadSameYearGroups(positions);
+  assignLanes(positions, 'displayX', laneCollision);
+  clearConnectorPierces(positions);
 
   const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
@@ -782,8 +822,10 @@ function createTechNode(tech, pos) {
         ${dialBadge}
         ${techIconSvg(tech.id, icon)}
       </div>
-      <span class="tech-node__name" title="${tech.name}">${displayName}</span>
-      <span class="tech-node__year">${tech.broadImpact}</span>
+      <span class="tech-node__labels">
+        <span class="tech-node__name" title="${tech.name}">${displayName}</span>
+        <span class="tech-node__year">${tech.broadImpact}</span>
+      </span>
     </button>
   `;
 
@@ -857,16 +899,25 @@ function buildTimelineAxis(trackWidth) {
     <div class="axis-seg axis-seg--dense" style="left:${x1850}px;width:${Math.max(0, trackWidth - x1850 - 40)}px"></div>
   `;
 
-  const yearMarkers = [-500, 1500, 1700, 1800, 1850, 1900, 1950, 2000, 2025];
-  yearMarkers.forEach(year => {
-    let label = String(year);
-    if (year < 0) label = 'Antiquity';
-    else if (year >= 2020) label = 'Today';
-    else if (year === 1850) label = '1850';
+  const yearMarkers = [
+    { year: null, label: 'Antiquity', x: TIMELINE_LAYOUT.ancientXStart + 18 },
+    { year: 1500, label: '1500' },
+    { year: 1700, label: '1700' },
+    { year: 1800, label: '1800' },
+    { year: 1850, label: '1850' },
+    { year: 1900, label: '1900' },
+    { year: 1950, label: '1950' },
+    { year: 2000, label: '2000' },
+    { year: 2025, label: 'Today' }
+  ];
+  yearMarkers.forEach(marker => {
+    const x = marker.x != null ? marker.x : yearToX(marker.year);
     const el = document.createElement('div');
-    el.className = `axis-marker${year < 0 ? ' axis-marker--ancient' : ''}${year >= SCALE_BREAK_1850 ? ' axis-marker--dense' : ''}`;
-    el.style.left = `${yearToX(year)}px`;
-    el.textContent = label;
+    const isAncient = marker.label === 'Antiquity';
+    const isDense = marker.year != null && marker.year >= SCALE_BREAK_1850;
+    el.className = `axis-marker${isAncient ? ' axis-marker--ancient' : ''}${isDense ? ' axis-marker--dense' : ''}`;
+    el.style.left = `${x}px`;
+    el.textContent = marker.label;
     axis.appendChild(el);
   });
 }
