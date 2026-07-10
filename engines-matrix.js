@@ -116,6 +116,14 @@ const EnginesMatrix = (function () {
     const cols = learningYesTechnologies(technologies);
     container.innerHTML = '';
 
+    const intro = document.createElement('p');
+    intro.className = 'engines-matrix__intro section-desc';
+    intro.innerHTML =
+      'Once a panic is cognitive, <strong>which engines fire</strong> shapes its character. ' +
+      'This matrix shows all <strong>23</strong> technologies with a learning fear of Yes, sorted by dial (high → low). ' +
+      'A filled red dot means that engine engaged for that technology; an empty ring means it did not. ' +
+      'Most panics fire one or two engines — <strong>Generative AI</strong> is the rare case that fires all four.';
+
     const scroll = document.createElement('div');
     scroll.className = 'engines-matrix__scroll';
 
@@ -188,6 +196,7 @@ const EnginesMatrix = (function () {
     table.appendChild(tbody);
 
     scroll.appendChild(table);
+    container.appendChild(intro);
     container.appendChild(scroll);
 
     const genAi = cols.find(t => t.id === GEN_AI_ID);

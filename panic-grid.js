@@ -9,11 +9,12 @@ const PanicGrid = (function () {
   ];
 
   const DIAL_LEVELS = [5, 4, 3, 2, 1, 0];
-  const DOT_PITCH = 22;
-  const DOT_R = 7;
+  const DOT_PITCH = 24;
+  const DOT_R = 7.5;
   const HIT_R = 18;
-  const COL_WIDTH = 280;
-  const MARGIN = { top: 88, right: 32, bottom: 64, left: 52 };
+  /** Wide enough that the chart fills the same content width as the timeline (~1136px). */
+  const COL_WIDTH = 350;
+  const MARGIN = { top: 96, right: 36, bottom: 68, left: 56 };
 
   const LEARNING_FILL = {
     Yes: '#c41e1e',
@@ -21,11 +22,14 @@ const PanicGrid = (function () {
     No: '#94a3b8'
   };
 
-  /** Direct labels with horizontal offsets so dial-5 names don't collide. */
+  /**
+   * Dial-5 dots sort alphabetically: Generative AI (left), Smartphones (right).
+   * Offset labels outward so they stay over the correct dots.
+   */
   const DIRECT_LABELS = {
-    Television: { dx: 0, dy: -14, anchor: 'middle' },
-    Smartphones: { dx: -28, dy: -14, anchor: 'end' },
-    'Generative AI': { dx: 28, dy: -14, anchor: 'start', text: 'Generative AI' }
+    'Generative AI': { dx: -12, dy: -16, anchor: 'end' },
+    Smartphones: { dx: 12, dy: -16, anchor: 'start' },
+    Television: { dx: 0, dy: -16, anchor: 'middle' }
   };
 
   function learningColor(tech) {
@@ -266,7 +270,7 @@ const PanicGrid = (function () {
         nameLabel.setAttribute('y', String(y + meta.dy));
         nameLabel.setAttribute('text-anchor', meta.anchor);
         nameLabel.setAttribute('class', 'panic-grid__dot-label');
-        nameLabel.textContent = meta.text || tech.name;
+        nameLabel.textContent = tech.name;
         dotsLayer.appendChild(nameLabel);
       }
     });
