@@ -200,6 +200,18 @@ function clearConnectorPierces(positions) {
   }
 }
 
+/** Snap tiny offsets back to the date tick — hairline L-bends read as broken connectors. */
+function preferStraightConnectors(positions) {
+  positions.forEach(pos => {
+    // Lane 0 sits next to the axis; even modest L-bends look like extra stubs.
+    const threshold = pos.lane === 0 ? 24 : 12;
+    if (Math.abs(pos.displayX - pos.anchorX) < threshold) {
+      pos.displayX = pos.anchorX;
+      pos.shifted = false;
+    }
+  });
+}
+
 /** Labels that share a side + lane compete horizontally; otherwise vertical stacking is enough. */
 function labelsShareRow(prev, curr) {
   return prev.above === curr.above && prev.lane === curr.lane;
@@ -304,6 +316,7 @@ function assignTimelinePositions(technologies) {
   spreadSameYearGroups(positions);
   assignLanes(positions, 'displayX', laneCollision);
   clearConnectorPierces(positions);
+  preferStraightConnectors(positions);
 
   const maxAbove = positions.filter(p => p.above).reduce((m, p) => Math.max(m, p.lane), 0);
   const maxBelow = positions.filter(p => !p.above).reduce((m, p) => Math.max(m, p.lane), 0);
@@ -311,24 +324,24 @@ function assignTimelinePositions(technologies) {
 }
 
 /**
- * Connector geometry: attach just outside the year label (not through it).
- * Bend runways sit near the node — not along the axis — so L-shapes stay readable.
+ * Connector geometry: attach at the axis-facing edge of the node.
+ * Bend runways stay strictly between the node and the axis (never past either).
  */
 function getConnectorPoints(pos, axisY, bendSlot = 0) {
   const laneOffset = pos.lane * TIMELINE_LAYOUT.laneStep;
   const laneGap = 10;
-  const labelClear = 14;
-  const runwayGap = 22 + bendSlot * 6;
+  const minAxisClear = 10;
+  const runwayGap = 18 + bendSlot * 5;
 
   if (pos.above) {
+    // Bottom of the node stack (toward the axis).
     const nodeEdge = axisY - laneOffset - laneGap;
-    const attachY = nodeEdge + labelClear;
-    // Prefer a bend close to the node so the horizontal never hugs the axis.
-    const bendY = Math.min(attachY + runwayGap, axisY - 14 - pos.lane * 10);
+    const attachY = Math.min(nodeEdge, axisY - minAxisClear);
+    const bendY = Math.min(attachY + runwayGap, axisY - minAxisClear);
     return {
       attachX: pos.displayX,
       attachY,
-      bendY,
+      bendY: Math.max(bendY, attachY),
       axisX: pos.anchorX,
       axisY,
       above: true,
@@ -337,13 +350,14 @@ function getConnectorPoints(pos, axisY, bendSlot = 0) {
     };
   }
 
+  // Top of the node stack (toward the axis).
   const nodeEdge = axisY + laneOffset + laneGap;
-  const attachY = nodeEdge - labelClear;
-  const bendY = Math.max(attachY - runwayGap, axisY + 14 + pos.lane * 10);
+  const attachY = Math.max(nodeEdge, axisY + minAxisClear);
+  const bendY = Math.max(attachY - runwayGap, axisY + minAxisClear);
   return {
     attachX: pos.displayX,
     attachY,
-    bendY,
+    bendY: Math.min(bendY, attachY),
     axisX: pos.anchorX,
     axisY,
     above: false,
@@ -354,18 +368,32 @@ function getConnectorPoints(pos, axisY, bendSlot = 0) {
 
 /**
  * Orthogonal routing:
- * - aligned (on true date) → straight vertical, even in higher lanes (e.g. Chess)
- * - shifted → clean L: node → across at mid-height → date tick on axis
+ * - aligned (on true date) → straight vertical
+ * - shifted → L or Z: node → across between node and axis → date tick
+ * Tiny shifts snap to straight to avoid hairline steps.
  */
 function buildConnectorPath(points) {
   const { attachX, attachY, bendY, axisX, axisY } = points;
-  const aligned = Math.abs(attachX - axisX) < 4;
+  const dx = Math.abs(attachX - axisX);
 
-  if (aligned) {
+  if (dx < 8) {
     return `M ${axisX} ${attachY} L ${axisX} ${axisY}`;
   }
 
-  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
+  // Keep the horizontal strictly between attach and axis.
+  let midY = bendY;
+  if (attachY < axisY) {
+    midY = Math.min(Math.max(midY, attachY), axisY);
+  } else {
+    midY = Math.max(Math.min(midY, attachY), axisY);
+  }
+
+  // Lane 0 has little room: horizontal first along the node edge, then drop to the tick.
+  if (Math.abs(attachY - axisY) <= 28) {
+    return `M ${attachX} ${attachY} L ${axisX} ${attachY} L ${axisX} ${axisY}`;
+  }
+
+  return `M ${attachX} ${attachY} L ${attachX} ${midY} L ${axisX} ${midY} L ${axisX} ${axisY}`;
 }
 
 function drawTimelineConnectors(svg, positions, axisY) {
@@ -391,6 +419,7 @@ function drawTimelineConnectors(svg, positions, axisY) {
     const stroke = panic ? 'rgba(196, 30, 30, 0.55)' : 'rgba(42, 125, 114, 0.5)';
     const points = getConnectorPoints(pos, axisY, slot);
     const d = buildConnectorPath(points);
+    const bent = Math.abs(points.attachX - points.axisX) >= 8;
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
@@ -401,13 +430,20 @@ function drawTimelineConnectors(svg, positions, axisY) {
     path.setAttribute('stroke-linejoin', 'miter');
     svg.appendChild(path);
 
-    const joint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    joint.setAttribute('cx', String(points.attachX));
-    joint.setAttribute('cy', String(points.attachY));
-    joint.setAttribute('r', '2.5');
-    joint.setAttribute('fill', panic ? '#c41e1e' : '#2a7d72');
-    joint.setAttribute('opacity', '0.7');
-    svg.appendChild(joint);
+    // Elbow marker only for bent connectors — attach-point dots near the axis
+    // looked like floating extra endpoints (e.g. Virtual reality).
+    if (bent) {
+      const elbowY = Math.abs(points.attachY - points.axisY) <= 28
+        ? points.attachY
+        : points.bendY;
+      const joint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      joint.setAttribute('cx', String(points.axisX));
+      joint.setAttribute('cy', String(elbowY));
+      joint.setAttribute('r', '2');
+      joint.setAttribute('fill', panic ? '#c41e1e' : '#2a7d72');
+      joint.setAttribute('opacity', '0.55');
+      svg.appendChild(joint);
+    }
 
     if (!ticksDrawn.has(tickKey)) {
       ticksDrawn.add(tickKey);
