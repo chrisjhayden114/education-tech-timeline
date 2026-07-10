@@ -9,11 +9,11 @@ const PanicGrid = (function () {
   ];
 
   const DIAL_LEVELS = [5, 4, 3, 2, 1, 0];
-  const DOT_PITCH = 18;
-  const DOT_R = 6;
-  const HIT_R = 16;
-  const COL_WIDTH = 220;
-  const MARGIN = { top: 72, right: 24, bottom: 56, left: 44 };
+  const DOT_PITCH = 22;
+  const DOT_R = 7;
+  const HIT_R = 18;
+  const COL_WIDTH = 280;
+  const MARGIN = { top: 88, right: 32, bottom: 64, left: 52 };
 
   const LEARNING_FILL = {
     Yes: '#c41e1e',
@@ -21,7 +21,12 @@ const PanicGrid = (function () {
     No: '#94a3b8'
   };
 
-  const DIRECT_LABELS = new Set(['Television', 'Smartphones', 'Generative AI']);
+  /** Direct labels with horizontal offsets so dial-5 names don't collide. */
+  const DIRECT_LABELS = {
+    Television: { dx: 0, dy: -14, anchor: 'middle' },
+    Smartphones: { dx: -28, dy: -14, anchor: 'end' },
+    'Generative AI': { dx: 28, dy: -14, anchor: 'start', text: 'Generative AI' }
+  };
 
   function learningColor(tech) {
     return LEARNING_FILL[tech.fears?.Learning] || LEARNING_FILL.No;
@@ -254,13 +259,14 @@ const PanicGrid = (function () {
       });
       dotsLayer.appendChild(g);
 
-      if (DIRECT_LABELS.has(tech.name)) {
+      if (DIRECT_LABELS[tech.name]) {
+        const meta = DIRECT_LABELS[tech.name];
         const nameLabel = document.createElementNS(ns, 'text');
-        nameLabel.setAttribute('x', String(x));
-        nameLabel.setAttribute('y', String(y - 12));
-        nameLabel.setAttribute('text-anchor', 'middle');
+        nameLabel.setAttribute('x', String(x + meta.dx));
+        nameLabel.setAttribute('y', String(y + meta.dy));
+        nameLabel.setAttribute('text-anchor', meta.anchor);
         nameLabel.setAttribute('class', 'panic-grid__dot-label');
-        nameLabel.textContent = tech.name === 'Generative AI' ? 'Gen AI' : tech.name;
+        nameLabel.textContent = meta.text || tech.name;
         dotsLayer.appendChild(nameLabel);
       }
     });

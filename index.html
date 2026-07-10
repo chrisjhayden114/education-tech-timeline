@@ -18,6 +18,7 @@
       </a>
       <div class="nav-links">
         <a href="#timeline" class="nav-link active">Timeline</a>
+        <a href="#pattern-primer" class="nav-link">Variables</a>
         <a href="#pattern" class="nav-link">The Pattern</a>
         <a href="#statistics" class="nav-link">Statistics</a>
         <a href="#legend" class="nav-link">Legend</a>
@@ -156,6 +157,93 @@
           Scroll or drag to explore the timeline
           <span class="timeline-scroll-hint__icon" aria-hidden="true">⟶</span>
         </p>
+      </div>
+    </section>
+
+    <section id="pattern-primer" class="pattern-primer" aria-labelledby="pattern-primer-heading">
+      <h2 id="pattern-primer-heading" class="section-title">Reading the Pattern</h2>
+      <p class="section-desc">
+        The charts below use a small set of coded variables. Two matter most for intensity:
+        <strong>who controls the moment of use</strong>, and <strong>which cognitive engines fire</strong>.
+      </p>
+
+      <div class="primer-grid">
+        <article class="primer-card">
+          <h3 class="primer-card__title">The variables</h3>
+          <dl class="primer-vars">
+            <div class="primer-vars__row">
+              <dt>Control</dt>
+              <dd>
+                Who held the technology at the feared moment of use:
+                <span class="primer-pill primer-pill--institution">institution</span>
+                <span class="primer-pill primer-pill--adult">adult</span>
+                <span class="primer-pill primer-pill--child">child</span>
+              </dd>
+            </div>
+            <div class="primer-vars__row">
+              <dt>Fear dial</dt>
+              <dd>
+                Peak learning/cognitive panic intensity (0–5): intensity × reach at historical peak.
+                Measures the size of the fear, not its accuracy —
+                <a href="#legend-dial">how dials are assigned</a>.
+              </dd>
+            </div>
+            <div class="primer-vars__row">
+              <dt>Learning fear</dt>
+              <dd>Whether contemporaries claimed harm to memory, attention, literacy, or skill formation (Yes / Partial / No).</dd>
+            </div>
+          </dl>
+          <ul class="primer-insights">
+            <li><strong>20</strong> of the 23 technologies with a learning fear of Yes are <mark>child-autonomous</mark>.</li>
+            <li>All <strong>12</strong> technologies that reached dial 3 or higher — from novels through television to smartphones and generative AI — are <mark>child-controlled</mark>.</li>
+            <li>Youth autonomy looks close to <em>necessary</em> for an education panic to reach public scale.</li>
+          </ul>
+        </article>
+
+        <article class="primer-card">
+          <h3 class="primer-card__title">The dial &amp; the engines</h3>
+          <div class="primer-dial-block">
+            <h4 class="primer-subhead">The dial (intensity)</h4>
+            <p>
+              A scale of 0–5 measuring the intensity of the peak panic in public discourse.
+              A dial of 5 means a mass panic involving multiple institutions and a lasting settlement or prohibition.
+            </p>
+            <div class="primer-dial-scale" aria-hidden="true">
+              <span class="primer-dial-scale__item" style="--c:#9aa09a"><i>0</i></span>
+              <span class="primer-dial-scale__item" style="--c:#c4a574"><i>1</i></span>
+              <span class="primer-dial-scale__item" style="--c:#e09545"><i>2</i></span>
+              <span class="primer-dial-scale__item" style="--c:#d05d38"><i>3</i></span>
+              <span class="primer-dial-scale__item" style="--c:#e02020"><i>4</i></span>
+              <span class="primer-dial-scale__item" style="--c:#8b1a1a"><i>5</i></span>
+            </div>
+          </div>
+          <div class="primer-engines-block">
+            <h4 class="primer-subhead">The engines (mechanism)</h4>
+            <p>
+              Cognitive panics are driven by four engines of anxiety. Most fire one or two;
+              a panic that fires all four is rare. <mark>Assessment</mark> centrality of the substituted skill
+              helps explain how high the dial climbs when substitution is involved.
+            </p>
+            <ul class="primer-engines">
+              <li>
+                <span class="primer-engines__name">Substitution</span>
+                <span class="primer-engines__def">Weakening the mind by doing for it what it should do itself — the skill never forms.</span>
+              </li>
+              <li>
+                <span class="primer-engines__name">Displacement</span>
+                <span class="primer-engines__def">Taking time away from better activities — study time crowded out.</span>
+              </li>
+              <li>
+                <span class="primer-engines__name">Integrity</span>
+                <span class="primer-engines__def">Whose work is it? Enabling cheating or deception.</span>
+              </li>
+              <li>
+                <span class="primer-engines__name">Contamination</span>
+                <span class="primer-engines__def">Exposing the mind to content that warps it.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 

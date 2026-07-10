@@ -271,55 +271,105 @@ function assignTimelinePositions(technologies) {
   return { positions, maxAbove, maxBelow };
 }
 
-/** Connector attach points aligned with tech-node CSS (lane gap 10px). */
-function getConnectorPoints(pos, axisY) {
+/**
+ * Connector geometry: attach just outside the year label (not through it),
+ * with a unique horizontal runway per lane so stacked nodes stay traceable.
+ */
+function getConnectorPoints(pos, axisY, bendSlot = 0) {
   const laneOffset = pos.lane * TIMELINE_LAYOUT.laneStep;
   const laneGap = 10;
-  const axisClearance = 5;
+  /** Keep the joint clear of the year text sitting at the node edge. */
+  const labelClear = 14;
+  /** Per-lane runway so horizontals don't stack on the same line. */
+  const runwayStep = 16;
+  const axisClearance = 8 + bendSlot * 5;
 
   if (pos.above) {
-    const nodeBottom = axisY - laneOffset - laneGap;
+    const nodeEdge = axisY - laneOffset - laneGap;
+    const attachY = nodeEdge + labelClear;
+    const bendY = Math.min(
+      attachY + 18,
+      axisY - axisClearance - pos.lane * runwayStep
+    );
     return {
       attachX: pos.displayX,
-      attachY: nodeBottom,
-      bendY: axisY - axisClearance,
+      attachY,
+      bendY,
       axisX: pos.anchorX,
-      axisY
+      axisY,
+      above: true,
+      lane: pos.lane,
+      shifted: pos.shifted
     };
   }
 
-  const nodeTop = axisY + laneOffset + laneGap;
+  const nodeEdge = axisY + laneOffset + laneGap;
+  const attachY = nodeEdge - labelClear;
+  const bendY = Math.max(
+    attachY - 18,
+    axisY + axisClearance + pos.lane * runwayStep
+  );
   return {
     attachX: pos.displayX,
-    attachY: nodeTop,
-    bendY: axisY + axisClearance,
+    attachY,
+    bendY,
     axisX: pos.anchorX,
-    axisY
+    axisY,
+    above: false,
+    lane: pos.lane,
+    shifted: pos.shifted
   };
 }
 
-/** Straight drop when the label sits on its true date; L-bend only when horizontally shifted. */
-function buildConnectorPath(points, shifted) {
-  const { attachX, attachY, bendY, axisX, axisY } = points;
+/**
+ * Orthogonal routing:
+ * - lane 0 + aligned → straight vertical
+ * - shifted → classic L (node → runway → date → axis)
+ * - higher lane while aligned → small Z-jog so the line doesn't pierce lower labels
+ */
+function buildConnectorPath(points) {
+  const { attachX, attachY, bendY, axisX, axisY, lane, shifted } = points;
+  const dx = Math.abs(attachX - axisX);
+  const aligned = dx < 4;
 
-  if (!shifted) {
+  if (aligned && lane === 0 && !shifted) {
     return `M ${axisX} ${attachY} L ${axisX} ${axisY}`;
   }
 
-  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
+  if (!aligned || shifted) {
+    return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${axisX} ${bendY} L ${axisX} ${axisY}`;
+  }
+
+  // Aligned but elevated lane: jog sideways so the stem is visually distinct.
+  const jog = 14 + lane * 4;
+  const jogX = attachX + (lane % 2 === 0 ? jog : -jog);
+  return `M ${attachX} ${attachY} L ${attachX} ${bendY} L ${jogX} ${bendY} L ${jogX} ${axisY} L ${axisX} ${axisY}`;
 }
 
 function drawTimelineConnectors(svg, positions, axisY) {
   svg.innerHTML = '';
 
   const ticksDrawn = new Set();
+  /** Stagger bend runways when several connectors share a date tick. */
+  const bendSlots = new Map();
 
-  positions.forEach(pos => {
+  const ordered = [...positions].sort((a, b) => {
+    if (a.anchorX !== b.anchorX) return a.anchorX - b.anchorX;
+    if (a.above !== b.above) return a.above ? -1 : 1;
+    return a.lane - b.lane;
+  });
+
+  ordered.forEach(pos => {
+    const tickKey = String(Math.round(pos.anchorX));
+    const sideKey = `${tickKey}:${pos.above ? 'a' : 'b'}`;
+    const slot = bendSlots.get(sideKey) || 0;
+    bendSlots.set(sideKey, slot + 1);
+
     const { tech } = pos;
     const panic = tech.hasPanic;
     const stroke = panic ? 'rgba(196, 30, 30, 0.55)' : 'rgba(42, 125, 114, 0.5)';
-    const points = getConnectorPoints(pos, axisY);
-    const d = buildConnectorPath(points, pos.shifted);
+    const points = getConnectorPoints(pos, axisY, slot);
+    const d = buildConnectorPath(points);
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
@@ -338,7 +388,6 @@ function drawTimelineConnectors(svg, positions, axisY) {
     joint.setAttribute('opacity', '0.7');
     svg.appendChild(joint);
 
-    const tickKey = String(Math.round(points.axisX));
     if (!ticksDrawn.has(tickKey)) {
       ticksDrawn.add(tickKey);
       const tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
