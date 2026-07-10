@@ -335,6 +335,15 @@ main {
   max-width: 640px;
 }
 
+/* Match the timeline content column (full main width) for analysis sections */
+.dial-method-section .section-desc,
+.pattern-primer .section-desc,
+.pattern-section .section-desc,
+.stats-section .section-desc {
+  max-width: none;
+  width: 100%;
+}
+
 /* Controls */
 .controls {
   position: sticky;
@@ -1447,12 +1456,14 @@ main {
 }
 
 .pattern-intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
 }
 
 .method-footnote {
   margin: -1rem 0 2rem;
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   font-size: 0.8rem;
   line-height: 1.5;
   color: var(--text-muted);
@@ -1486,7 +1497,8 @@ main {
   border-radius: var(--radius-lg);
   padding: 1.35rem 1.5rem;
   box-shadow: var(--shadow);
-  max-width: 820px;
+  max-width: none;
+  width: 100%;
 }
 
 .dial-method-card__title {
@@ -1814,7 +1826,12 @@ main {
 .panic-grid__figure {
   margin: 0;
   width: 100%;
-  max-width: 100%;
+  max-width: none;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 0.75rem 0.5rem;
+  box-shadow: var(--shadow);
 }
 
 .panic-grid__figure svg {
@@ -1965,7 +1982,8 @@ main {
 }
 
 .panic-fork__intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   margin-bottom: 1.75rem;
 }
 
@@ -2058,7 +2076,7 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   width: 100%;
-  max-width: 820px;
+  max-width: none;
   margin-top: 26px;
 }
 
@@ -2208,7 +2226,8 @@ main {
 .panic-fork__footnote {
   margin: 1.25rem 0 0;
   font-size: 0.8rem;
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   line-height: 1.5;
 }
 
@@ -2218,7 +2237,8 @@ main {
 }
 
 .engines-matrix__intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   margin-bottom: 1.25rem;
 }
 
@@ -2416,7 +2436,8 @@ main {
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: 0.875rem;
   color: var(--text-secondary);
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   line-height: 1.5;
 }
 
@@ -2427,7 +2448,8 @@ main {
 .engines-matrix__footnote {
   margin: 0.85rem 0 0;
   font-size: 0.8rem;
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   line-height: 1.5;
 }
 
@@ -2437,7 +2459,8 @@ main {
 }
 
 .sub-gradient__intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 
@@ -2662,7 +2685,8 @@ main {
 }
 
 .paired-fates__intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 
@@ -2846,7 +2870,8 @@ main {
 }
 
 .panic-flow__intro {
-  max-width: 720px;
+  max-width: none;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 

@@ -12,9 +12,9 @@ const PanicGrid = (function () {
   const DOT_PITCH = 24;
   const DOT_R = 7.5;
   const HIT_R = 18;
-  /** Wide enough that the chart fills the same content width as the timeline (~1136px). */
-  const COL_WIDTH = 350;
-  const MARGIN = { top: 96, right: 36, bottom: 68, left: 56 };
+  /** Wide enough that the chart fills the same content width as the timeline. */
+  const COL_WIDTH = 360;
+  const MARGIN = { top: 96, right: 40, bottom: 68, left: 56 };
 
   const LEARNING_FILL = {
     Yes: '#c41e1e',
@@ -117,8 +117,11 @@ const PanicGrid = (function () {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', `0 0 ${chartWidth} ${chartHeight}`);
     svg.setAttribute('width', '100%');
-    svg.setAttribute('height', chartHeight);
-    svg.setAttribute('preserveAspectRatio', 'xMinYMin meet');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'Panic grid: fear dial by who controls the technology');
+    svg.style.height = 'auto';
+    svg.style.aspectRatio = `${chartWidth} / ${chartHeight}`;
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
     const ns = 'http://www.w3.org/2000/svg';
 
