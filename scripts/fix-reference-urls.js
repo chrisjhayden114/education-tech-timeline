@@ -73,6 +73,9 @@ const FIXES = {
     'https://books.google.com/books/about/Practical_Mathematics_in_the_italian_Ren.html?id=zWno0QEACAAJ',
   'ref-68':
     'https://www.who.int/news-room/questions-and-answers/item/radiation-electromagnetic-fields/',
+  'ref-69':
+    'https://www.congress.gov/87/statute/STATUTE-76/STATUTE-76-Pg23-2.pdf',
+  'ref-70': 'https://eric.ed.gov/?id=ED018611',
   'ref-81': 'https://archive.org/details/blackboardinprim00bums',
   'ref-82': 'https://archive.org/details/historyofideasin0000debo',
   'ref-83': 'https://doi.org/10.1111/flan.12366',
@@ -91,6 +94,8 @@ const FIXES = {
   'ref-94': 'https://doi.org/10.1257/pol.20180612',
   'ref-95': 'https://doi.org/10.1016/0732-118X(84)90018-7',
   'ref-96': 'https://books.google.com/books/about/The_Pencil.html?id=ScgxcEGM_igC',
+  'ref-97':
+    'https://books.google.com/books/about/The_Origin_of_Stencil_Duplicating.html?id=dLtmQgAACAAJ',
   'ref-98':
     'https://www.cast.org/resources/teaching-every-student-in-the-digital-age',
   'ref-99': 'https://doi.org/10.1111/0026-7902.00096',
