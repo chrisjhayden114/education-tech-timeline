@@ -2,7 +2,7 @@ let DATA = null;
 
 async function init() {
   await Comments.init();
-  const res = await fetch('data.json');
+  const res = await fetch(`data.json?v=${Date.now()}`, { cache: 'no-cache' });
   DATA = await res.json();
 
   renderReferences(DATA.references);

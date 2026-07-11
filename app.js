@@ -513,13 +513,15 @@ function verifyControlEnginesSchema(technologies) {
 
 async function init() {
   await Comments.init();
-  const res = await fetch('data.json');
+  const res = await fetch(`data.json?v=${Date.now()}`, { cache: 'no-cache' });
   DATA = await res.json();
+  DATA.stats = computeStats(DATA.technologies);
   window.__TIMELINE_DATA = DATA;
   verifyControlEnginesSchema(DATA.technologies);
 
   document.getElementById('hero-title').textContent = DATA.meta.title;
   document.getElementById('hero-subtitle').textContent = DATA.meta.subtitle;
+  updateHeroGlance();
 
   buildFearFilters();
   buildTimeline();
@@ -536,6 +538,49 @@ async function init() {
     const tech = DATA.technologies.find(t => t.id === hash);
     if (tech) openModal(tech);
   }
+}
+
+/** Recompute summary stats from the technologies array so UI counts cannot drift. */
+function computeStats(technologies) {
+  const fearKeys = ['Learning', 'Morality', 'Health', 'Public order'];
+  const fears = Object.fromEntries(fearKeys.map(k => [k, { Yes: 0, Partial: 0, No: 0 }]));
+  const transformed = { Yes: 0, Partial: 0, No: 0 };
+  const dial = {};
+  let dialSum = 0;
+
+  technologies.forEach(t => {
+    fearKeys.forEach(k => {
+      const v = t.fears?.[k];
+      if (v && fears[k][v] !== undefined) fears[k][v] += 1;
+    });
+    if (transformed[t.transformed] !== undefined) transformed[t.transformed] += 1;
+    const d = String(t.dial ?? 0);
+    dial[d] = (dial[d] || 0) + 1;
+    dialSum += Number(t.dial) || 0;
+  });
+
+  return {
+    total: technologies.length,
+    fears,
+    transformed,
+    dial,
+    avgDial: technologies.length
+      ? Math.round((dialSum / technologies.length) * 100) / 100
+      : 0
+  };
+}
+
+function updateHeroGlance() {
+  const techs = DATA.technologies.length;
+  const sources = DATA.references.length;
+  const fears = (DATA.fearColumns || []).length || 4;
+  const set = (id, n) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(n);
+  };
+  set('hero-stat-techs', techs);
+  set('hero-stat-sources', sources);
+  set('hero-stat-fears', fears);
 }
 
 function getRefById(id) {
@@ -1124,18 +1169,56 @@ function appendCommentSlot(parent, itemType, itemId, label) {
 function buildStats() {
   const grid = document.getElementById('stats-grid');
   const s = DATA.stats;
+  const techCount = DATA.technologies.length;
+  const refCount = DATA.references.length;
+  const linkedRefs = DATA.references.filter(r => r.url).length;
+  const yearStubs = refCount - linkedRefs;
+
+  const intro = document.getElementById('stats-intro');
+  if (intro) {
+    intro.textContent =
+      `Counts are computed from the full timeline dataset: ${techCount} technologies and ${refCount} bibliography entries` +
+      (yearStubs
+        ? ` (${linkedRefs} with links; ${yearStubs} are year-only date markers, not separate sources).`
+        : '.') +
+      ' Fear tallies reflect what contemporaries claimed, not whether those fears proved justified.';
+  }
 
   const summary = [
-    { value: s.total, label: 'Technologies tracked', id: 'stat-total' },
-    { value: s.transformed.Yes, label: 'Transformed education — Yes on timeline', id: 'stat-transformed' },
-    { value: s.avgDial, label: 'Avg. learning/cognitive panic dial (0–5)', id: 'stat-dial' },
-    { value: DATA.references.length, label: 'Academic references', id: 'stat-refs' }
+    {
+      value: techCount,
+      label: 'Technologies on the timeline',
+      id: 'stat-total',
+      note: 'Every entry plotted below — panics and quiet transformers alike.'
+    },
+    {
+      value: s.transformed.Yes,
+      label: 'Transformed education (Yes)',
+      id: 'stat-transformed',
+      note: `Of ${techCount} technologies: ${s.transformed.Yes} Yes · ${s.transformed.Partial} Partial · ${s.transformed.No} No.`
+    },
+    {
+      value: s.avgDial,
+      label: 'Avg. learning/cognitive panic dial (0–5)',
+      id: 'stat-dial',
+      note: 'Mean peak dial across all technologies on the timeline.'
+    },
+    {
+      value: refCount,
+      label: 'Sources in the bibliography',
+      id: 'stat-refs',
+      note: `Same total as At a glance. Includes books, articles, statutes, and primary sources` +
+        (yearStubs ? `; ${yearStubs} year stubs have no link.` : '.')
+    }
   ];
 
   summary.forEach(c => {
     const el = document.createElement('div');
     el.className = 'stat-card';
-    el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
+    el.innerHTML =
+      `<div class="stat-value">${c.value}</div>` +
+      `<div class="stat-label">${c.label}</div>` +
+      (c.note ? `<p class="stat-note">${c.note}</p>` : '');
     appendCommentSlot(el, 'stat', c.id, c.label);
     grid.appendChild(el);
   });
@@ -1171,7 +1254,7 @@ function buildStats() {
   tBlock.className = 'fear-stat-block';
   tBlock.innerHTML = `
     <h3>Transformed education</h3>
-    <p class="fear-desc">Durable structural or pedagogical change to how schooling is organized, taught, or assessed.</p>
+    <p class="fear-desc">Durable structural or pedagogical change to how schooling is organized, taught, or assessed. Matches the “Transformed education” filter above the timeline.</p>
     <div class="bar-chart">
       <div class="bar-segment bar-segment--yes" style="flex:${t.Yes}">${t.Yes}</div>
       <div class="bar-segment bar-segment--partial" style="flex:${t.Partial}">${t.Partial}</div>

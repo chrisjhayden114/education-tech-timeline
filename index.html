@@ -51,9 +51,9 @@
         <div class="hero-card hero-card--front">
           <div class="hero-card__label">At a glance</div>
           <div class="hero-card__stats">
-            <div><span class="hero-stat-num">67</span><span class="hero-stat-lbl">technologies</span></div>
-            <div><span class="hero-stat-num">116</span><span class="hero-stat-lbl">sources</span></div>
-            <div><span class="hero-stat-num">4</span><span class="hero-stat-lbl">fear types</span></div>
+            <div><span class="hero-stat-num" id="hero-stat-techs">67</span><span class="hero-stat-lbl">technologies</span></div>
+            <div><span class="hero-stat-num" id="hero-stat-sources">116</span><span class="hero-stat-lbl">sources</span></div>
+            <div><span class="hero-stat-num" id="hero-stat-fears">4</span><span class="hero-stat-lbl">fear types</span></div>
           </div>
           <div class="hero-card__fears">
             <span class="hero-card__fears-label">Those four fear types</span>
@@ -335,7 +335,7 @@
 
     <section id="statistics" class="stats-section">
       <h2 class="section-title">By the Numbers</h2>
-      <p class="section-desc">Statistics across all 67 technologies — what contemporaries claimed, not whether those fears proved justified. Each block welcomes your perspective.</p>
+      <p class="section-desc" id="stats-intro">Counts are computed from the full timeline dataset — every technology on the timeline and every entry on the References page. Fear tallies reflect what contemporaries claimed, not whether those fears proved justified.</p>
       <div class="stats-grid" id="stats-grid"></div>
       <div class="stats-detail" id="stats-detail"></div>
     </section>
