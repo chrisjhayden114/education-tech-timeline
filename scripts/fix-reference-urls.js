@@ -104,16 +104,10 @@ const FIXES = {
   'ref-2': 'https://books.google.com/books?id=C-FkAAAAMAAJ',
   'ref-3': 'https://doi.org/10.1073/pnas.2422633122',
   'ref-5': 'https://eric.ed.gov/?id=ED122800',
-  'ref-9':
-    'https://books.google.com/books/about/Motion_Pictures_and_Youth.html?id=0jQ9AAAAYAAJ',
-  'ref-11':
-    'https://books.google.com/books/about/Folk_Devils_and_Moral_Panics.html?id=8jY8AAAAIAAJ',
   'ref-13':
     'https://books.google.com/books/about/Teachers_and_Machines.html?id=uQeEn1vEUSQC',
   'ref-17': 'https://doi.org/10.1596/1813-9450-11125',
   'ref-18': 'https://doi.org/10.1017/cbo9781107049963',
-  'ref-19':
-    'https://books.google.com/books/about/America_Calling.html?id=qs7CPF924nAC',
   'ref-21': 'https://doi.org/10.2307/749255',
   'ref-22': 'https://doi.org/10.1257/app.20170300',
   'ref-23': 'https://doi.org/10.1038/s41598-025-97652-6',
