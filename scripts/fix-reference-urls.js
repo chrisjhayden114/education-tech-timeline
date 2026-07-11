@@ -28,6 +28,7 @@ const FIXES = {
     'https://www.penguinrandomhouse.com/books/297276/amusing-ourselves-to-death-by-neil-postman/',
   'ref-34':
     'https://books.google.com/books/about/The_Victorian_Internet.html?id=vPVbi6GVodAC',
+  'ref-35': 'https://doi.org/10.1353/lac.2012.0024',
   'ref-36': 'https://www.hup.harvard.edu/books/9780674637825',
   'ref-60':
     'https://www.nytimes.com/1988/09/25/us/schools-responding-to-beeper-tool-of-today-s-drug-dealer-by-banning-it.html',
