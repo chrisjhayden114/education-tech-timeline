@@ -2,6 +2,7 @@
 
 const DIAL_LEVELS = {
   0: { label: 'none', color: '#9aa09a' },
+  1: { label: 'trace', color: '#c4a574' },
   2: { label: 'low', color: '#e09545' },
   3: { label: 'moderate', color: '#d05d38' },
   4: { label: 'high', color: '#e02020' },
@@ -341,6 +342,7 @@ function fearDialSvg(level, size = 'full') {
 function dialLegendHtml(compact = false) {
   const scale = [
     [0, DIAL_LEVELS[0]],
+    [1, DIAL_LEVELS[1]],
     [2, DIAL_LEVELS[2]],
     [3, DIAL_LEVELS[3]],
     [4, DIAL_LEVELS[4]],

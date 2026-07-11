@@ -890,7 +890,7 @@ function createTechNode(tech, pos) {
 
   const addedMarker = '';
   const dialBadge = tech.hasPanic && timelineView.panicScale
-    ? `<span class="tech-node__dial-badge" title="Fear dial ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
+    ? `<span class="tech-node__dial-badge" title="Fear Dial estimate ${tech.dial ?? 0}">${tech.dial ?? 0}</span>`
     : '';
   const displayName = timelineDisplayName(tech.name);
 
@@ -1272,10 +1272,10 @@ function buildStats() {
   const dBlock = document.createElement('div');
   dBlock.className = 'fear-stat-block';
   dBlock.innerHTML = `
-    <h3>Learning &amp; cognitive panic dial (0–5)</h3>
-    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation - scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#fear-dial-method">see how dials are scored</a>.</p>
+    <h3>Fear Dial estimate (0–5)</h3>
+    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation - scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#fear-dial-method">how the estimate is scored</a>.</p>
     <div class="bar-chart">
-      ${[0, 2, 3, 4, 5].map(n => {
+      ${[0, 1, 2, 3, 4, 5].map(n => {
         const c = s.dial[String(n)];
         return c ? `<div class="bar-segment bar-segment--yes" style="flex:${c};opacity:${n === 0 ? 0.35 : 0.45 + n * 0.11}">${n}: ${c}</div>` : '';
       }).join('')}
@@ -1295,7 +1295,7 @@ function buildLegend() {
     const block = document.createElement('div');
     block.className = 'legend-block';
     const sectionId = section.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    if (section === 'Dial (0–5)') {
+    if (section === 'Fear Dial estimate (0–5)' || section === 'Dial (0–5)') {
       block.id = 'legend-dial';
     }
     block.innerHTML = `<h3>${section}</h3>`;

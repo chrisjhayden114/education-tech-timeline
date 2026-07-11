@@ -71,122 +71,58 @@
 
   <main>
     <section id="fear-dial-method" class="dial-method-section" aria-labelledby="fear-dial-method-heading">
-      <h2 id="fear-dial-method-heading" class="section-title">How the Fear Dial is scored</h2>
+      <h2 id="fear-dial-method-heading" class="section-title">How the Fear Dial estimate is scored</h2>
       <p class="section-desc">
-        Every technology on this timeline carries a <strong>Fear Dial from 0 to 5</strong>.
-        That number is <strong>only about learning / cognitive-development fears</strong> - 
-        claims that a technology would harm memory, attention, literacy, reasoning, or skill formation.
-        It is a <strong>transparent coding judgment</strong>, not a statistical model.
-        The protocol below is written so a second reader, using the same evidence, should land on the
-        <em>same score or one step away</em>.
+        Every technology has a <strong>Fear Dial estimate from 0 to 5</strong>: the peak intensity of
+        contemporaneous claims that it would harm <strong>learning or cognitive development</strong>
+        (memory, attention, literacy, reasoning, skill formation), weighted by reach and institutional response.
+        It measures the size of that panic, not whether the fear proved true; morality, health, and public-order
+        fears are coded separately and do not raise the estimate.
       </p>
 
       <div class="dial-method-card">
-        <h3 class="dial-method-card__title">What the Fear Dial is (and is not)</h3>
-        <p class="dial-method-definition">
-          The Fear Dial scores the <strong>peak intensity of contemporaneous learning / cognitive panic</strong>
-          for that technology. It does <strong>not</strong> score morality, health, or public-order fears,
-          even when those were louder in the historical record.
-        </p>
         <p>
-          The site still tracks <strong>four fear types</strong> for every technology
-          (each coded Yes / Partial / No):
-        </p>
-        <ul class="dial-method-fear-types">
-          <li><strong>Learning / cognitive development</strong> - memory, attention, literacy, skill formation, study time, academic integrity tied to cognition. <em>This is what the dial measures.</em></li>
-          <li><strong>Morality</strong> - corruption of character, manners, values, “vice.”</li>
-          <li><strong>Health</strong> - body or mind framed medically (eyesight, sleep, addiction-as-illness, etc.).</li>
-          <li><strong>Public order</strong> - crime, violence, fraud, radicalization, political destabilization.</li>
-        </ul>
-        <p>
-          So a technology can score <strong>dial 0</strong> and still have major morality, health, or order panics
-          (for example Dungeons &amp; Dragons or rock and roll). The dial stays low unless contemporaries also
-          made a serious <em>learning / minds</em> claim at scale.
-          The Pattern charts and dial filters focus on learning intensity because that is this project’s
-          analytic question - not because the other fears are ignored in the data.
+          Example: <em>Dungeons &amp; Dragons</em> (morality panic, no learning panic) = estimate <strong>0</strong>.
+          <em>Comic books</em> (literacy / “young minds” claims) = estimate <strong>3</strong>.
         </p>
 
-        <h3 class="dial-method-card__title">Working definition</h3>
-        <p>
-          The Fear Dial is the <strong>peak intensity of contemporaneous claims</strong> that a
-          technology would harm <strong>learning or cognitive development</strong>
-          (memory, attention, literacy, reasoning, or skill formation), scored at the historical
-          high point of that panic, and weighted by how widely those claims circulated and whether
-          institutions acted on them.
-        </p>
-        <p>
-          It measures the <strong>size of the learning fear</strong>, not whether the fear was justified,
-          accurate, or later proven true. A technology can transform schooling for the better and
-          still score high if the learning panic was large.
-        </p>
-
-        <h3 class="dial-method-card__title">What is in scope (and what is not)</h3>
+        <h3 class="dial-method-card__title">In scope vs out of scope</h3>
         <div class="dial-method-scope">
           <div class="dial-method-scope__col dial-method-scope__col--in">
-            <h4>Score these claims</h4>
+            <h4>Raises the estimate</h4>
             <ul>
-              <li>Harms to memory, attention, literacy, numeracy, reasoning, or skill formation</li>
-              <li>“Ruining young minds,” making students lazy, dependent, or unable to think</li>
-              <li>Schooling-specific fears (curriculum fights, classroom bans, exam integrity tied to cognition)</li>
+              <li>Claims about memory, attention, literacy, reasoning, or skill formation</li>
+              <li>“Ruining young minds,” laziness, or inability to think</li>
+              <li>Schooling fights tied to cognition (curriculum, bans, exam integrity)</li>
             </ul>
           </div>
           <div class="dial-method-scope__col dial-method-scope__col--out">
-            <h4>Do not raise the dial for</h4>
+            <h4>Does not raise it</h4>
             <ul>
-              <li>Morality, health, or public-order panics <em>without</em> a learning/cognitive claim</li>
-              <li>Modern opinions that the technology was “actually fine” or “actually harmful”</li>
-              <li>Quiet adoption with no documented education panic (those stay at <strong>0</strong>)</li>
+              <li>Morality, health, or order panics without a learning claim</li>
+              <li>Later judgments that the fear was “right” or “wrong”</li>
+              <li>Quiet adoption with no documented learning panic (stays at <strong>0</strong>)</li>
             </ul>
           </div>
         </div>
-        <p>
-          Example: <em>Dungeons &amp; Dragons</em> triggered a morality panic, but not a learning panic - 
-          dial <strong>0</strong>. <em>Comic books</em> were accused of wrecking literacy and young minds - 
-          dial <strong>3</strong>.
-        </p>
 
-        <h3 class="dial-method-card__title">Replicable coding protocol</h3>
-        <p>Follow these steps in order. Write a one-sentence justification when you assign a score.</p>
+        <h3 class="dial-method-card__title">Coding protocol</h3>
         <ol class="dial-method-steps">
-          <li>
-            <strong>Gather contemporaneous evidence</strong> - Period newspapers, magazines, sermons,
-            school policies, statutes, congressional or parliamentary hearings, parent groups, and
-            scholarly reconstructions of the panic. Prefer sources from the panic years, not later
-            retrospectives alone.
-          </li>
-          <li>
-            <strong>Isolate learning/cognitive claims</strong> - Quote or paraphrase only claims about
-            minds, learning, or schooling skill. Discard pure vice, violence, radiation, or crime
-            claims unless they are explicitly tied to cognitive harm.
-          </li>
-          <li>
-            <strong>Identify the historical peak</strong> - Score the moment of maximum public heat
-            (widest coverage + strongest institutional response), not the technology’s invention year
-            and not today’s residual worry.
-          </li>
-          <li>
-            <strong>Rate five observables</strong> (use the checklist below) - claim clarity, public
-            reach, duration, institutional response, and how central learning was to the panic.
-          </li>
-          <li>
-            <strong>Map to the ordinal scale</strong> - Match the overall profile to the anchors
-            (0 / 2 / 3 / 4 / 5). If torn between two levels, choose the <strong>lower</strong> unless
-            a lasting ban, curriculum settlement, or multi-institution campaign is clearly documented.
-          </li>
-          <li>
-            <strong>Cross-check neighbors</strong> - Compare with nearby technologies already scored.
-            Relative order should feel stable (e.g. television ≥ comic books ≥ radio for learning panic).
-          </li>
+          <li><strong>Contemporaneous evidence</strong> from the panic years (press, policy, hearings, scholarship reconstructing the panic).</li>
+          <li><strong>Learning/cognitive claims only</strong>; set aside vice, violence, radiation, or crime unless tied to cognitive harm.</li>
+          <li><strong>Score the historical peak</strong> (widest coverage + strongest institutional response), not invention year or today’s residual worry.</li>
+          <li><strong>Rate the five observables</strong> below, then map to 0–5. If between levels, choose the <strong>lower</strong> unless a lasting ban or multi-institution campaign is clear. Use <strong>0</strong> when there is no learning fear.</li>
+          <li><strong>Cross-check neighbors</strong> so relative order stays stable (e.g. television ≥ comic books ≥ radio).</li>
         </ol>
 
-        <h3 class="dial-method-card__title">Checklist (score the profile, then pick a dial)</h3>
-        <div class="dial-method-table-wrap" role="region" aria-label="Fear dial coding checklist">
+        <h3 class="dial-method-card__title">Checklist</h3>
+        <div class="dial-method-table-wrap" role="region" aria-label="Fear Dial estimate coding checklist">
           <table class="dial-method-table">
             <thead>
               <tr>
                 <th scope="col">Observable</th>
-                <th scope="col">Keeps the dial low</th>
-                <th scope="col">Pushes the dial up</th>
+                <th scope="col">Keeps the estimate low</th>
+                <th scope="col">Pushes the estimate up</th>
               </tr>
             </thead>
             <tbody>
@@ -198,7 +134,7 @@
               <tr>
                 <th scope="row">Public reach</th>
                 <td>Specialist or elite debate only</td>
-                <td>Mass media, parents, teachers, churches, or parties amplify it</td>
+                <td>Mass media, parents, teachers, or parties amplify it</td>
               </tr>
               <tr>
                 <th scope="row">Duration</th>
@@ -208,7 +144,7 @@
               <tr>
                 <th scope="row">Institutional response</th>
                 <td>Opinion pieces; no formal action</td>
-                <td>School bans, burnings, statutes, hearings, curriculum mandates</td>
+                <td>School bans, statutes, hearings, curriculum mandates</td>
               </tr>
               <tr>
                 <th scope="row">Learning centrality</th>
@@ -219,79 +155,60 @@
           </table>
         </div>
 
-        <h3 class="dial-method-card__title">The scale (with anchors from this site)</h3>
+        <h3 class="dial-method-card__title">Scale and anchors</h3>
         <p>
-          Scores used on this site are <strong>0, 2, 3, 4, and 5</strong>.
-          <strong>1 is unused</strong> - in practice, cases fell cleanly into “no meaningful learning panic”
-          versus “documented but limited,” so a half-step was never needed. Treat the dial as a
-          coarse ordinal scale, not a continuous measurement.
+          Estimates use the full ordinal scale <strong>0–5</strong> (coarse, not continuous).
+          Use <strong>0</strong> when there is really no learning/cognitive fear.
+          Level <strong>1</strong> is available for trace cases; none of the current technologies are coded 1.
         </p>
         <ul class="dial-method-scale">
           <li>
             <span class="dial-method-scale__n" style="--c:#9aa09a">0</span>
-            <span><strong>None</strong> - No meaningful learning/cognitive panic in the record.
-            Anchors: paper; railways; telegraph; home video (VHS); Dungeons &amp; Dragons.</span>
+            <span><strong>None</strong>: no meaningful learning panic.
+            Anchors: paper; railways; VHS; Dungeons &amp; Dragons.</span>
+          </li>
+          <li>
+            <span class="dial-method-scale__n" style="--c:#c4a574">1</span>
+            <span><strong>Trace</strong>: documented learning/cognitive claim, but negligible reach or no campaign.
+            (Available on the scale; unused in the current 67.)</span>
           </li>
           <li>
             <span class="dial-method-scale__n" style="--c:#e09545">2</span>
-            <span><strong>Low</strong> - Documented worry about minds or schooling, but limited reach,
-            short-lived, or mostly elite/niche. Anchors: writing; printing press; radio; personal computer.</span>
+            <span><strong>Low</strong>: documented worry, limited reach or short-lived.
+            Anchors: writing; printing press; radio; personal computer.</span>
           </li>
           <li>
             <span class="dial-method-scale__n" style="--c:#d05d38">3</span>
-            <span><strong>Moderate</strong> - Clear public learning panic: broad press, parental concern,
-            and/or school-level responses. Anchors: novels; movies; comic books; pocket calculator;
-            video games; internet; social media; texting.</span>
+            <span><strong>Moderate</strong>: clear public learning panic.
+            Anchors: novels; comic books; calculator; internet; social media.</span>
           </li>
           <li>
             <span class="dial-method-scale__n" style="--c:#e02020">4</span>
-            <span><strong>High</strong> - Major multi-institution panic with national salience and
-            durable schooling consequences. Anchor: television.</span>
+            <span><strong>High</strong>: major multi-institution panic with durable schooling consequences.
+            Anchor: television.</span>
           </li>
           <li>
             <span class="dial-method-scale__n" style="--c:#8b1a1a">5</span>
-            <span><strong>Severe</strong> - Mass panic involving multiple institutions plus lasting
-            settlement, prohibition, or system-wide policy struggle framed around young minds.
+            <span><strong>Severe</strong>: mass panic with lasting settlement or prohibition.
             Anchors: smartphones; generative AI.</span>
           </li>
         </ul>
-
-        <h3 class="dial-method-card__title">Worked comparison (why scores differ)</h3>
-        <ul class="dial-method-steps dial-method-steps--plain">
-          <li>
-            <strong>Comic books (3) vs television (4)</strong> - Both drew literacy and “young minds”
-            claims. Television’s panic reached further into everyday family life and school policy for
-            longer, with stronger institutional uptake → one step higher.
-          </li>
-          <li>
-            <strong>Television (4) vs smartphones (5)</strong> - Smartphones concentrate continuous
-            child-held use, saturate schools and legislatures simultaneously, and sustain a
-            multi-year settlement fight over attention, addiction-to-learning frames, and bans → top of scale.
-          </li>
-          <li>
-            <strong>Personal computer (2) vs pocket calculator (3)</strong> - PCs raised exclusion and
-            access worries more than “this device ruins thinking”; calculators triggered a clearer
-            classroom skill-substitution panic (mental arithmetic) → higher dial.
-          </li>
-        </ul>
-
-        <h3 class="dial-method-card__title">Limits and expected agreement</h3>
         <p>
-          This is historical coding, not a lab instrument. Source survival favors
-          Anglophone / published panics; silence in the record is coded as low, which can miss
-          under-documented regions. A careful second coder should usually match exactly or differ by
-          <strong>±1</strong>; large disagreements mean the evidence set or scope rule was applied differently.
-          Related fields on each card (fear type Yes/Partial/No, engines, control) use the same
-          judgment-based approach.
+          Relative order example: comic books (3) &lt; television (4) &lt; smartphones (5),
+          mainly by reach, duration, and institutional settlement.
+        </p>
+
+        <p>
+          Historical coding has limits (source survival, Anglophone bias). A careful second coder
+          should usually match or differ by <strong>±1</strong>.
         </p>
 
         <div class="dial-method-download">
           <p class="dial-method-download__label">Download the coding spreadsheet</p>
           <p class="dial-method-download__desc">
-            All 67 technologies with fear-type codes, final <strong>learning/cognitive</strong> Fear Dial,
-            control/engines, checklist components (Low / Mid / High), site evidence notes, and a
-            step-by-step <em>dial_determination</em> column explaining how each dial was reached.
-            Morality, health, and public-order fears are listed separately and do not raise the dial.
+            All 67 technologies with fear-type codes, Fear Dial estimate, checklist components,
+            site evidence, citations, and a per-technology <em>dial_evidence</em> column for auditing the score.
+            Morality, health, and public-order fears are listed separately and do not raise the estimate.
           </p>
           <div class="dial-method-download__actions">
             <a class="dial-method-download__btn" href="data/fear-dial-coding.csv" download="fear-dial-coding.csv">
@@ -306,7 +223,6 @@
         <p class="dial-method-note">
           Short reference copy also lives in
           <a href="#legend-dial">Legend &amp; Notes</a>.
-          Dial scores appear on timeline popouts, filters, Pattern charts, and By the Numbers.
         </p>
       </div>
     </section>
@@ -335,8 +251,8 @@
             <span id="dial-range-display" class="dial-range-display">0 – 5</span>
           </div>
           <p class="method-footnote method-footnote--compact">
-            Dials follow the coding protocol above - not a formula.
-            <a href="#fear-dial-method">Read the full method</a>.
+            Fear Dial estimates follow the coding protocol above, not a formula.
+            <a href="#fear-dial-method">Read the method</a>.
           </p>
         </div>
         <button id="reset-filters" class="btn-ghost">Reset filters</button>
@@ -417,11 +333,11 @@
               </dd>
             </div>
             <div class="primer-vars__row">
-              <dt>Fear dial</dt>
+              <dt>Fear Dial estimate</dt>
               <dd>
                 Peak learning/cognitive panic intensity (0–5): intensity × reach at historical peak.
-                Measures the size of the fear, not its accuracy - 
-                <a href="#fear-dial-method">how dials are scored</a>.
+                Measures the size of the fear, not its accuracy -
+                <a href="#fear-dial-method">how the estimate is scored</a>.
               </dd>
             </div>
             <div class="primer-vars__row">
@@ -446,12 +362,13 @@
             </p>
             <div class="primer-dial-scale" aria-hidden="true">
               <span class="primer-dial-scale__item" style="--c:#9aa09a"><i>0</i></span>
+              <span class="primer-dial-scale__item" style="--c:#c4a574"><i>1</i></span>
               <span class="primer-dial-scale__item" style="--c:#e09545"><i>2</i></span>
               <span class="primer-dial-scale__item" style="--c:#d05d38"><i>3</i></span>
               <span class="primer-dial-scale__item" style="--c:#e02020"><i>4</i></span>
               <span class="primer-dial-scale__item" style="--c:#8b1a1a"><i>5</i></span>
             </div>
-            <p class="primer-dial-note">Scores used: 0, 2, 3, 4, 5 - see <a href="#fear-dial-method">How the Fear Dial is scored</a>.</p>
+            <p class="primer-dial-note">Scores used: 0–5 (1 available but unused in current coding) - see <a href="#fear-dial-method">How the Fear Dial estimate is scored</a>.</p>
           </div>
           <div class="primer-engines-block">
             <h4 class="primer-subhead">The engines (mechanism)</h4>
@@ -492,9 +409,9 @@
         and panic turn out to be nearly orthogonal.
       </p>
       <p class="method-footnote">
-        Fear dial scores (0–5) and related codings are judgment-based and assigned retrospectively - not computed from a formula.
-        <a href="#fear-dial-method">How dials are scored</a>:
-        measures the size of the fear, not its accuracy; codings are judgment calls.
+        Fear Dial estimates (0–5) and related codings are judgment-based and assigned retrospectively, not computed from a formula.
+        <a href="#fear-dial-method">How the estimate is scored</a>:
+        measures the size of the fear, not its accuracy.
       </p>
       <h3 id="panic-grid-heading" class="pattern-subhead">Panic Grid</h3>
       <div id="panic-grid" class="panic-grid" aria-labelledby="panic-grid-heading"></div>

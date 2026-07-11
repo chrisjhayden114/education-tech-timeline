@@ -3,9 +3,10 @@
  * Build data/fear-dial-coding.csv from data.json + curated checklist coding.
  *
  * Existing fields (fears, dial, control, engines, etc.) are authoritative from data.json.
- * Checklist columns (claim_clarity … learning_centrality) and dial_justification are
- * retrospective codes applying the on-site Fear Dial protocol to each technology's
- * documented evidence - they were not in the original matrix.
+ * Checklist columns (claim_clarity … learning_centrality), dial_justification,
+ * and dial_evidence are retrospective codes applying the on-site Fear Dial
+ * protocol to each technology's documented evidence - they were not in the
+ * original matrix.
  *
  * Run: node scripts/build-fear-dial-coding.js
  */
@@ -15,16 +16,12 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'data.json'), 'utf8'));
 
-const CODING_NOTE =
-  'Checklist components coded retrospectively from site evidence using the Fear Dial protocol; final dial matches data.json. Fear Dial = learning/cognitive panic only.';
-
-const DIAL_SCOPE =
-  'Learning / cognitive-development panic only (memory, attention, literacy, reasoning, skill formation). Morality, health, and public-order fears are coded separately and do not raise the dial.';
-
-const DIAL_SCALE_NOTE =
-  'Ordinal scale used on this site: 0 none, 2 low, 3 moderate, 4 high, 5 severe (1 unused). Not a formula - checklist profile mapped to anchors.';
-
-function buildDialDetermination(t, c) {
+/**
+ * Per-technology audit trail for evaluating the dial estimate.
+ * Assembles site evidence (notes, harm claim, references) with the checklist
+ * and mapping rationale - not a repeated scope/scale boilerplate.
+ */
+function buildDialEvidence(t, c) {
   const other = [
     `Morality=${t.fears.Morality}`,
     `Health=${t.fears.Health}`,
@@ -39,21 +36,41 @@ function buildDialDetermination(t, c) {
     `learning_centrality=${c.learning_centrality}`
   ].join('; ');
 
-  const learningGate =
-    t.fears.Learning === 'No'
-      ? 'Learning fear coded No, so the dial stays at 0 unless a learning claim is present (here: none at coding threshold).'
-      : t.fears.Learning === 'Partial'
-        ? 'Learning fear coded Partial - learning/cognitive claims exist but are secondary or limited.'
-        : 'Learning fear coded Yes - contemporaneous learning/cognitive claims are in scope for the dial.';
+  const refs = (t.references || []).map(r => r.short).filter(Boolean).join('; ');
+  const parts = [];
 
-  return [
-    `SCOPE: Fear Dial measures learning/cognitive panic intensity only - not morality, health, or public order.`,
-    learningGate,
-    `Other fear-type codes (excluded from dial): ${other}.`,
-    `Checklist profile (Low/Mid/High): ${profile}.`,
-    `Mapping to dial ${t.dial}: ${c.dial_justification}`,
-    `Scale reminder: 0=none, 2=low, 3=moderate, 4=high, 5=severe (1 unused); prefer lower score when between levels unless lasting multi-institution settlement is documented.`
-  ].join(' ');
+  parts.push(
+    `Fear Dial estimate ${t.dial}/5 (learning fear coded ${t.fears.Learning}).`
+  );
+
+  if (t.fears.Learning === 'No') {
+    parts.push(
+      'No contemporaneous learning/cognitive panic at coding threshold, so the estimate stays at 0.'
+    );
+    if (t.notes) parts.push(`Site notes (context, often non-learning fears): ${t.notes}`);
+    if (t.negative) {
+      parts.push(`Site harm summary (not treated as a learning panic): ${t.negative}`);
+    }
+  } else {
+    if (t.notes) {
+      parts.push(`Contemporaneous learning/cognitive claim and context: ${t.notes}`);
+    }
+    if (t.negative) {
+      parts.push(`Documented cognitive/learning harm claim on site: ${t.negative}`);
+    }
+    if (!t.notes && !t.negative) {
+      parts.push(
+        'Learning/cognitive claims are coded in scope, but the site card lacks a detailed claim summary; see references.'
+      );
+    }
+  }
+
+  parts.push(`Other fear types (do not raise the dial): ${other}.`);
+  parts.push(`Checklist profile (Low/Mid/High): ${profile}.`);
+  parts.push(`Why estimate ${t.dial}: ${c.dial_justification}`);
+  if (refs) parts.push(`Key sources cited on site: ${refs}.`);
+
+  return parts.join(' ');
 }
 
 /**
@@ -727,8 +744,6 @@ const cols = [
   'health',
   'public_order',
   'dial',
-  'dial_scope',
-  'dial_scale_note',
   'control',
   'engines',
   'transformed',
@@ -743,9 +758,9 @@ const cols = [
   'checklist_profile',
   'site_notes',
   'site_negative_claim',
+  'site_references',
   'dial_justification',
-  'dial_determination',
-  'coding_note'
+  'dial_evidence'
 ];
 
 const rows = data.technologies.map(t => {
@@ -753,6 +768,10 @@ const rows = data.technologies.map(t => {
   // Consistency guards
   if (t.fears.Learning === 'No' && c.learning_centrality === 'High') {
     console.error(`Inconsistent: ${t.id} Learning=No but learning_centrality=High`);
+    process.exit(1);
+  }
+  if (t.fears.Learning === 'No' && Number(t.dial) !== 0) {
+    console.error(`Inconsistent: ${t.id} Learning=No but dial=${t.dial} (must be 0)`);
     process.exit(1);
   }
   const checklist_profile = [
@@ -774,8 +793,6 @@ const rows = data.technologies.map(t => {
     health: t.fears.Health,
     public_order: t.fears['Public order'],
     dial: t.dial,
-    dial_scope: DIAL_SCOPE,
-    dial_scale_note: DIAL_SCALE_NOTE,
     control: t.control || '',
     engines: (t.engines || []).join('; '),
     transformed: t.transformed,
@@ -790,9 +807,9 @@ const rows = data.technologies.map(t => {
     checklist_profile,
     site_notes: t.notes || '',
     site_negative_claim: t.negative || '',
+    site_references: (t.references || []).map(r => r.short).filter(Boolean).join('; '),
     dial_justification: c.dial_justification,
-    dial_determination: buildDialDetermination(t, c),
-    coding_note: CODING_NOTE
+    dial_evidence: buildDialEvidence(t, c)
   };
 });
 
@@ -801,56 +818,82 @@ const csvPath = path.join(outDir, 'fear-dial-coding.csv');
 const csv = [cols.join(','), ...rows.map(r => rowToCsv(cols, r))].join('\n') + '\n';
 fs.writeFileSync(csvPath, csv);
 
-const readme = `Fear Dial coding spreadsheet
-============================
+const dialCounts = rows.reduce((acc, r) => {
+  const k = String(r.dial);
+  acc[k] = (acc[k] || 0) + 1;
+  return acc;
+}, {});
+
+const readme = `Fear Dial estimate coding spreadsheet
+=====================================
 
 File: fear-dial-coding.csv
 Technologies: ${rows.length}
 Generated by: scripts/build-fear-dial-coding.js
 
-WHAT THE FEAR DIAL IS
----------------------
-The Fear Dial (column: dial) is the intensity of LEARNING / COGNITIVE-DEVELOPMENT
-panic only - claims that a technology would harm memory, attention, literacy,
-reasoning, or skill formation.
+WHAT THE FEAR DIAL ESTIMATE IS
+------------------------------
+Column dial is the Fear Dial estimate (0-5): intensity of LEARNING /
+COGNITIVE-DEVELOPMENT panic only - claims that a technology would harm memory,
+attention, literacy, reasoning, or skill formation.
 
 It is NOT a combined score of all fears. Morality, health, and public-order panics
 are recorded in separate columns and do not raise the dial by themselves
 (e.g. Dungeons & Dragons can be a large morality panic with dial 0).
 
-HOW EACH DIAL WAS DETERMINED (not a formula)
---------------------------------------------
+ORDINAL SCALE (0-5)
+-------------------
+0 none     - no meaningful learning/cognitive panic (use 0 when there is really no fear)
+1 trace    - documented learning/cognitive claim, but negligible reach / no campaign
+2 low      - documented worry; limited reach or short-lived
+3 moderate - clear public learning panic; broad press / parental concern
+4 high     - major multi-institution panic with durable schooling consequences
+5 severe   - mass panic with lasting settlement, prohibition, or system-wide struggle
+
+Current coding counts for this file: ${Object.keys(dialCounts)
+  .sort((a, b) => Number(a) - Number(b))
+  .map(k => `${k}=${dialCounts[k]}`)
+  .join(', ')}.
+No technology is currently coded 1; existing estimates were left unchanged so site
+charts and Pattern conclusions stay the same.
+
+HOW EACH ESTIMATE WAS DETERMINED (not a formula)
+------------------------------------------------
 1. Confirm whether contemporaneous LEARNING/cognitive claims are in scope
-   (see column learning = Yes / Partial / No).
+   (see column learning = Yes / Partial / No). If learning = No, dial must be 0.
 2. Rate five checklist observables (Low / Mid / High):
    claim_clarity, public_reach, duration, institutional_response, learning_centrality
-3. Map that profile to the ordinal scale using site anchors:
-   0 none, 2 low, 3 moderate, 4 high, 5 severe (1 unused).
+3. Map that profile to 0-5 using the anchors above.
 4. Prefer the lower score when between levels unless a lasting multi-institution
    settlement is documented.
 5. Cross-check neighboring technologies for stable relative order.
 
-See columns:
-  dial_scope - fixed statement of what the dial measures
-  dial_scale_note - scale definition
-  checklist_profile - the five observables in one field
-  site_notes - timeline card notes (site evidence)
-  site_negative_claim - contemporaneous harm claim summary from the site
-  dial_justification - short mapping reason
-  dial_determination - full step-by-step determination text for that technology
+COLUMNS FOR EVALUATING A DIAL NUMBER
+------------------------------------
+dial                 - Fear Dial estimate (0-5) from data.json
+learning             - Yes / Partial / No learning-fear code
+claim_clarity …      - five checklist components
+checklist_profile    - same five in one field
+site_notes           - timeline card notes (claim context)
+site_negative_claim  - documented cognitive/learning harm claim summary
+site_references      - short citations used on the site card
+dial_justification   - one-sentence mapping reason
+dial_evidence        - per-technology audit trail combining the above
+                       (use this column to judge whether dial looks right)
 
 WHAT IS AUTHORITATIVE (from data.json)
 --------------------------------------
 id, name, era, origin_year, impact_year
 learning, morality, health, public_order
 dial, control, engines, transformed, has_panic, is_quiet_transformer, is_added
-site_notes, site_negative_claim
+site_notes, site_negative_claim, site_references
 
 WHAT WAS CODED RETROSPECTIVELY
 ------------------------------
 claim_clarity, public_reach, duration, institutional_response, learning_centrality
-checklist_profile, dial_justification, dial_determination, dial_scope, dial_scale_note
-coding_note
+checklist_profile, dial_justification, dial_evidence
+
+Scope and scale definitions live in this README (not repeated in every CSV row).
 
 Regenerate after editing CHECKLIST in the build script or data.json:
   node scripts/build-fear-dial-coding.js
@@ -859,3 +902,4 @@ Regenerate after editing CHECKLIST in the build script or data.json:
 fs.writeFileSync(path.join(outDir, 'fear-dial-coding-README.txt'), readme);
 
 console.log(`Wrote ${rows.length} rows → ${path.relative(root, csvPath)}`);
+console.log(`Dial counts: ${JSON.stringify(dialCounts)}`);

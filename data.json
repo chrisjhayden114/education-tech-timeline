@@ -2394,18 +2394,18 @@
         "definition": "Negligible direct effect on education."
       }
     ],
-    "Dial (0–5)": [
+    "Fear Dial estimate (0–5)": [
       {
         "term": "Working definition",
-        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. The dial measures learning/cognitive fear only - not morality, health, or public-order fears (those are coded separately as Yes/Partial/No). Measures the size of the learning fear, not its accuracy."
+        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. Measures learning/cognitive fear only - not morality, health, or public-order fears (coded separately). Measures the size of the fear, not its accuracy."
       },
       {
         "term": "How assigned",
-        "definition": "Retrospective coding judgment - not a formula. Protocol: gather contemporaneous evidence; isolate learning/cognitive claims; identify the historical peak; rate claim clarity, public reach, duration, institutional response, and learning centrality; map to the ordinal scale using published anchors; cross-check neighboring technologies. Prefer the lower score when torn between two levels unless a lasting institutional settlement is documented. Full protocol: How the Fear Dial is scored (early on the page)."
+        "definition": "Retrospective coding judgment, not a formula: contemporaneous evidence; learning/cognitive claims only; score the historical peak; rate five observables; map to 0/2/3/4/5; cross-check neighbors. Prefer the lower score when between levels unless a lasting settlement is clear. Full protocol: How the Fear Dial estimate is scored (early on the page)."
       },
       {
         "term": "Scale",
-        "definition": "0 none, 2 low, 3 moderate, 4 high, 5 severe. Score 1 is unused (coarse ordinal scale). Anchors on this site include paper/railways (0), writing/radio (2), comic books/internet (3), television (4), smartphones/generative AI (5)."
+        "definition": "0 none, 1 trace, 2 low, 3 moderate, 4 high, 5 severe. Use 0 when there is really no learning/cognitive fear. Level 1 is available for documented but negligible claims; none of the current technologies are coded 1. Anchors on this site include paper/railways (0), writing/radio (2), comic books/internet (3), television (4), smartphones/generative AI (5)."
       }
     ],
     "What's included": [
