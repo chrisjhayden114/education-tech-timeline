@@ -12,11 +12,27 @@ const IPARADIGMS =
 
 const FIXES = {
   // Broken / soft-404 existing URLs
+  'ref-8': 'https://doi.org/10.1080/15391523.2014.925701',
+  'ref-9':
+    'https://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha001011570',
+  'ref-11':
+    'https://www.routledge.com/Folk-Devils-and-Moral-Panics/Cohen/p/book/9780415610162',
   'ref-14':
     'https://books.google.com/books/about/How_Teachers_Taught.html?id=cTpORm0xgMoC',
   'ref-15':
     'https://books.google.com/books/about/Oversold_and_Underused.html?id=CG-dAAAAMAAJ',
+  'ref-19': 'https://doi.org/10.1525/9780520915008',
+  'ref-25': 'https://www.ucpress.edu/books/dangerous-games/paper',
   'ref-26': 'https://eric.ed.gov/?id=ED505824',
+  'ref-31':
+    'https://www.penguinrandomhouse.com/books/297276/amusing-ourselves-to-death-by-neil-postman/',
+  'ref-34':
+    'https://books.google.com/books/about/The_Victorian_Internet.html?id=vPVbi6GVodAC',
+  'ref-36': 'https://www.hup.harvard.edu/books/9780674637825',
+  'ref-60':
+    'https://www.nytimes.com/1988/09/25/us/schools-responding-to-beeper-tool-of-today-s-drug-dealer-by-banning-it.html',
+  'ref-72':
+    'https://www.nytimes.com/1988/09/25/us/schools-responding-to-beeper-tool-of-today-s-drug-dealer-by-banning-it.html',
   'ref-80': IPARADIGMS,
   'ref-113': IPARADIGMS,
 
