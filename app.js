@@ -1127,7 +1127,7 @@ function buildStats() {
 
   const summary = [
     { value: s.total, label: 'Technologies tracked', id: 'stat-total' },
-    { value: s.transformed.Yes, label: 'Transformed education', id: 'stat-transformed' },
+    { value: s.transformed.Yes, label: 'Transformed education — Yes on timeline', id: 'stat-transformed' },
     { value: s.avgDial, label: 'Avg. learning/cognitive panic dial (0–5)', id: 'stat-dial' },
     { value: DATA.references.length, label: 'Academic references', id: 'stat-refs' }
   ];
