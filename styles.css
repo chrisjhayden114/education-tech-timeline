@@ -1542,6 +1542,28 @@ main {
   line-height: 1.55 !important;
 }
 
+.dial-method-fear-types {
+  margin: 0.65rem 0 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.dial-method-fear-types li {
+  margin-bottom: 0.45rem;
+}
+
+.dial-method-fear-types strong {
+  color: var(--text);
+}
+
+.dial-method-fear-types em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .dial-method-scope {
   display: grid;
   grid-template-columns: 1fr 1fr;
