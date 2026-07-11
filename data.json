@@ -2396,16 +2396,16 @@
     ],
     "Dial (0–5)": [
       {
-        "term": "Meaning",
-        "definition": "Education-related fear intensity at historical peak (intensity multiplied by reach), shown on each technology's fear dial. Measures the size of the fear, not its accuracy."
+        "term": "Working definition",
+        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. Measures the size of the fear, not its accuracy."
       },
       {
         "term": "How assigned",
-        "definition": "Each dial is a retrospective judgment call, not a computed statistic. The score synthesizes contemporaneous claims, their scale and persistence, and how directly they targeted learning or cognitive development — weighted by historical reach at the panic's peak. Related codings (fear type, engines, control) use the same judgment-based method."
+        "definition": "Retrospective coding judgment — not a formula. Protocol: gather contemporaneous evidence; isolate learning/cognitive claims; identify the historical peak; rate claim clarity, public reach, duration, institutional response, and learning centrality; map to the ordinal scale using published anchors; cross-check neighboring technologies. Prefer the lower score when torn between two levels unless a lasting institutional settlement is documented. Full protocol: How the Fear Dial is scored (early on the page)."
       },
       {
         "term": "Scale",
-        "definition": "0 none, 2 low, 3 moderate, 4 high, 5 severe."
+        "definition": "0 none, 2 low, 3 moderate, 4 high, 5 severe. Score 1 is unused (coarse ordinal scale). Anchors on this site include paper/railways (0), writing/radio (2), comic books/internet (3), television (4), smartphones/generative AI (5)."
       }
     ],
     "What's included": [

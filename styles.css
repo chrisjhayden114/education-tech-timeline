@@ -1525,10 +1525,133 @@ main {
 }
 
 .dial-method-card > p {
-  margin: 0;
+  margin: 0.65rem 0 0;
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--text-secondary);
+}
+
+.dial-method-definition {
+  margin-top: 0 !important;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--accent) 8%, #fff);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--text) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+}
+
+.dial-method-scope {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.65rem;
+}
+
+.dial-method-scope__col {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.dial-method-scope__col h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dial-method-scope__col--in h4 { color: var(--accent); }
+.dial-method-scope__col--out h4 { color: var(--text-muted, #6b7280); }
+
+.dial-method-scope__col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.dial-method-scope__col li {
+  margin-bottom: 0.35rem;
+}
+
+.dial-method-table-wrap {
+  margin-top: 0.65rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.dial-method-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.dial-method-table th,
+.dial-method-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.dial-method-table thead th {
+  background: color-mix(in srgb, var(--accent) 6%, #f7f7f5);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.dial-method-table tbody th {
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.dial-method-table tbody td {
+  color: var(--text-secondary);
+}
+
+.dial-method-table tbody tr:last-child th,
+.dial-method-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dial-method-scale li span:last-child {
+  flex: 1;
+}
+
+.dial-method-steps--plain {
+  list-style: disc;
+}
+
+.primer-dial-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.primer-dial-note a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primer-dial-note a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .dial-method-scope {
+    grid-template-columns: 1fr;
+  }
 }
 
 .dial-method-steps {
