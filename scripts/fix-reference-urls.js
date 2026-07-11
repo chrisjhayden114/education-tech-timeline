@@ -38,7 +38,8 @@ const FIXES = {
   'ref-113': IPARADIGMS,
 
   // Previously-null full citations
-  'ref-41': 'https://doi.org/10.1016/B978-0-12-809481-5.00009-2',
+  'ref-41':
+    'https://vhil.stanford.edu/sites/g/files/sbiybj29011/files/media/file/bailey-ivr-developing-child.pdf',
   'ref-42': 'https://doi.org/10.14361/transcript.9783839423820.203',
   'ref-43': 'https://books.google.com/books?id=pKBnEGwmtZoC',
   'ref-44': 'https://doi.org/10.1038/s41598-020-62877-0',
