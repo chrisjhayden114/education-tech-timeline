@@ -2397,7 +2397,7 @@
     "Dial (0–5)": [
       {
         "term": "Working definition",
-        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. Measures the size of the fear, not its accuracy."
+        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. The dial measures learning/cognitive fear only — not morality, health, or public-order fears (those are coded separately as Yes/Partial/No). Measures the size of the learning fear, not its accuracy."
       },
       {
         "term": "How assigned",
