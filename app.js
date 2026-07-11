@@ -140,7 +140,7 @@ function timelineDisplayName(name) {
 }
 
 /** Same-year layout on one side of the axis.
- * Pairs stack on the shared date X (straight connectors) — fanning two items
+ * Pairs stack on the shared date X (straight connectors) - fanning two items
  * created long L-bends through neighboring labels in dense eras.
  * Only fan when 3+ share a year+side.
  */
@@ -173,7 +173,7 @@ function spreadSameYearGroups(positions) {
 }
 
 /** Nudge a lower-lane label off a higher-lane node's vertical connector.
- * Same-date stacks share an anchor X on purpose — leave those alone; opaque
+ * Same-date stacks share an anchor X on purpose - leave those alone; opaque
  * label chips hide the shared vertical behind the text.
  */
 function clearConnectorPierces(positions) {
@@ -200,7 +200,7 @@ function clearConnectorPierces(positions) {
   }
 }
 
-/** Snap tiny offsets back to the date tick — hairline L-bends read as broken connectors. */
+/** Snap tiny offsets back to the date tick - hairline L-bends read as broken connectors. */
 function preferStraightConnectors(positions) {
   positions.forEach(pos => {
     // Lane 0 sits next to the axis; even modest L-bends look like extra stubs.
@@ -237,7 +237,7 @@ function resolveLabelOverlaps(positions) {
 
     if (gap >= need) continue;
 
-    // Stack vertically first — keeps the node on its true date with a straight connector.
+    // Stack vertically first - keeps the node on its true date with a straight connector.
     curr.lane = prev.lane + 1;
   }
 
@@ -430,7 +430,7 @@ function drawTimelineConnectors(svg, positions, axisY) {
     path.setAttribute('stroke-linejoin', 'miter');
     svg.appendChild(path);
 
-    // Elbow marker only for bent connectors — attach-point dots near the axis
+    // Elbow marker only for bent connectors - attach-point dots near the axis
     // looked like floating extra endpoints (e.g. Virtual reality).
     if (bent) {
       const elbowY = Math.abs(points.attachY - points.axisY) <= 28
@@ -467,8 +467,8 @@ let filters = {
 
 /**
  * Data notes:
- * - Personal computer: learning fear = yes but engines = [] — exclusion fear (not having it), unique in dataset.
- * - Home video (VHS): natural experiment — moral panic at home, model classroom technology at school.
+ * - Personal computer: learning fear = yes but engines = [] - exclusion fear (not having it), unique in dataset.
+ * - Home video (VHS): natural experiment - moral panic at home, model classroom technology at school.
  */
 function verifyControlEnginesSchema(technologies) {
   const missingControl = technologies.filter(t => !t.control).map(t => t.name);
@@ -1189,7 +1189,7 @@ function buildStats() {
       value: techCount,
       label: 'Technologies on the timeline',
       id: 'stat-total',
-      note: 'Every entry plotted below — panics and quiet transformers alike.'
+      note: 'Every entry plotted below - panics and quiet transformers alike.'
     },
     {
       value: s.transformed.Yes,
@@ -1273,7 +1273,7 @@ function buildStats() {
   dBlock.className = 'fear-stat-block';
   dBlock.innerHTML = `
     <h3>Learning &amp; cognitive panic dial (0–5)</h3>
-    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation — scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#fear-dial-method">see how dials are scored</a>.</p>
+    <p class="fear-desc">Peak fear that technologies would erode memory, attention, literacy, or skill formation - scored at historical peak. Retrospective judgment calls, not computed statistics; <a href="#fear-dial-method">see how dials are scored</a>.</p>
     <div class="bar-chart">
       ${[0, 2, 3, 4, 5].map(n => {
         const c = s.dial[String(n)];
@@ -1372,11 +1372,11 @@ function openModal(tech) {
     </div>
     <section class="modal-fears-section" aria-labelledby="modal-fears-heading">
       <h3 id="modal-fears-heading">Contemporaries&rsquo; fears</h3>
-      <p class="modal-fears-intro">What critics claimed this technology would do to young people or schooling — <em>not</em> whether those fears proved justified. Ratings reflect claims at the historical peak.</p>
+      <p class="modal-fears-intro">What critics claimed this technology would do to young people or schooling - <em>not</em> whether those fears proved justified. Ratings reflect claims at the historical peak.</p>
       <div class="modal-fears-legend">
-        <span><strong>Yes</strong> — articulated at meaningful scale</span>
-        <span><strong>Partial</strong> — marginal or contested</span>
-        <span><strong>No</strong> — not part of the panic</span>
+        <span><strong>Yes</strong> - articulated at meaningful scale</span>
+        <span><strong>Partial</strong> - marginal or contested</span>
+        <span><strong>No</strong> - not part of the panic</span>
       </div>
       <div class="modal-fears-grid">${fearCells}</div>
     </section>

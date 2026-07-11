@@ -1,5 +1,5 @@
 /**
- * Fork diagram — moral vs cognitive panic among child-controlled technologies.
+ * Fork diagram - moral vs cognitive panic among child-controlled technologies.
  */
 const PanicFork = (function () {
   const ENGINE_ORDER = ['substitution', 'displacement', 'integrity', 'contamination'];
@@ -40,7 +40,7 @@ const PanicFork = (function () {
     const actual = branch.map(t => t.name).sort();
     const expected = [...EXPECTED_MORAL_NAMES].sort();
     if (JSON.stringify(actual) !== JSON.stringify(expected)) {
-      console.warn('[panic fork] moral branch mismatch — expected exactly:', EXPECTED_MORAL_NAMES, 'got:', branch.map(t => t.name));
+      console.warn('[panic fork] moral branch mismatch - expected exactly:', EXPECTED_MORAL_NAMES, 'got:', branch.map(t => t.name));
     }
   }
 
@@ -88,7 +88,7 @@ const PanicFork = (function () {
     const branches = document.createElement('ol');
 
     const noBranch = document.createElement('li');
-    noBranch.textContent = 'No — moral panic';
+    noBranch.textContent = 'No - moral panic';
     const noList = document.createElement('ul');
     moralTechs.forEach(tech => {
       const li = document.createElement('li');
@@ -99,7 +99,7 @@ const PanicFork = (function () {
     branches.appendChild(noBranch);
 
     const yesBranch = document.createElement('li');
-    yesBranch.textContent = 'Yes — cognitive panic';
+    yesBranch.textContent = 'Yes - cognitive panic';
     const yesList = document.createElement('ul');
     cognitiveTechs.forEach(tech => {
       const li = document.createElement('li');

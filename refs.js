@@ -83,7 +83,7 @@ function bindSearch() {
 
 function updateCount(n) {
   document.getElementById('ref-count').textContent =
-    `Showing ${n} reference${n !== 1 ? 's' : ''} — click to open, expand to comment`;
+    `Showing ${n} reference${n !== 1 ? 's' : ''} - click to open, expand to comment`;
 }
 
 function escapeAttr(s) {

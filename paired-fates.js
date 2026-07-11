@@ -1,5 +1,5 @@
 /**
- * Paired fate cards — same capability, different control, different fate.
+ * Paired fate cards - same capability, different control, different fate.
  */
 const PairedFates = (function () {
   const DIAL_COLORS = {
@@ -105,7 +105,7 @@ const PairedFates = (function () {
         .sort();
       if (JSON.stringify(dataIds) !== JSON.stringify(expectedIds)) {
         console.warn(
-          `[paired fates] pair "${pairId}" mismatch — expected ids`,
+          `[paired fates] pair "${pairId}" mismatch - expected ids`,
           expectedIds,
           'found',
           dataIds
@@ -234,7 +234,7 @@ const PairedFates = (function () {
     intro.className = 'paired-fates__intro section-desc';
     intro.innerHTML =
       'Natural experiments hold the <strong>capability</strong> roughly constant and vary only <strong>control</strong>. ' +
-      'Each pair below links two technologies that do a similar job — one typically institution-managed in school, ' +
+      'Each pair below links two technologies that do a similar job - one typically institution-managed in school, ' +
       'the other child- or consumer-controlled outside it. The dial gap shows how fate diverges when the same kind of tool ' +
       'leaves adult hands. The final card is a single device that lived both lives at once.';
 

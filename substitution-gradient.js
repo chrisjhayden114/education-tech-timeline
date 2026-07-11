@@ -1,5 +1,5 @@
 /**
- * Substitution gradient — step chart of assessment centrality vs fear dial.
+ * Substitution gradient - step chart of assessment centrality vs fear dial.
  */
 const SubstitutionGradient = (function () {
   const DIAL_COLORS = {

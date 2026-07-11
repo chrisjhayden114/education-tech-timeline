@@ -1,5 +1,5 @@
 /**
- * Four-stage flow — how an education panic runs.
+ * Four-stage flow - how an education panic runs.
  */
 const PanicFlow = (function () {
   const ENGINE_CHIPS = ['substitution', 'displacement', 'integrity', 'contamination'];
@@ -90,7 +90,7 @@ const PanicFlow = (function () {
       'This diagram summarizes how an education panic typically <strong>runs</strong>: ' +
       'youth autonomy ignites concern; the engines that fire decide whether the panic stays moral or becomes cognitive; ' +
       'intensity rises with engine count and assessment centrality; and resolution arrives when institutions ' +
-      'retake the classroom form — not when the evidence finally settles.';
+      'retake the classroom form - not when the evidence finally settles.';
 
     const list = document.createElement('ol');
     list.className = 'panic-flow__stages';

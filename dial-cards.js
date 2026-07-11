@@ -1,4 +1,4 @@
-/** Fear intensity dial cards — gauge SVG + card markup matching the reference designs. */
+/** Fear intensity dial cards - gauge SVG + card markup matching the reference designs. */
 
 const DIAL_LEVELS = {
   0: { label: 'none', color: '#9aa09a' },
@@ -151,7 +151,7 @@ const DIAL_CARD_COPY = {
   },
   wikipedia: {
     tags: ['Cognitive erosion', 'Lost gatekeeping'],
-    summary: "Marked * on this timeline. Middlebury's citation ban (2007); settled into 'start there, don't cite it' — a template for AI-use norms."
+    summary: "Marked * on this timeline. Middlebury's citation ban (2007); settled into 'start there, don't cite it' - a template for AI-use norms."
   },
   'gps-navigation': {
     tags: ['Cognitive erosion'],
@@ -171,7 +171,7 @@ const DIAL_CARD_COPY = {
   },
   'fidget-spinners': {
     tags: ['Cognitive erosion', 'Conduct/wellbeing'],
-    summary: "Marked * on this timeline. Marketed as an attention aid, banned as an attention destroyer — full cycle inside a year."
+    summary: "Marked * on this timeline. Marketed as an attention aid, banned as an attention destroyer - full cycle inside a year."
   },
   spectacles: {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -179,7 +179,7 @@ const DIAL_CARD_COPY = {
   },
   'blackboard-and-chalk': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Coulson's last dramatic instructional innovation — adopted c. 1801 without comment."
+    summary: "Transformed schooling without a meaningful public panic. Coulson's last dramatic instructional innovation - adopted c. 1801 without comment."
   },
   braille: {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -191,11 +191,11 @@ const DIAL_CARD_COPY = {
   },
   'pencil-with-attached-eraser': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Later the required instrument of machine-scored testing — the humble No. 2 pencil."
+    summary: "Transformed schooling without a meaningful public panic. Later the required instrument of machine-scored testing - the humble No. 2 pencil."
   },
   'the-school-science-laboratory': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Hands-on science entered schooling with saviour rhetoric only — no transformation panic."
+    summary: "Transformed schooling without a meaningful public panic. Hands-on science entered schooling with saviour rhetoric only - no transformation panic."
   },
   'mimeograph-and-spirit-duplicators': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -203,7 +203,7 @@ const DIAL_CARD_COPY = {
   },
   'electric-school-clocks-and-bells': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Railway time discipline entering the building — adopted without comment."
+    summary: "Transformed schooling without a meaningful public panic. Railway time discipline entering the building - adopted without comment."
   },
   'slide-rule-in-schooling': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -211,11 +211,11 @@ const DIAL_CARD_COPY = {
   },
   'school-building-services-lighting-heating-cooling': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Infrastructure beats gadgets — and nobody has ever panicked about a boiler."
+    summary: "Transformed schooling without a meaningful public panic. Infrastructure beats gadgets - and nobody has ever panicked about a boiler."
   },
   'filmstrip-and-slide-projectors': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Teacher control, low cost, zero panic — Cuban's fit principle embodied."
+    summary: "Transformed schooling without a meaningful public panic. Teacher control, low cost, zero panic - Cuban's fit principle embodied."
   },
   'machine-test-scoring-ibm-805-to-scantron': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -231,7 +231,7 @@ const DIAL_CARD_COPY = {
   },
   'language-laboratory': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. A saviour claim that failed quietly — neither devil nor miracle materialized."
+    summary: "Transformed schooling without a meaningful public panic. A saviour claim that failed quietly - neither devil nor miracle materialized."
   },
   'educational-programming-environments-logo-to-scratch': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -259,7 +259,7 @@ const DIAL_CARD_COPY = {
   },
   'plagiarism-detection-services': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. Created in response to a panic but generates none itself — institutions control it."
+    summary: "Transformed schooling without a meaningful public panic. Created in response to a panic but generates none itself - institutions control it."
   },
   'interactive-science-simulations-phet': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -271,7 +271,7 @@ const DIAL_CARD_COPY = {
   },
   'machine-translation-in-the-language-classroom': {
     tags: ['Quiet transformer', 'No meaningful panic'],
-    summary: "Transformed schooling without a meaningful public panic. The quiet dress rehearsal for generative AI in one subject — same integrity questions, no public alarm."
+    summary: "Transformed schooling without a meaningful public panic. The quiet dress rehearsal for generative AI in one subject - same integrity questions, no public alarm."
   },
   'videoconferencing-and-emergency-remote-teaching': {
     tags: ['Quiet transformer', 'No meaningful panic'],
@@ -352,7 +352,7 @@ function dialLegendHtml(compact = false) {
   return `
     <footer class="fear-dial-card__legend${compact ? ' fear-dial-card__legend--compact' : ''}">
       <p class="fear-dial-card__legend-title">Learning &amp; cognitive-development panic intensity (0–5)</p>
-      <p class="fear-dial-card__legend-desc">Peak fear that this technology would harm memory, attention, literacy, reasoning, or skill formation — the core &ldquo;ruining young minds&rdquo; claim. Each score is a retrospective judgment synthesizing contemporaneous claims, scale, and reach at the panic&rsquo;s peak; it measures the size of the fear, not its accuracy.</p>
+      <p class="fear-dial-card__legend-desc">Peak fear that this technology would harm memory, attention, literacy, reasoning, or skill formation - the core &ldquo;ruining young minds&rdquo; claim. Each score is a retrospective judgment synthesizing contemporaneous claims, scale, and reach at the panic&rsquo;s peak; it measures the size of the fear, not its accuracy.</p>
       <div class="fear-dial-legend">${items}</div>
     </footer>
   `;

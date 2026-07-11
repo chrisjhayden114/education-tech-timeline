@@ -49,7 +49,7 @@ for (const ref of refs) {
 console.log('\n');
 
 const failed = results.filter(r => !r.ok);
-console.log(`Checked ${results.length} URLs — ${failed.length} failed\n`);
+console.log(`Checked ${results.length} URLs - ${failed.length} failed\n`);
 for (const r of failed) {
   console.log(`${r.id}: ${r.status} ${r.issue || ''}`);
   console.log(`  ${r.url}`);

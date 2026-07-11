@@ -2347,7 +2347,7 @@
     "Fear ratings (Yes / Partial / No)": [
       {
         "term": "Based on",
-        "definition": "Contemporaries' claims at the time — not whether the fear later proved justified."
+        "definition": "Contemporaries' claims at the time - not whether the fear later proved justified."
       },
       {
         "term": "Yes",
@@ -2397,11 +2397,11 @@
     "Dial (0–5)": [
       {
         "term": "Working definition",
-        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. The dial measures learning/cognitive fear only — not morality, health, or public-order fears (those are coded separately as Yes/Partial/No). Measures the size of the learning fear, not its accuracy."
+        "definition": "Peak intensity of contemporaneous claims that a technology would harm learning or cognitive development (memory, attention, literacy, reasoning, or skill formation), scored at the panic's historical high point and weighted by reach and institutional response. The dial measures learning/cognitive fear only - not morality, health, or public-order fears (those are coded separately as Yes/Partial/No). Measures the size of the learning fear, not its accuracy."
       },
       {
         "term": "How assigned",
-        "definition": "Retrospective coding judgment — not a formula. Protocol: gather contemporaneous evidence; isolate learning/cognitive claims; identify the historical peak; rate claim clarity, public reach, duration, institutional response, and learning centrality; map to the ordinal scale using published anchors; cross-check neighboring technologies. Prefer the lower score when torn between two levels unless a lasting institutional settlement is documented. Full protocol: How the Fear Dial is scored (early on the page)."
+        "definition": "Retrospective coding judgment - not a formula. Protocol: gather contemporaneous evidence; isolate learning/cognitive claims; identify the historical peak; rate claim clarity, public reach, duration, institutional response, and learning centrality; map to the ordinal scale using published anchors; cross-check neighboring technologies. Prefer the lower score when torn between two levels unless a lasting institutional settlement is documented. Full protocol: How the Fear Dial is scored (early on the page)."
       },
       {
         "term": "Scale",
@@ -2415,13 +2415,13 @@
       },
       {
         "term": "Expanded entries",
-        "definition": "Later additions — including the pocket calculator, personal computer, and technologies from the expanded matrix — broaden the timeline beyond the original panic set. Some dial scores for these are assigned retrospectively."
+        "definition": "Later additions - including the pocket calculator, personal computer, and technologies from the expanded matrix - broaden the timeline beyond the original panic set. Some dial scores for these are assigned retrospectively."
       }
     ],
     "Timeline display": [
       {
         "term": "Red glow on timeline",
-        "definition": "Technologies with documented education-related public panics — the entries this project originally tracked."
+        "definition": "Technologies with documented education-related public panics - the entries this project originally tracked."
       },
       {
         "term": "Plain nodes on timeline",
@@ -3073,7 +3073,7 @@
   },
   "meta": {
     "title": "Technology Panics & Education",
-    "subtitle": "How fears shaped — and transformed — learning across four millennia",
+    "subtitle": "How fears shaped - and transformed - learning across four millennia",
     "schemaNotes": [
       "Personal computer has learning fear = yes but engines = [] because its learning fear was exclusion (fear of not having it), unique in the dataset.",
       "Home video (VHS) is its own natural experiment: the same device was a moral panic at home and a model classroom technology at school."

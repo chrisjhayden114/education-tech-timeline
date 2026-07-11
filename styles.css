@@ -414,7 +414,7 @@ main {
 .dial-range-label, .dial-range-display { font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); }
 .filter-count { margin: 0.85rem 0 0; font-size: 0.92rem; color: var(--text-secondary); font-weight: 500; }
 
-/* Timeline — horizontal scroll */
+/* Timeline - horizontal scroll */
 .timeline-section {
   margin: 0 -2rem 4rem;
   min-height: 72vh;
@@ -1804,7 +1804,7 @@ main {
   scroll-margin-top: 7rem;
 }
 
-/* Pattern primer — variables & engines */
+/* Pattern primer - variables & engines */
 .pattern-primer {
   margin-bottom: 3rem;
   padding-top: 0.5rem;

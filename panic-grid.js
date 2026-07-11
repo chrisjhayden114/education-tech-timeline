@@ -1,5 +1,5 @@
 /**
- * Panic Grid — categorical dot grid by control × fear dial.
+ * Panic Grid - categorical dot grid by control × fear dial.
  */
 const PanicGrid = (function () {
   const CONTROL_COLUMNS = [

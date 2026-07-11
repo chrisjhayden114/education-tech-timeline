@@ -1,5 +1,5 @@
 /**
- * Engines matrix — learning-fear technologies × cognitive panic engines.
+ * Engines matrix - learning-fear technologies × cognitive panic engines.
  */
 const EnginesMatrix = (function () {
   const ENGINES = [
@@ -65,7 +65,7 @@ const EnginesMatrix = (function () {
   function columnTooltipLabel(tech) {
     const engines = enginesList(tech);
     const engineText = engines.length ? engines.join(', ') : 'none';
-    return `${tech.name} — dial ${tech.dial ?? 0} — engines: ${engineText}`;
+    return `${tech.name} - dial ${tech.dial ?? 0} - engines: ${engineText}`;
   }
 
   function bindColumnHeader(th, tech) {
@@ -123,7 +123,7 @@ const EnginesMatrix = (function () {
       'This matrix shows all <strong>23</strong> technologies coded <strong>Yes</strong> for learning fear ' +
       '(the Learning fear-type filter on the timeline), sorted by dial (high → low). ' +
       'A filled red dot means that engine engaged for that technology; an empty ring means it did not. ' +
-      'Most panics fire one or two engines — <strong>Generative AI</strong> is the rare case that fires all four.';
+      'Most panics fire one or two engines - <strong>Generative AI</strong> is the rare case that fires all four.';
 
     const scroll = document.createElement('div');
     scroll.className = 'engines-matrix__scroll';

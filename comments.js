@@ -10,12 +10,12 @@ const Comments = (() => {
   const PROMPTS = {
     technology: name =>
       `When ${name} was new, people worried it would harm education. What parallels do you see today?`,
-    'stat-total': 'Which technology panic surprised you most — and why?',
+    'stat-total': 'Which technology panic surprised you most - and why?',
     'stat-transformed': 'Can you think of a technology that changed schooling in ways fear-mongers didn\'t predict?',
     'stat-dial': 'Does the fear intensity dial match your own experience or memory of these debates?',
     'stat-refs': 'Which source on this site would you recommend to a colleague?',
     'stat-fear-learning': 'Have you heard learning fears about a new technology in your school or community?',
-    'stat-fear-morality': 'When do morality panics about technology feel justified to you — if ever?',
+    'stat-fear-morality': 'When do morality panics about technology feel justified to you - if ever?',
     'stat-fear-health': 'What health claims about screens or devices have you encountered as an educator?',
     'stat-fear-order': 'Have public-order fears about technology ever affected policy where you teach?',
     'stat-transformed-col': 'Did any technology transform education in ways this site understates?',
@@ -44,7 +44,7 @@ const Comments = (() => {
     if (itemType === 'technology') return PROMPTS.technology(label || itemId);
     if (itemType === 'legend') return PROMPTS.legend(label || itemId);
     if (itemType === 'reference') return PROMPTS.reference(itemId);
-    return PROMPTS[itemId] || 'Your perspective is welcome — share a thought.';
+    return PROMPTS[itemId] || 'Your perspective is welcome - share a thought.';
   }
 
   function cacheKey(type, id) {
@@ -114,7 +114,7 @@ const Comments = (() => {
 
   function renderList(list) {
     if (!list.length) {
-      return '<p class="comment-empty">No comments yet — yours could be first.</p>';
+      return '<p class="comment-empty">No comments yet - yours could be first.</p>';
     }
     return `<ul class="comment-list">${list.map(c => `
       <li class="comment-item">
