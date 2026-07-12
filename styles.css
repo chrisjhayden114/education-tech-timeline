@@ -222,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero__visual {
   position: relative;
-  min-height: 260px;
+  min-height: 220px;
   display: none;
 }
 
@@ -232,27 +232,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-card {
   position: absolute;
+  top: 40px;
+  right: 0;
+  width: 300px;
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
   box-shadow: var(--shadow);
-}
-
-.hero-card--back {
-  top: 28px;
-  right: 36px;
-  width: 240px;
-  opacity: 0.55;
-  transform: rotate(3deg);
-  z-index: 0;
-}
-
-.hero-card--front {
-  top: 60px;
-  right: 0;
-  width: 300px;
-  z-index: 1;
 }
 
 .hero-card__label {
@@ -307,19 +294,6 @@ h1, h2, h3, h4, h5, h6 {
 .chip-mini--morality { color: var(--morality); }
 .chip-mini--health { color: var(--health); }
 .chip-mini--order { color: var(--order); }
-
-.hero-card__row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-
-.pill {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 6px;
-  background: var(--bg-subtle);
-  color: var(--text-secondary);
-}
-
-.pill--teal { background: rgba(56, 142, 126, 0.2); color: var(--accent); }
-.pill--muted { color: var(--text-muted); }
 
 .hero--compact { padding: 1.5rem 2rem 2rem; text-align: center; }
 .hero--compact h1 { margin-bottom: 0.5rem; }
