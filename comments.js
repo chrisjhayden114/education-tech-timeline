@@ -55,9 +55,9 @@ const Comments = (() => {
     return `comments:${type}:${id}`;
   }
 
-  async function fetchComments(itemType, itemId) {
+  async function fetchComments(itemType, itemId, { force = false } = {}) {
     const key = cacheKey(itemType, itemId);
-    if (cache.has(key)) return cache.get(key);
+    if (!force && cache.has(key)) return cache.get(key);
 
     let list = [];
     if (ready && client) {
@@ -68,7 +68,8 @@ const Comments = (() => {
         .eq('item_id', itemId)
         .order('created_at', { ascending: false })
         .limit(50);
-      if (!error && data) list = data;
+      if (error) throw error;
+      if (data) list = data;
     } else {
       try {
         list = JSON.parse(localStorage.getItem(localKey(itemType, itemId)) || '[]');
@@ -95,16 +96,18 @@ const Comments = (() => {
       if (error) throw error;
       entry.id = data.id;
       entry.created_at = data.created_at;
+      const key = cacheKey(itemType, itemId);
+      const cached = cache.get(key) || [];
+      cached.unshift(entry);
+      cache.set(key, cached);
     } else {
+      const key = cacheKey(itemType, itemId);
       const list = await fetchComments(itemType, itemId);
       list.unshift(entry);
       localStorage.setItem(localKey(itemType, itemId), JSON.stringify(list.slice(0, 50)));
+      cache.set(key, list);
     }
 
-    const key = cacheKey(itemType, itemId);
-    const cached = cache.get(key) || [];
-    cached.unshift(entry);
-    cache.set(key, cached);
     return entry;
   }
 
@@ -170,11 +173,25 @@ const Comments = (() => {
     const form = container.querySelector('.comment-form');
     const listWrap = container.querySelector('.comment-list-wrap');
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', async () => {
       const open = panel.hidden;
       panel.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.textContent = open ? 'Hide comments' : (count ? 'View & add comments' : 'Add your thoughts');
+      if (open && ready) {
+        try {
+          const fresh = await fetchComments(itemType, itemId, { force: true });
+          listWrap.innerHTML = renderList(fresh);
+          const cntEl = container.querySelector('.comment-count');
+          if (cntEl) {
+            cntEl.textContent = fresh.length
+              ? `${fresh.length} comment${fresh.length !== 1 ? 's' : ''}`
+              : '';
+          }
+        } catch (err) {
+          console.warn('Could not refresh comments:', err);
+        }
+      }
     });
 
     form.addEventListener('submit', async e => {
@@ -184,7 +201,7 @@ const Comments = (() => {
       const fd = new FormData(form);
       try {
         await postComment(itemType, itemId, fd.get('author'), fd.get('content'));
-        const updated = await fetchComments(itemType, itemId);
+        const updated = await fetchComments(itemType, itemId, { force: ready });
         listWrap.innerHTML = renderList(updated);
         const cnt = container.querySelector('.comment-count');
         if (cnt) cnt.textContent = `${updated.length} comment${updated.length !== 1 ? 's' : ''}`;
@@ -196,6 +213,7 @@ const Comments = (() => {
         btn.textContent = 'Posted!';
         setTimeout(() => { btn.textContent = 'Post comment'; btn.disabled = false; }, 1500);
       } catch (err) {
+        console.warn(err);
         btn.disabled = false;
         alert('Could not post comment. Please try again.');
       }
