@@ -39,7 +39,8 @@ const TIMELINE_LAYOUT = {
 
 let timelineView = {
   panicScale: false,
-  zoom: 1
+  zoom: 1,
+  size: 1
 };
 
 function yearToX(year, zoom = timelineView.zoom) {
@@ -697,6 +698,34 @@ function bindTimelineViewControls() {
       buildTimeline();
     });
   }
+
+  const size = document.getElementById('timeline-size');
+  const sizeLabel = document.getElementById('timeline-size-display');
+  const sizeOut = document.getElementById('timeline-size-out');
+  const sizeIn = document.getElementById('timeline-size-in');
+
+  function setTimelineSize(next) {
+    const min = 0.55;
+    const max = 1.2;
+    const clamped = Math.min(max, Math.max(min, Math.round(next * 20) / 20));
+    timelineView.size = clamped;
+    if (size) size.value = String(clamped);
+    if (sizeLabel) sizeLabel.textContent = `${Math.round(clamped * 100)}%`;
+    if (sizeOut) sizeOut.disabled = clamped <= min;
+    if (sizeIn) sizeIn.disabled = clamped >= max;
+    hideTimelineTooltip();
+    buildTimeline();
+  }
+
+  if (size) {
+    size.value = timelineView.size;
+    if (sizeLabel) sizeLabel.textContent = `${Math.round(timelineView.size * 100)}%`;
+    size.addEventListener('input', () => setTimelineSize(parseFloat(size.value)));
+  }
+  if (sizeOut) sizeOut.addEventListener('click', () => setTimelineSize(timelineView.size - 0.05));
+  if (sizeIn) sizeIn.addEventListener('click', () => setTimelineSize(timelineView.size + 0.05));
+  if (sizeOut) sizeOut.disabled = timelineView.size <= 0.55;
+  if (sizeIn) sizeIn.disabled = timelineView.size >= 1.2;
 }
 
 function buildDecadeNavigator(positions) {
@@ -741,7 +770,7 @@ function buildDecadeNavigator(positions) {
       const scroller = document.getElementById('timeline-scroll');
       if (!scroller) return;
       scroller.scrollTo({
-        left: Math.max(0, bucket.x - scroller.clientWidth * 0.35),
+        left: Math.max(0, bucket.x * timelineView.size - scroller.clientWidth * 0.35),
         behavior: 'smooth'
       });
     });
@@ -1013,9 +1042,24 @@ function ensureTimelineConnectors(track) {
   return svg;
 }
 
+function ensureTimelineScaler(scroller, track) {
+  let scaler = document.getElementById('timeline-track-scaler');
+  if (!scaler) {
+    scaler = document.createElement('div');
+    scaler.id = 'timeline-track-scaler';
+    scaler.className = 'timeline-track-scaler';
+    scroller.insertBefore(scaler, track);
+    scaler.appendChild(track);
+  } else if (track.parentElement !== scaler) {
+    scaler.appendChild(track);
+  }
+  return scaler;
+}
+
 function buildTimeline() {
   const track = document.getElementById('timeline-track');
   const nodesEl = document.getElementById('timeline-nodes');
+  const scroller = document.getElementById('timeline-scroll');
   const visible = DATA.technologies.filter(matchesFilters);
 
   const sorted = [...visible].sort((a, b) => (a.impactYear ?? 0) - (b.impactYear ?? 0));
@@ -1033,14 +1077,22 @@ function buildTimeline() {
   const axisY = edgePad + maxAbove * lanePad + nodeBlock;
   const belowH = maxBelow * lanePad + nodeBlock + edgePad;
   const trackHeight = axisY + belowH;
+  const size = timelineView.size;
+
+  const scaler = scroller ? ensureTimelineScaler(scroller, track) : null;
 
   track.classList.toggle('timeline-track--panic-scale', timelineView.panicScale);
   track.style.width = `${trackWidth}px`;
   track.style.height = `${trackHeight}px`;
   track.style.setProperty('--axis-y', `${axisY}px`);
+  track.style.transform = `scale(${size})`;
+  track.style.transformOrigin = '0 0';
 
-  const scroller = document.getElementById('timeline-scroll');
-  if (scroller) scroller.style.minHeight = `${trackHeight + 160}px`;
+  if (scaler) {
+    scaler.style.width = `${Math.ceil(trackWidth * size)}px`;
+    scaler.style.height = `${Math.ceil(trackHeight * size)}px`;
+  }
+  if (scroller) scroller.style.minHeight = `${Math.ceil(trackHeight * size) + 120}px`;
 
   nodesEl.innerHTML = '';
 
