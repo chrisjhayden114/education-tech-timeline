@@ -1,4 +1,5 @@
 -- Run this in your Supabase SQL editor (Dashboard → SQL → New query)
+-- Safe to re-run: drops and recreates policies if they already exist.
 
 create table if not exists comments (
   id uuid primary key default gen_random_uuid(),
@@ -13,9 +14,11 @@ create index if not exists comments_item_idx on comments (item_type, item_id, cr
 
 alter table comments enable row level security;
 
+drop policy if exists "Public read comments" on comments;
 create policy "Public read comments"
   on comments for select using (true);
 
+drop policy if exists "Public insert comments" on comments;
 create policy "Public insert comments"
   on comments for insert
   with check (

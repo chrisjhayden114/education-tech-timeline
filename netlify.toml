@@ -2,6 +2,11 @@
   publish = "."
   command = "node scripts/write-supabase-config.js"
 
+# Anon URL/key are meant for the browser client (RLS protects the DB).
+# Omit them from Netlify secret scanning so writing supabase-config.js does not fail the build.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,SUPABASE_ANON_KEY"
+
 # Avoid stale HTML/JS/JSON after deploys (By the Numbers / At a glance must stay in sync)
 [[headers]]
   for = "/*.html"
