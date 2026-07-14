@@ -3357,6 +3357,27 @@ main {
 /* Comments */
 .comment-slot { margin-top: 1rem; }
 
+.comment-slot--on-dark {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.comment-slot--on-dark .comment-widget__invite,
+.comment-slot--on-dark .comment-count,
+.comment-slot--on-dark .comment-storage-note,
+.comment-slot--on-dark .comment-empty,
+.comment-slot--on-dark .comment-item__meta,
+.comment-slot--on-dark .comment-item__body {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.comment-slot--on-dark .comment-item {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
 .comment-widget {
   border-top: 1px solid var(--border);
   padding-top: 0.85rem;
@@ -3429,6 +3450,27 @@ main {
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.comment-delete {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.comment-delete:hover {
+  color: var(--danger);
 }
 
 .comment-item__body {

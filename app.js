@@ -529,6 +529,7 @@ async function init() {
   buildPattern();
   buildStats();
   buildLegend();
+  mountSectionComments();
   bindControls();
   bindTimelineViewControls();
   bindTimelineScroll();
@@ -1216,6 +1217,31 @@ function appendCommentSlot(parent, itemType, itemId, label) {
   slot.className = 'comment-slot';
   parent.appendChild(slot);
   Comments.mount(slot, itemType, itemId, label, 'compact');
+}
+
+/** Comment widgets for major narrative sections and Pattern visualizations. */
+function mountSectionComments() {
+  const sections = [
+    ['comments-section-fear-dial', 'section-fear-dial', 'How the Fear Dial estimate is scored'],
+    ['comments-section-timeline', 'section-timeline', 'The Timeline'],
+    ['comments-section-pattern-primer', 'section-pattern-primer', 'Reading the Pattern'],
+    ['comments-section-pattern', 'section-pattern', 'The Pattern'],
+    ['comments-section-panic-grid', 'section-panic-grid', 'Panic Grid'],
+    ['comments-section-panic-fork', 'section-panic-fork', 'What kind of panic fires'],
+    ['comments-section-engines-matrix', 'section-engines-matrix', 'Four engines make a panic cognitive'],
+    ['comments-section-substitution', 'section-substitution', 'The substitution engine'],
+    ['comments-section-paired-fates', 'section-paired-fates', 'Same capability, different control'],
+    ['comments-section-panic-flow', 'section-panic-flow', 'How an education panic runs'],
+    ['comments-section-statistics', 'section-statistics', 'By the Numbers'],
+    ['comments-section-legend', 'section-legend', 'Legend & Notes']
+  ];
+
+  sections.forEach(([elementId, itemId, label]) => {
+    const el = document.getElementById(elementId);
+    if (!el || el.dataset.commentsMounted === '1') return;
+    el.dataset.commentsMounted = '1';
+    Comments.mount(el, 'section', itemId, label, 'compact');
+  });
 }
 
 function buildStats() {
